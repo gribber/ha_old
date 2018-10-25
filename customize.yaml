@@ -1,0 +1,66 @@
+sensor.all_sensors:
+  hidden: false
+
+group.all_automations:
+  hidden: false
+
+sensor.radiator_fram_Temperature:
+  icon: mdi:radiator
+  friendly_name: Radiator framledning
+
+sensor.radiator_ret_Temperature:
+  icon: mdi:radiator
+  friendly_name: Radiator returledning
+
+switch.switch_bedroom:
+  icon: mdi:lightbulb
+  assumed_state: false
+  friendly_name: Bed room window light
+
+switch.switch_livingroom_upstairs:
+  icon: mdi:lightbulb
+  assumed_state: false
+  friendly_name: Living room upstairs light right
+
+switch.proove_1:
+  icon: mdi:lightbulb
+  assumed_state: false
+  friendly_name: Guestroom window light
+
+switch.proove_2:
+  icon: mdi:lightbulb
+  friendly_name: Living room upstairs light left
+
+switch.switch_workout:
+  icon: mdi:lightbulb
+  friendly_name: Workout room window light
+
+switch.engine_heating:
+  friendly_name: Engine heater
+
+switch.mower_wbt912_1:
+  icon: mdi:content-cut
+  friendly_name: Automower
+
+switch.apple_tree_light:
+  icon: mdi:pine-tree
+  friendly_name: Apple tree lights
+
+switch.switch_garage:
+  icon: mdi:lightbulb
+  friendly_name: Garage outdoor lights
+
+switch.door_sensor_1:
+  friendly_name: Garage door
+
+switch.door_sensor_2:
+  friendly_name: Garage port
+
+switch.switch_tiny_1:
+  icon: mdi:lightbulb
+  friendly_name: Kitchen windows light north
+
+switch.switch_engine_heater:
+  icon: mdi:engine
+  friendly_name: Engine heater switch
+

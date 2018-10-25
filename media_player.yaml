@@ -1,0 +1,16 @@
+#- platform: denonavr
+#  host: 10.5.50.110
+#  name: Marantz SR7010
+#  show_all_sources: true
+#  timeout: 5
+- platform: denon
+  host: 10.5.50.110
+  name: Marantz SR7010
+
+- platform: spotify
+  client_id: 0d9066263a154402bdb94561d881d595
+  client_secret: 8384428234f1408695ac19b2c3e0dc82
+
+- platform: cast
+  media_player:
+    - host: 10.5.50.65 

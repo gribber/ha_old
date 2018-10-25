@@ -1,0 +1,194 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation_home
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  # Customization file
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+panel_iframe:
+  nodered:
+    title: 'Node-RED'
+    url: 'http://10.5.50.100:1880'
+    icon: mdi:auto-fix
+  router:
+    title: 'Microtik'
+    url: 'http://10.5.50.1:81'
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret http_password
+  ip_ban_enabled: true
+  login_attempts_threshold: 3
+  trusted_networks:
+    - 127.0.0.1
+    - ::1
+    - 10.5.50.0/24
+    - fd00::/8
+  base_url: !secret base_url
+
+  #use_x_forwarded_for: true
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+device_tracker:
+  - platform: nmap_tracker
+    home_interval: 5
+    consider_home: 240
+    hosts:
+      - 10.5.50.0/24
+      - 10.5.98.0/24
+    exclude:
+      - 10.5.98.1
+      - 10.5.50.100
+    track_new_devices: false
+  #  - platform: mikrotik
+  # host: 10.5.50.1
+  # username: !secret mikrotik_user
+  # password: !secret mikrotik_pass
+  # new_device_defaults:
+  # track_new_devices: false
+  #  - platform: snmp
+  # host: 10.5.50.1
+  # community: public
+    #baseoid: 1.3.6.1.4.1.14988.1.1.1.2.1.1
+    # baseoid: 1.3.6.1.2.1.4.22.1.2
+    #    interval_seconds: 5
+    #  home_interval: 5
+    # consider_home: 180
+
+  - platform: bluetooth_tracker
+    request_rssi: true
+
+  - platform: google_maps
+    username: !secret maps_user
+    password: !secret maps_pass
+    max_gps_accuracy: 200
+
+    #  - platform: bluetooth_le_tracker
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# media players
+media_player: !include media_player.yaml
+
+# trådfri
+tradfri:
+  host: 10.5.50.72
+  allow_tradfri_groups: false
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor: !include sensors.yaml
+
+# Zones
+zone: !include zones.yaml
+
+# Text to speech
+tts:
+  - platform: google
+
+# verisure
+verisure:
+  username: !secret verisure_user
+  password: !secret verisure_pass
+  alarm: 0
+  hygrometers: 0
+  smartplugs: 0
+  thermometers: 0
+  mouse: 0
+  door_window: 0
+
+zoneminder:
+  host: 10.5.50.150
+  #host: 10.5.50.84:81
+  #path_zms: /cgi-bin/nph-zms
+
+# Cloud
+cloud:
+
+# Telldus
+#tellstick:
+#  signal_repetitions: 3
+
+tellduslive:
+
+# disabled until summer  
+#automower:
+#  username: !secret am_user
+#  password: !secret am_pass
+
+notify:
+  - name: pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_key
+
+logger:
+  default: warn
+  logs:
+    homeassistant.components.zoneminder: debug
+    homeassistant.components.device_tracker: warn
+    homeassistant.components.sensor.scrape: info
+    homeassistant.component.media_player.denonavr: info
+
+recorder:
+  purge_keep_days: 5
+  purge_interval: 1
+  #purge_days: 2
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+
+group: !include_dir_merge_named groups/
+light: !include light.yaml
+binary_sensor: !include binary_sensors.yaml
+
+automation: !include_dir_merge_list automations/
+script: !include scripts.yaml

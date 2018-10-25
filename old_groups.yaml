@@ -1,0 +1,170 @@
+automation:
+  view: yes
+  entities:
+    - group.all_automations
+
+sensors:
+  view: yes
+  entities:
+    - sensor.all_sensors
+
+outdoor_lights:
+  name: Outdoor lights
+  entities:
+    - switch.apple_tree_light
+    - switch.switch_garage
+
+window_lights:
+  name: Window lights
+  entities:
+    - switch.proove_1
+    - switch.proove_2
+    - switch.switch_livingroom_upstairs
+    - switch.switch_bedroom
+    - switch.switch_workout
+    - switch.switch_tiny_1
+
+flvp_sensors:
+  name: FLVP Sensors
+  entities:
+    - sensor.radiator_fram_temperature
+    - sensor.radiator_ret_temperature
+    - sensor.tilluft_temperature
+    - sensor.uteluft_temperature
+    - sensor.franluft_temperature
+    - sensor.avluft_temperature
+
+linus_trackers:
+  name: Linus
+  icon: mdi:account
+  entities:
+    - device_tracker.google_maps_103350380655483099475
+    - device_tracker.android65f131c1941f6a44
+
+devices:
+  name: Devices in network
+  entities:
+    - device_tracker.android7d40d5e0a59e5164
+    - device_tracker.chromecast
+    - device_tracker.chromecast_2
+    - device_tracker.desktopgigob0m
+    - device_tracker.pluto
+    - group.linus_trackers
+
+people:
+  name: Friends and family
+  entities:
+    - device_tracker.android7d40d5e0a59e5164
+    - device_tracker.android65f131c1941f6a44
+    - device_tracker.galaxys8
+    - device_tracker.jiphone
+    - device_tracker.8cebc669649e
+    - device_tracker.samsunggalaxys7
+    - device_tracker.galaxyj5
+    - device_tracker.galaxys9
+    - group.linus_trackers
+
+bedroom:
+  name: Master bedroom
+  entities:
+    - switch.switch_bedroom
+    - sensor.bedroom_temperature
+    - sensor.bedroom_humidity
+    - light.tradfri_bulb_e27_cws_opal_600lm
+
+livingroom_downstairs:
+  name: Living room downstairs
+  entities:
+    - sensor.livingroom_downstairs_temperature
+    - sensor.livingroom_downstairs_humidity
+
+livingroom_upstairs:
+  name: Living room upstairs
+  entities:
+    - switch.switch_livingroom_upstairs
+    - switch.proove_2
+    - sensor.livingroom_upstairs_temperature
+
+garage:
+  name: Garage
+  entities:
+    - switch.switch_garage
+    - switch.door_sensor_1
+    - switch.door_sensor_2
+    - sensor.garage_temperature
+    - sensor.garage_humidity
+    - binary_sensor.door_sensor_1
+
+guestroom:
+  name: Guest room
+  entities:
+    - switch.switch_guestroom
+    - sensor.guestroom_temperature
+    - sensor.guestroom_humidity
+
+kitchen:
+  name: Kitchen
+  entities:
+    - sensor.kitchen_temperature
+    - sensor.kitchen_humidity
+    - switch.switch_tiny_1
+
+hobbyroom:
+  name: Hobby room
+  entities:
+    - sensor.hobbyroom_temperature
+    - sensor.hobbyroom_humidity
+
+closet:
+  name: Closet upstairs
+  entities:
+    - sensor.closet_temperature
+    - sensor.closet_humidity
+
+workoutroom:
+  name: Workout room
+  entities:
+    - switch.switch_workout
+
+roof:
+  name: Roof
+  entities:
+    - sensor.north_roof_temperature
+    - sensor.north_roof_humidity
+    - sensor.south_roof_temperature
+    - sensor.south_roof_humidity
+
+verisure:
+  name: Verisure
+  entities:
+    - lock.ytterdorr
+
+remotes:
+  name: Remotes
+  entities:
+    - switch.remote_1
+    - switch.remote_1_a
+    - switch.remote_1_b
+    - switch.remote_1_c
+    - switch.remote_1_alloff
+
+rooms:
+  view: yes
+  entities:
+    - group.bedroom
+    - group.livingroom_downstairs
+    - group.livingroom_upstairs
+    - group.garage
+    - group.guestroom
+    - group.kitchen
+    - group.hobbyroom
+    - group.closet
+    - group.workoutroom
+
+house:
+  view: yes
+  entities:
+    - group.flvp_sensors
+    - group.roof
+    - group.garage
+    - group.verisure

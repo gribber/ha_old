@@ -1,0 +1,69 @@
+- platform: yr
+  #- platform: tellstick
+  #only_named: 1
+  #10: livingroom_upstairs
+  #61: kitchen
+  #62: guestroom
+  #63: south_roof
+  #64: north_roof
+  #71: livingroom_downstairs
+  #72: bedroom
+  #73: garage
+  #81: closet
+  #82: hobbyroom
+
+  #- platform: onewire
+  #names:
+  #  '28.473115060000': avluft
+  #  '28.6D0115060000': uteluft
+  #  '28.712515060000': franluft
+  #  '28.C02B15060000': tilluft
+  #  '28.085115060000': radiator_fram
+  #  '28.F40215060000': radiator_ret
+  #mount_dir: /mnt/1wire
+  #
+- platform: scrape
+  name: Fiberstatus
+  scan_interval: 300
+  resource: https://www.servanet.se/anslut/johannedal
+  select: ".paragraph .lastupdate.square"
+  value_template: '{{ value.split("d:")[1] }}'
+
+- platform: template
+  sensors:
+    garage_door_state:
+      value_template: >-
+        {% if is_state('switch.door_sensor_1', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('switch.door_sensor_1', 'on') %}
+          mdi:garage-open
+        {% else %}
+          mdi:garage
+        {% endif %}
+      friendly_name: Garage door test
+    garage_port_state:
+      value_template: >-
+        {% if is_state('switch.door_sensor_2', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('switch.door_sensor_2', 'on') %}
+          mdi:garage-open
+        {% else %}
+          mdi:garage
+        {% endif %}
+      friendly_name: Garage port test
+
+- platform: fitbit
+  monitored_resources:
+    - "body/weight"
+    - "body/bmi"
+    - "body/fat"
+
+

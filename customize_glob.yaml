@@ -1,0 +1,17 @@
+# door switches
+#"switch.door_sensor_*":
+#  templates:
+#    icon_color: "if (state === 'on') return 'rgb(251, 210, 41)'; else return 'rgb(54, 95, 140)';"
+    #if (state === 'on') return 'rgb(251, 210, 41)'; return 'rgb(54, 95, 140)';
+      #    rgb_color: "if (state === 'on') return [251, 210, 41]; else return [54, 95, 140];"
+      #icon: >-
+      #{% if (state === 'on') %}
+      #  mdi:lock 
+      #{% else %}
+      #  mdi:lock-open
+      #{% endif %}
+    #rgb_color: "if (state === 'on') return [251, 210, 41]; else return [54, 95, 140];"
+    #
+
+"switch.*":
+  assumed_state: false
