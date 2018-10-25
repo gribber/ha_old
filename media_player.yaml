@@ -8,8 +8,8 @@
   name: Marantz SR7010
 
 - platform: spotify
-  client_id: 0d9066263a154402bdb94561d881d595
-  client_secret: 8384428234f1408695ac19b2c3e0dc82
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
 
 - platform: cast
   media_player:
