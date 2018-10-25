@@ -22,8 +22,7 @@
     entity_id: switch.switch_engine_heater
     to: 'on'
     for:
-      minutes: 2
-      # hours: 2
+      hours: 2
   action:
     - service: switch.turn_off
       entity_id: switch.switch_engine_heater
