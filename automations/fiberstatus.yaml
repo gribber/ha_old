@@ -1,0 +1,10 @@
+#- alias: fiberstatusmonitor
+#  trigger:
+#    platform: state
+#    entity_id: sensor.fiberstatus
+#  action:
+#    service: notify.pushbullet
+#    data:
+#      message: "Website updated"
+#      title: "Fiber status"
+                                            

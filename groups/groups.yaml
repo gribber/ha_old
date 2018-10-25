@@ -93,7 +93,9 @@ garage:
     - switch.door_sensor_2
     - sensor.garage_temperature
     - sensor.garage_humidity
-    - binary_sensor.door_sensor_1
+    - sensor.garage_door_state
+    - sensor.garage_port_state
+    - switch.switch_engine_heater
 
 guestroom:
   name: Guest room

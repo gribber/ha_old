@@ -1,0 +1,30 @@
+- alias: "Engine heater"
+  initial_state: true
+  trigger:
+    - platform: time
+      at: '06:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.linus_trackers
+        state: home
+      - condition: state
+        entity_id: binary_sensor.workday_sensor
+        state: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.switch_engine_heater
+
+- alias: "Engine heater off"
+  trigger:
+    platform: state
+    entity_id: switch.switch_engine_heater
+    to: 'on'
+    for:
+      minutes: 2
+      # hours: 2
+  action:
+    - service: switch.turn_off
+      entity_id: switch.switch_engine_heater
+

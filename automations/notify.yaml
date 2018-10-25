@@ -1,0 +1,33 @@
+#- alias: welcometowork
+#  trigger:
+#    platform: state
+#    entity_id: device_tracker.google_maps_103350380655483099475
+#    to: 'Work'
+#  action:
+#    service: notify.pushbullet
+#    data:
+#      message: "welcome to work"
+#      title: "location test"
+#
+#- alias: welcometohome
+#  trigger:
+#    platform: state
+#    entity_id: device_tracker.google_maps_103350380655483099475
+#    to: 'home'
+#  action:
+#    service: notify.pushbullet
+#    data:
+#      message: "welcome home"
+#      title: "location test 2"
+#
+#- alias: work2test
+#  trigger:
+#    platform: zone
+#    event: enter
+#    zone: zone.work
+#    entity_id: device_tracker.google_maps_103350380655483099475
+#  action:
+#    service: notify.pushbullet
+#    data:
+#      message: "welcome to work"
+#      title: "location zone trigger"

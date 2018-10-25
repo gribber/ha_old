@@ -1,0 +1,41 @@
+- alias: 'Window lights sunset'
+  trigger:
+    platform: sun
+    event: sunset
+  condition:
+    condition: time
+    before: '23:30'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.window_lights
+
+- alias: 'Window lights off at night'
+  trigger:
+    platform: time
+    at: '23:30'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.window_lights
+
+- alias: 'Window lights sunrise'
+  trigger:
+    platform: time
+    at: '06:00'
+  condition:
+    condition: sun
+    before: sunrise
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.window_lights
+
+- alias: 'Window lights off at sunrise'
+  trigger:
+    platform: sun
+    event: sunrise
+  condition:
+    condition: time
+    after: '06:00'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.window_lights
+
