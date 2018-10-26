@@ -13,3 +13,43 @@
       message: 'You forgot to lock the door'
       title: 'Alzheimers'
 
+- alias: "Garage reminder when leaveing home"
+  trigger:
+    - platform: state
+      entity_id: group.linus_trackers
+      to: 'not_home'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: sensor.garage_port_state
+        state: 'Open'
+      - condition: state
+        entity_id: sensor.garage_door_state
+        state: 'Open'
+  action:
+    service: notify.pushbullet
+    data:
+      message: 'The garage is open'
+      title: 'Alzheimers'
+
+- alias: "Garage reminder at night"
+  trigger:
+    - platform: time
+      at: '23:00:00'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: sensor.garage_port_state
+        state: 'Open'
+      - condition: state
+        entity_id: sensor.garage_door_state
+        state: 'Open'
+  action:
+    service: notify.pushbullet
+    data:
+      message: 'The garage is open'
+      title: 'Alzheimers'
+
+
