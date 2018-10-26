@@ -1,0 +1,15 @@
+- alias: "Doorlock reminder"
+  trigger:
+    - platform: state
+      entity_id: group.linus_trackers
+      to: 'not_home'
+  condition:
+    condition: state
+    entity_id: lock.ytterdorr
+    state: 'unlocked'
+  action:
+    service: notify.pushbullet
+    data:
+      message: 'You forgot to lock the door'
+      title: 'Alzheimers'
+
