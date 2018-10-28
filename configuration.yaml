@@ -57,16 +57,15 @@ updater:
   # include_used_components: true
 
 device_tracker:
-  - platform: nmap_tracker
-    home_interval: 5
-    consider_home: 240
-    hosts:
-      - 10.5.50.0/24
-      - 10.5.98.0/24
-    exclude:
-      - 10.5.98.1
-      - 10.5.50.100
-    track_new_devices: false
+  #- platform: nmap_tracker
+  #  home_interval: 5
+  #  consider_home: 240
+  #  hosts:
+  #    - 10.5.50.0/24
+  #    - 10.5.98.0/24
+  #  exclude:
+  #    - 10.5.98.1
+  #    - 10.5.50.100
   #  - platform: mikrotik
   # host: 10.5.50.1
   # username: !secret mikrotik_user
@@ -86,6 +85,9 @@ device_tracker:
     host: 10.5.50.91
     username: !secret unifi_user
     password: !secret unifi_pass
+    verify_ssl: false
+    detection_time: 180
+    track_new_devices: false
 
   - platform: bluetooth_tracker
     request_rssi: true
@@ -180,6 +182,7 @@ logger:
     homeassistant.components.device_tracker: warn
     homeassistant.components.sensor.scrape: info
     homeassistant.component.media_player.denonavr: info
+    homeassistant.components.unifi: error
 
 recorder:
   purge_keep_days: 5
