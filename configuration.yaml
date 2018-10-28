@@ -82,6 +82,11 @@ device_tracker:
     #  home_interval: 5
     # consider_home: 180
 
+  - platform: unifi
+    host: 10.5.50.91
+    username: !secret unifi_user
+    password: !secret unifi_pass
+
   - platform: bluetooth_tracker
     request_rssi: true
 
