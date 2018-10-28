@@ -64,3 +64,5 @@ switch.switch_engine_heater:
   icon: mdi:engine
   friendly_name: Engine heater switch
 
+light.10w_driver_1:
+  friendly_name: Livingroom window lights downstairs

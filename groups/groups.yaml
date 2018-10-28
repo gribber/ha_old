@@ -63,6 +63,7 @@ people:
     - device_tracker.galaxyj5
     - device_tracker.galaxys9
     - group.linus_trackers
+    - device_tracker.88e9fea612d8
 
 bedroom:
   name: Master bedroom
@@ -77,6 +78,7 @@ livingroom_downstairs:
   entities:
     - sensor.livingroom_downstairs_temperature
     - sensor.livingroom_downstairs_humidity
+    - light.10w_driver_1
 
 livingroom_upstairs:
   name: Living room upstairs
@@ -89,8 +91,6 @@ garage:
   name: Garage
   entities:
     - switch.switch_garage
-    - switch.door_sensor_1
-    - switch.door_sensor_2
     - sensor.garage_temperature
     - sensor.garage_humidity
     - sensor.garage_door_state
