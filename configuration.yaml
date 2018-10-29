@@ -1,20 +1,13 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude_home
   longitude: !secret longitude_home
-  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: !secret elevation_home
-  # metric for Metric, imperial for Imperial
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Stockholm
-  # Customization file
+
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
-# Show links to resources in log and frontend
-#introduction:
 
 # Enables the frontend
 frontend:
@@ -32,7 +25,6 @@ panel_iframe:
     url: 'http://10.5.50.1:81'
 
 http:
-  # Secrets are defined in the file secrets.yaml
   api_password: !secret http_password
   ip_ban_enabled: true
   login_attempts_threshold: 3
@@ -47,40 +39,11 @@ http:
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
 device_tracker:
-  #- platform: nmap_tracker
-  #  home_interval: 5
-  #  consider_home: 240
-  #  hosts:
-  #    - 10.5.50.0/24
-  #    - 10.5.98.0/24
-  #  exclude:
-  #    - 10.5.98.1
-  #    - 10.5.50.100
-  #  - platform: mikrotik
-  # host: 10.5.50.1
-  # username: !secret mikrotik_user
-  # password: !secret mikrotik_pass
-  # new_device_defaults:
-  # track_new_devices: false
-  #  - platform: snmp
-  # host: 10.5.50.1
-  # community: public
-    #baseoid: 1.3.6.1.4.1.14988.1.1.1.2.1.1
-    # baseoid: 1.3.6.1.2.1.4.22.1.2
-    #    interval_seconds: 5
-    #  home_interval: 5
-    # consider_home: 180
-
   - platform: unifi
     host: 10.5.50.91
     username: !secret unifi_user
@@ -88,6 +51,16 @@ device_tracker:
     verify_ssl: false
     detection_time: 180
     track_new_devices: false
+    monitored_conditions: 
+      - ip
+      - last_seen
+      - latest_assoc_time
+      - name
+      - powersave_enabled
+      - signal
+      - tx_power
+      - uptime
+      - user_id
 
   - platform: bluetooth_tracker
     request_rssi: true
@@ -159,10 +132,6 @@ zoneminder:
 # Cloud
 cloud:
 
-# Telldus
-#tellstick:
-#  signal_repetitions: 3
-
 tellduslive:
 
 # disabled until summer  
@@ -197,6 +166,12 @@ recorder:
 group: !include_dir_merge_named groups/
 light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
+
+#input_boolean: !include input/boolean.yaml
+#input_select: !include input/select.yaml
+input_number: !include input/number.yaml
+#input_datetime: !include input/datetime.yaml
+#input_text: !include input/text.yaml
 
 automation: !include_dir_merge_list automations/
 script: !include scripts.yaml

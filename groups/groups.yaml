@@ -170,3 +170,11 @@ house:
     - group.roof
     - group.garage
     - group.verisure
+
+engine_heater:
+  name: Engine heater
+  entities:
+    - sensor.heater_departuretime
+    - input_number.heater_hour
+    - input_number.heater_minute
+    - switch.switch_engine_heater

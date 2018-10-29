@@ -1,6 +1,7 @@
 *
 !automations/
 !groups/
+!input/
 !*.yaml
 !.gitignore
 secrets.yaml

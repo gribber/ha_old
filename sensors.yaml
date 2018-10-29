@@ -60,6 +60,13 @@
         {% endif %}
       friendly_name: Garage port
 
+    heater_departuretime:
+      friendly_name: 'Departeur time'
+      value_template: '{% if states.input_number.heater_hour.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heater_hour.state|round(0)|string }}:{% if states.input_number.heater_minute.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heater_minute.state|round(0)|string }}'
+      entity_id:
+        - input_number.heater_hour
+        - input_number.heater_minute
+
 - platform: fitbit
   monitored_resources:
     - "body/weight"

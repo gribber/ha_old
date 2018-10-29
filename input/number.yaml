@@ -1,0 +1,17 @@
+heater_hour:
+  name: Hour
+  icon: mdi:timer
+  initial: 05
+  min: 0
+  max: 23
+  step: 1
+
+heater_minute:
+  name: Minutes
+  icon: mdi:timer
+  initial: 30
+  min: 0
+  max: 55
+  step: 5
+
+

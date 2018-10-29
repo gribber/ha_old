@@ -2,7 +2,7 @@
   initial_state: true
   trigger:
     - platform: time
-      at: '06:00'
+      at: '05:30'
   condition:
     condition: and
     conditions:
