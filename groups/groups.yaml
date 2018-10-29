@@ -175,6 +175,9 @@ engine_heater:
   name: Engine heater
   entities:
     - sensor.heater_departuretime
+    - sensor.heater_activationtime
     - input_number.heater_hour
     - input_number.heater_minute
+    - input_number.heater_delay
+    - input_boolean.workdays_only
     - switch.switch_engine_heater

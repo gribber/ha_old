@@ -1,29 +1,37 @@
-- alias: "Engine heater"
-  initial_state: true
-  trigger:
-    - platform: time
-      at: '05:30'
+- alias: "Engine heater activate"
+  trigger: 
+    platform: template
+    value_template: '{{ states.sensor.heater_activationtime.state == states.sensor.time.state }}'
   condition:
     condition: and
     conditions:
       - condition: state
         entity_id: group.linus_trackers
         state: home
-      - condition: state
-        entity_id: binary_sensor.workday_sensor
-        state: 'on'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_boolean.workdays_only
+            state: 'off'
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id: binary_sensor.workday_sensor
+                state: 'on'
+              - condition: state
+                entity_id: input_boolean.workdays_only
+                state: 'on'
   action:
     - service: switch.turn_on
       entity_id: switch.switch_engine_heater
 
-- alias: "Engine heater off"
+
+- alias: "Engine heater deactivate"
   trigger:
-    platform: state
-    entity_id: switch.switch_engine_heater
-    to: 'on'
-    for:
-      hours: 2
+    platform: template
+    value_template: '{{ states.sensor.heater_departuretime.state == states.sensor.time.state }}'
   action:
+    - delay:
+        minutes: "{{ states('input_number.heater_delay') | int }}"
     - service: switch.turn_off
       entity_id: switch.switch_engine_heater
-

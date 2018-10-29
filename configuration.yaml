@@ -167,7 +167,7 @@ group: !include_dir_merge_named groups/
 light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
 
-#input_boolean: !include input/boolean.yaml
+input_boolean: !include input/boolean.yaml
 #input_select: !include input/select.yaml
 input_number: !include input/number.yaml
 #input_datetime: !include input/datetime.yaml

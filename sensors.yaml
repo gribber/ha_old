@@ -61,11 +61,24 @@
       friendly_name: Garage port
 
     heater_departuretime:
-      friendly_name: 'Departeur time'
+      friendly_name: 'Departure time'
       value_template: '{% if states.input_number.heater_hour.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heater_hour.state|round(0)|string }}:{% if states.input_number.heater_minute.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heater_minute.state|round(0)|string }}'
       entity_id:
         - input_number.heater_hour
         - input_number.heater_minute
+
+    heater_activationtime:
+      friendly_name: 'Activation time'
+      value_template: >-
+        {% if states.input_number.heater_hour.state|round(0)|string|length == 1 %} {% set time = 0 %} {% endif %}
+        {% set time = time|string + states.input_number.heater_hour.state|round(0)|string + ':' %}
+        {% if states.input_number.heater_minute.state|round(0)|string|length == 1 %} {% set time = time|string + '0' %} {% endif %}
+        {% set time = time|string + states.input_number.heater_minute.state|round(0)|string %}
+        {{ (as_timestamp(now().strftime("%Y-%m-%d") + ' ' + time) - (2*3600)) | timestamp_custom("%H:%M")|string }}
+      entity_id:
+        - input_number.heater_hour
+        - input_number.heater_minute
+
 
 - platform: fitbit
   monitored_resources:
@@ -73,4 +86,7 @@
     - "body/bmi"
     - "body/fat"
 
+- platform: time_date
+  display_options:
+    - 'time'
 

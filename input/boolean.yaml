@@ -1,1 +1,3 @@
-# input 
+workdays_only:
+  name: Only active on workdays
+  initial: true
