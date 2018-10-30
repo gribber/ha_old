@@ -79,7 +79,7 @@
     heater_temptime:
       friendly_name: 'Temperature adjusted time'
       value_template: >-
-        {% set temp = states.weather.smhi_home.attributes.forecast[0].templow %}
+        {% set temp = states.sensor.heater_forecast.state|int %}
         {% if temp <= -15 %} {% set t = 1 %}
         {% elif temp > 5 %} {% set t = 20 %}
         {% else %} {% set t = (15 + temp) %} {% endif %}
@@ -91,7 +91,7 @@
         {% if states.sensor.time.state < states.sensor.heater_departuretime.state and states.sensor.time.state > '00:00' %}
         {% set forecast = states.weather.smhi_home.attributes.forecast[0].templow %}
         {% else %}
-        {% set forecast = states.weather.smhi_home.attributes.forecast[1].templow %}
+        {% set forecast = states.weather.smhi_home.attributes.temperature %}
         {% endif %}
         {{ forecast }}
 

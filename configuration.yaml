@@ -149,6 +149,7 @@ logger:
   logs:
     homeassistant.components.zoneminder: debug
     homeassistant.components.device_tracker: warn
+    homeassistant.components.sensor: warn
     homeassistant.components.sensor.scrape: info
     homeassistant.component.media_player.denonavr: info
     homeassistant.components.unifi: error
@@ -162,6 +163,10 @@ recorder:
       - automation
       - weblink
       - updater
+    entities:
+      - sensor.time
+      - sensor.heater_hour
+      - sensor.heater_minute
 
 group: !include_dir_merge_named groups/
 light: !include light.yaml
