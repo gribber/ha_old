@@ -178,6 +178,7 @@ engine_heater:
     - sensor.heater_departuretime
     - sensor.heater_activationtime
     - sensor.heater_temptime
+    - sensor.heater_forecast
     - input_number.heater_hour
     - input_number.heater_minute
     - input_number.heater_delay

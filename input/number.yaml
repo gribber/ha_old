@@ -24,7 +24,7 @@ heater_delay:
   unit_of_measurement: min
 
 heater_maxmin:
-  name: Maximun runtime
+  name: Maximum runtime
   icon: mdi:timer
   initial: 120
   min: 30

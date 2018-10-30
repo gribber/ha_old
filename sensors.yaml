@@ -85,6 +85,17 @@
         {% else %} {% set t = (15 + temp) %} {% endif %}
         {{ (states.input_number.heater_maxmin.state|round(0)/(t**0.3))|int }}
 
+    heater_forecast:
+      friendly_name: 'Temperature forecast'
+      value_template: >-
+        {% if states.sensor.time.state < states.sensor.heater_departuretime.state and states.sensor.time.state > '00:00' %}
+        {% set forecast = states.weather.smhi_home.attributes.forecast[0].templow %}
+        {% else %}
+        {% set forecast = states.weather.smhi_home.attributes.forecast[1].templow %}
+        {% endif %}
+        {{ forecast }}
+
+
 - platform: fitbit
   monitored_resources:
     - "body/weight"
