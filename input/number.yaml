@@ -7,7 +7,7 @@ heater_hour:
   step: 1
 
 heater_minute:
-  name: Minutes
+  name: Minute
   icon: mdi:timer
   initial: 00
   min: 0
@@ -15,9 +15,19 @@ heater_minute:
   step: 5
 
 heater_delay:
-  name: Minutes to overrun
+  name: Time to overrun
   icon: mdi:timer
   initial: 30
   min: 0
   max: 59
   step: 1
+  unit_of_measurement: min
+
+heater_maxmin:
+  name: Maximun runtime
+  icon: mdi:timer
+  initial: 120
+  min: 30
+  max: 240
+  step: 10
+  unit_of_measurement: min

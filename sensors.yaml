@@ -60,6 +60,8 @@
         {% endif %}
       friendly_name: Garage port
 
+- platform: template
+  sensors:
     heater_departuretime:
       friendly_name: 'Departure time'
       value_template: '{% if states.input_number.heater_hour.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heater_hour.state|round(0)|string }}:{% if states.input_number.heater_minute.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heater_minute.state|round(0)|string }}'
@@ -67,12 +69,21 @@
     heater_activationtime:
       friendly_name: 'Calculated activation time'
       value_template: >-
+        {% set atime = (states.sensor.heater_temptime.state|round(0) * 60) %}
         {% if states.input_number.heater_hour.state|round(0)|string|length == 1 %} {% set time = 0 %} {% endif %}
         {% set time = time|string + states.input_number.heater_hour.state|round(0)|string + ':' %}
         {% if states.input_number.heater_minute.state|round(0)|string|length == 1 %} {% set time = time|string + '0' %} {% endif %}
         {% set time = time|string + states.input_number.heater_minute.state|round(0)|string %}
-        {{ (as_timestamp(now().strftime("%Y-%m-%d") + ' ' + time) - (2*3600)) | timestamp_custom("%H:%M")|string }}
+        {{ (as_timestamp(now().strftime("%Y-%m-%d") + ' ' + time) - atime) | timestamp_custom("%H:%M")|string }}
 
+    heater_temptime:
+      friendly_name: 'Temperature adjusted time'
+      value_template: >-
+        {% set temp = states.weather.smhi_home.attributes.forecast[0].templow %}
+        {% if temp <= -15 %} {% set t = 1 %}
+        {% elif temp > 5 %} {% set t = 20 %}
+        {% else %} {% set t = (15 + temp) %} {% endif %}
+        {{ (states.input_number.heater_maxmin.state|round(0)/(t**0.3))|int }}
 
 - platform: fitbit
   monitored_resources:
