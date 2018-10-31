@@ -1,0 +1,19 @@
+- alias: "Bedrum remote 1 on"
+  trigger:
+    - platform: state
+      entity_id: switch.remote_1_a
+      to: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.switch_bedroom
+
+- alias: "Bedrum remote 1 off"
+  trigger:
+    - platform: state
+      entity_id: switch.remote_1_a
+      to: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.switch_bedroom
+
+

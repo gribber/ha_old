@@ -6,7 +6,12 @@
   sensors:
     heater_departuretime:
       friendly_name: 'Departure time'
-      value_template: '{% if states.input_number.heater_hour.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heater_hour.state|round(0)|string }}:{% if states.input_number.heater_minute.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heater_minute.state|round(0)|string }}'
+      value_template: >-
+        {% if states.input_number.heater_hour.state|round(0)|string|length == 1 %} {% set time = 0 %} {% endif %}
+        {% set time = time|string + states.input_number.heater_hour.state|round(0)|string + ':' %}
+        {% if states.input_number.heater_minute.state|round(0)|string|length == 1 %} {% set time = time|string + '0' %} {% endif %}
+        {% set time = time|string + states.input_number.heater_minute.state|round(0)|string %}
+        {{ time }}
 
     heater_activationtime:
       friendly_name: 'Calculated activation time'

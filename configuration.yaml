@@ -135,6 +135,7 @@ zoneminder:
 cloud:
 
 tellduslive:
+  update_interval: 5
 
 # disabled until summer  
 #automower:
