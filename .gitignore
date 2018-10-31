@@ -2,6 +2,9 @@
 !automations/
 !groups/
 !input/
+!sensors/
+!customize/
+!customize_glob/
 !*.yaml
 !.gitignore
 secrets.yaml

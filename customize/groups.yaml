@@ -1,0 +1,6 @@
+sensor.all_sensors:
+  hidden: false
+
+group.all_automations:
+  hidden: false
+

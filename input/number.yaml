@@ -1,3 +1,4 @@
+### input sliders for engine heater ###
 heater_hour:
   name: Hour
   icon: mdi:timer

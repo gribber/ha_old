@@ -1,0 +1,17 @@
+### Sensors ###
+sensor.radiator_fram_Temperature:
+  icon: mdi:radiator
+  friendly_name: Radiator framledning
+
+sensor.radiator_ret_Temperature:
+  icon: mdi:radiator
+  friendly_name: Radiator returledning
+
+sensor.heater_forecast:
+  unit_of_measurement: C
+  icon: mdi:temperature-celsius
+
+sensor.heater_temptime:
+  unit_of_measurement: min
+  icon: mdi:timer
+

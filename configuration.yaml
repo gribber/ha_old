@@ -6,8 +6,9 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Stockholm
 
-  customize: !include customize.yaml
-  customize_glob: !include customize_glob.yaml
+  #customize: !include customize.yaml
+  customize: !include_dir_merge_named customize
+  customize_glob: !include_dir_merge_named customize_glob
 
 # Enables the frontend
 frontend:
@@ -104,7 +105,8 @@ tradfri:
 sun:
 
 # Weather prediction
-sensor: !include sensors.yaml
+#sensor: !include sensors.yaml
+sensor: !include_dir_merge_list sensors/
 
 # Zones
 zone: !include zones.yaml

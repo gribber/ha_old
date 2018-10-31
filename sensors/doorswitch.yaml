@@ -1,0 +1,33 @@
+### create custom sensors for door sensors to be able to change icon and text ###
+- platform: template
+  sensors:
+    garage_door_state:
+      value_template: >-
+        {% if is_state('switch.door_sensor_1', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('switch.door_sensor_1', 'on') %}
+          mdi:garage-open
+        {% else %}
+          mdi:garage
+        {% endif %}
+      friendly_name: Garage door
+    garage_port_state:
+      value_template: >-
+        {% if is_state('switch.door_sensor_2', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('switch.door_sensor_2', 'on') %}
+          mdi:garage-open
+        {% else %}
+          mdi:garage
+        {% endif %}
+      friendly_name: Garage port
+
+
