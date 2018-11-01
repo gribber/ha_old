@@ -171,17 +171,3 @@ house:
     - group.garage
     - group.verisure
 
-engine_heater:
-  name: Engine heater
-  control: hidden
-  entities:
-    - sensor.heater_departuretime
-    - sensor.heater_activationtime
-    - sensor.heater_temptime
-    - sensor.heater_forecast
-    - input_number.heater_hour
-    - input_number.heater_minute
-    - input_number.heater_delay
-    - input_number.heater_maxmin
-    - input_boolean.workdays_only
-    - switch.switch_engine_heater
