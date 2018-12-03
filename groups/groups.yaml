@@ -39,7 +39,8 @@ linus_trackers:
   icon: mdi:account
   entities:
     - device_tracker.google_maps_103350380655483099475
-    - device_tracker.android65f131c1941f6a44
+      #- device_tracker.android65f131c1941f6a44
+    - device_tracker.a83e0e0a0bc4
 
 devices:
   name: Devices in network
@@ -55,15 +56,14 @@ people:
   name: Friends and family
   entities:
     - device_tracker.android7d40d5e0a59e5164
-    - device_tracker.android65f131c1941f6a44
     - device_tracker.galaxys8
     - device_tracker.jiphone
     - device_tracker.8cebc669649e
     - device_tracker.samsunggalaxys7
     - device_tracker.galaxyj5
     - device_tracker.galaxys9
-    - group.linus_trackers
     - device_tracker.88e9fea612d8
+    - device_tracker.galaxys6
 
 bedroom:
   name: Master bedroom

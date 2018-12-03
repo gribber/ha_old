@@ -16,14 +16,24 @@ frontend:
 # Enables configuration UI
 config:
 
-panel_iframe:
-  nodered:
-    title: 'Node-RED'
-    url: 'http://10.5.50.100:1880'
-    icon: mdi:auto-fix
-  router:
-    title: 'Microtik'
-    url: 'http://10.5.50.1:81'
+#panel_iframe:
+#  nodered:
+#    title: 'Node-RED'
+#    url: 'http://10.5.50.100:1880'
+#    icon: mdi:auto-fix
+#  router:
+#    title: 'Microtik'
+#    url: 'http://10.5.50.1:81'
+
+alexa:
+
+google_assistant:
+  project_id: !secret ga_project_id
+  api_key: !secret ga_api_key
+  exposed_domains:
+    - switch
+    - light
+    - group
 
 http:
   api_password: !secret http_password
@@ -127,9 +137,14 @@ verisure:
   door_window: 0
 
 zoneminder:
-  host: 10.5.50.150
+  host: zm.regerar.se
+  ssl: true
+  path_zms: '/cgi-bin/nph-zms'
   #host: 10.5.50.84:81
   #path_zms: /cgi-bin/nph-zms
+
+camera:
+  - platform: zoneminder
 
 # Cloud
 cloud:
@@ -168,6 +183,7 @@ recorder:
       - updater
     entities:
       - sensor.time
+      - sensor.time_2
       - sensor.heater_hour
       - sensor.heater_minute
 
