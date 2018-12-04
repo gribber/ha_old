@@ -41,6 +41,7 @@ linus_trackers:
     - device_tracker.google_maps_103350380655483099475
       #- device_tracker.android65f131c1941f6a44
     - device_tracker.a83e0e0a0bc4
+    - device_tracker.nokia_7_plus
 
 devices:
   name: Devices in network
@@ -64,6 +65,7 @@ people:
     - device_tracker.galaxys9
     - device_tracker.88e9fea612d8
     - device_tracker.galaxys6
+    - device_tracker.huawei_p20_lite552c717f5
 
 bedroom:
   name: Master bedroom

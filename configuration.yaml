@@ -137,7 +137,7 @@ verisure:
   door_window: 0
 
 zoneminder:
-  host: zm.regerar.se
+  host: !secret zm_host
   ssl: true
   path_zms: '/cgi-bin/nph-zms'
   #host: 10.5.50.84:81
