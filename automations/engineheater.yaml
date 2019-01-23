@@ -1,7 +1,8 @@
 - alias: "Engine heater activate"
   trigger: 
     platform: template
-    value_template: '{{ states.sensor.heater_activationtime.state == states.sensor.time.state }}'
+    #value_template: '{{ states.sensor.heater_activationtime.state == states.sensor.time.state }}'
+    value_template: '{{ (states.sensor.time.state >= states.sensor.heater_activationtime.state) and (states.sensor.time.state <= states.sensor.heater_departuretime.state) and (states.switch.switch_engine_heater.state == "off") }}'
   condition:
     condition: and
     conditions:
