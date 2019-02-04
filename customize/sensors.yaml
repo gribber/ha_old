@@ -15,3 +15,18 @@ sensor.heater_temptime:
   unit_of_measurement: min
   icon: mdi:timer
 
+sensor.refriguator_lower_door_state:
+  templates:
+    icon_color: >
+      if (state == 'on') return 'rgb(251, 210, 41)'; 
+      return 'rgb(54, 95, 140)';
+    #hs_color: "if (state == 'on') return [120, 100];
+    #  else return [0, 100];"
+    #icon_color: >
+    #  if is_state('switch.door_sensor_3', 'on') return 'rgb(255,0,0)';
+    #  return 'rgb(0,255,0)';
+    #icon_color: "if is_state('switch.door_sensor_3', 'on') return 'rgb[255,0,0]';"
+    #hs_color: >
+    #  if is_state('switch.door_sensor_3', 'on') return [120,100];"
+    #  return [0,100];
+

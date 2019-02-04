@@ -112,6 +112,8 @@ kitchen:
     - sensor.kitchen_temperature
     - sensor.kitchen_humidity
     - switch.switch_tiny_1
+    - sensor.refriguator_upper_door_state
+    - sensor.refriguator_lower_door_state
 
 hobbyroom:
   name: Hobby room

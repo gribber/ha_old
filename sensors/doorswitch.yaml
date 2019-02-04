@@ -30,4 +30,32 @@
         {% endif %}
       friendly_name: Garage port
 
+    refriguator_lower_door_state:
+      value_template: >-
+        {% if is_state('switch.door_sensor_3', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('switch.door_sensor_3', 'on') %}
+          mdi:alert-circle-outline
+        {% else %}
+          mdi:check-circle-outline
+        {% endif %}
+      friendly_name: Refrigerator door lower
+    refriguator_upper_door_state:
+      value_template: >-
+        {% if is_state('switch.door_sensor_4', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('switch.door_sensor_4', 'on') %}
+          mdi:alert-circle-outline
+        {% else %}
+          mdi:check-circle-outline
+        {% endif %}
+      friendly_name: Refrigerator door upper
 

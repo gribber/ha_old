@@ -43,6 +43,17 @@ switch.door_sensor_1:
 switch.door_sensor_2:
   friendly_name: Garage port
 
+switch.door_sensor_3:
+  friendly_name: Refrigerator lower door
+  templates:
+    rgb_color: >
+      if (is_state('switch.door_sensor_3', 'on')) {
+        return [255,0,0];
+      }
+
+switch.door_sensor_4:
+  friendly_name: Refrigerator upper door
+
 switch.switch_tiny_1:
   icon: mdi:lightbulb
   friendly_name: Kitchen windows light north

@@ -9,6 +9,12 @@ homeassistant:
   #customize: !include customize.yaml
   customize: !include_dir_merge_named customize
   customize_glob: !include_dir_merge_named customize_glob
+  packages: !include_dir_named packages
+
+
+# lovelace
+#lovelace:
+#  mode: yaml
 
 # Enables the frontend
 frontend:
@@ -56,7 +62,7 @@ updater:
 
 device_tracker:
   - platform: unifi
-    host: 10.5.50.91
+    host: 10.5.50.152
     username: !secret unifi_user
     password: !secret unifi_pass
     verify_ssl: false
@@ -137,11 +143,13 @@ verisure:
   door_window: 0
 
 zoneminder:
-  host: !secret zm_host
-  ssl: true
-  path_zms: '/cgi-bin/nph-zms'
-  #host: 10.5.50.84:81
-  #path_zms: /cgi-bin/nph-zms
+  - host: !secret zm_host
+    ssl: true
+    path_zms: '/cgi-bin/nph-zms'
+    username: !secret zm_user
+    password: !secret zm_pass
+    #host: 10.5.50.84:81
+    #path_zms: /cgi-bin/nph-zms
 
 camera:
   - platform: zoneminder
@@ -150,6 +158,7 @@ camera:
 cloud:
 
 tellduslive:
+  #host: 10.5.50.67
   update_interval: 5
 
 # disabled until summer  
@@ -163,7 +172,7 @@ notify:
     api_key: !secret pushbullet_key
 
 logger:
-  default: warn
+  default: info
   logs:
     homeassistant.components.zoneminder: debug
     homeassistant.components.device_tracker: warn

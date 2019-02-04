@@ -1,0 +1,59 @@
+homeassistant:
+  sensor:
+    - platform: date_time
+      display_options:
+        - 'time'
+  input_boolean:
+    wakeup_enabled:
+      name: "Wake-up lights"
+      initial: on
+      icon: mdi:theme-light-dark
+
+    wakeup_weekend:
+      name: "Enable Wake-up on weekends"
+      initial: off
+      icon: mdi:calendar-blank
+
+  group:
+    alarm_clock:
+      name: "Wake-up Lights"
+      entities:
+        - input_datetime.wakeup_time
+        - input_boolean.wakeup_enabled
+        - input_boolean.wakeup_weekend
+
+  input_datetime:
+    wakeup_time:
+      name: 'Start lights at'
+      has_time: true
+      has_date: false
+      initial: '06:00'
+
+  automations:
+    - alias: "Wake-me up using bedroom lights"
+      trigger:
+        platform: template
+        value_template: "{{ states('sensor.time') == (states.input_datetime.wakeup_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+      condition:
+        - condition: state
+          entity_id: input_boolean.wakeup_enabled
+          state: 'on'
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: input_boolean.wakeup_weekend
+              state: 'on'
+            - condition: time
+              weekday:
+                - mon
+                - tue
+                - wed
+                - thu
+                - fri
+      action:
+        - service: light.turn_on
+          entity_id: light.bedroom_ceiling
+          data:
+            transition: 1800
+            brightness: 255
+
