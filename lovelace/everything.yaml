@@ -1,0 +1,252 @@
+path: everything
+title: Everything
+cards:
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Binary sensors
+        filter:
+          include:
+            - domain: binary_sensor
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Sensors
+        filter:
+          include:
+            - domain: sensor
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Switches
+        filter:
+          include:
+            - domain: switch
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Scripts
+        filter:
+          include:
+            - domain: script
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Lights
+        filter:
+          include:
+            - domain: light
+          exclude:
+            - entity_id: "light.*_2"
+            - entity_id: "light.*_3"
+            - entity_id: "light.*_4"
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Device trackers
+        filter:
+          include:
+            - domain: device_tracker
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Alarms
+        filter:
+          include:
+            - domain: alarm_control_panel
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Calendars
+        filter:
+          include:
+            - domain: calendar
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Cameras
+        filter:
+          include:
+            - domain: camera
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Counters
+        filter:
+          include:
+            - domain: counter
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Covers
+        filter:
+          include:
+            - domain: cover
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Input Booleans
+        filter:
+          include:
+            - domain: input_boolean
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Input Numbers
+        filter:
+          include:
+            - domain: input_number
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Input selects
+        filter:
+          include:
+            - domain: input_select
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Locks
+        filter:
+          include:
+            - domain: lock
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Media Players
+        filter:
+          include:
+            - domain: media_player
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Plants
+        filter:
+          include:
+            - domain: plant
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Proximity Sensors
+        filter:
+          include:
+            - domain: proximity
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Scenes
+        filter:
+          include:
+            - domain: scene
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Weather
+        filter:
+          include:
+            - domain: weather
+
+  - type: entities
+    entities:
+      - type: custom:auto-entities
+        card:
+          type: custom:fold-entity-row
+          head:
+            type: section
+            label: Z-Wave
+        filter:
+          include:
+            - domain: zwave

@@ -1,0 +1,13 @@
+title: Automations
+icon: mdi:flash-auto
+path: automations
+cards:
+  - type: custom:monster-card
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Automations
+    filter:
+      include:
+        - entity_id: 'automation.*'

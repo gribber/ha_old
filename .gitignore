@@ -6,6 +6,8 @@
 !customize/
 !customize_glob/
 !packages/
+!lovelace
+lovelace/*
 !*.yaml
 !.gitignore
 secrets.yaml

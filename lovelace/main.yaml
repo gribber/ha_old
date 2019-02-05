@@ -1,0 +1,21 @@
+resources:
+  - url: !resource monster-card/monster-card.js?v=0.2.3
+    type: js
+  - url: !resource group-card/group-card.js?v=0.0.2
+    type: js
+  - url: !resource card-modder/card-modder.js?v=0.3
+    type: js
+  - url: !resource fold-entity-row/fold-entity-row.js?v=1.0
+    type: js
+  - url: !resource auto-entities/auto-entities.js?v=1.0
+    type: js
+  - url: !resource card-tools/card-tools.js?v=1.0
+    type: js
+
+
+title: Home
+views:
+    - !include 00_home_view.yaml
+    - !include 20_lights_view.yaml
+    - !include 30_automations.yaml
+    - !include everything.yaml

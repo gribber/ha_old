@@ -1,0 +1,19 @@
+title: Lights
+icon: mdi:lightbulb-on
+path: lights
+cards:
+  - type: vertical-stack
+    cards:
+      - type: entities
+        title: Outdoor
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Garage
+          - entity: switch.switch_garage
+            name: Roof foot
+          - type: section
+            label: Garden
+          - entity: switch.apple_tree_light
+            name: Apple tree
+

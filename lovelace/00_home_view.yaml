@@ -1,0 +1,26 @@
+title: Home
+panel: true
+path: home
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:group-card
+        card:
+          type: entities
+          title: Engine heater
+        group: group.engine_heater
+      - type: entities
+        title: motorvarmare
+        show_header_toggle: false
+        entities:
+          - sensor.heater_departuretime
+          - sensor.heater_activationtime
+          - sensor.heater_forecast
+          - input_number.heater_hour
+          - input_number.heater_minute
+          - input_number.heater_delay
+          - input_number.heater_maxmin
+          - input_boolean.workdays_only
+          - switch.switch_engine_heater
+
+
