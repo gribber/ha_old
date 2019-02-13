@@ -1,0 +1,13 @@
+title: Settings
+path: settings
+cards:
+  - type: entities
+    title: Configuration
+    show_header_toggle: false
+    entities:
+      - type: call-service
+        name: Regenerate lovelace config
+        service: shell_command.lovelace_gen
+        icon: mdi:refresh
+        action_name: "Run"
+        service_data: {}

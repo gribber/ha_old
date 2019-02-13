@@ -145,6 +145,7 @@ verisure:
 zoneminder:
   - host: !secret zm_host
     ssl: true
+    verify_ssl: true
     path_zms: '/cgi-bin/nph-zms'
     username: !secret zm_user
     password: !secret zm_pass
@@ -172,7 +173,7 @@ notify:
     api_key: !secret pushbullet_key
 
 logger:
-  default: info
+  default: warn
   logs:
     homeassistant.components.zoneminder: debug
     homeassistant.components.device_tracker: warn
@@ -210,4 +211,4 @@ automation: !include_dir_merge_list automations/
 script: !include scripts.yaml
 
 shell_command:
-  lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
+  lovelace_gen: 'python ~/.homeassistant/lovelace-gen.py > ~/.homeassistant/lovelace-gen.log'

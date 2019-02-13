@@ -16,4 +16,32 @@ cards:
             label: Garden
           - entity: switch.apple_tree_light
             name: Apple tree
+      - type: entities
+        title: Window lights
+        show_header_toggle: false
+        entities:
+          - type: section
+            label: Kitchen
+          - entity: switch.switch_tiny_1
+            name: North window light
+          - type: section
+            label: Livingtoom upstarirs
+          - entity: switch.switch_livingroom_upstairs
+            name: Right window light
+          - entity: switch.proove_2
+            name: Left window light
+          - type: section
+            label: Guestroom
+          - entity: switch.proove_1
+            name: Window light
+          - type: section
+            label: Workout room
+          - entity: switch.switch_workout
+            name: Window light
+            secondary_info: entity-id
+          - type: section
+            label: Bedroom
+          - entity: switch.switch_bedroom
+            name: Window light
+            secondary_info: last-changed
 

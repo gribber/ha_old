@@ -4,26 +4,34 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/lovelace/monster-card.js?1549358828.0851512&v=0.2.3'}
-- {type: js, url: '/local/lovelace/group-card.js?1549358828.0851512&v=0.0.2'}
-- {type: js, url: '/local/lovelace/card-modder.js?1549358828.0851512&v=0.3'}
-- {type: js, url: '/local/lovelace/fold-entity-row.js?1549358828.0851512&v=1.0'}
-- {type: js, url: '/local/lovelace/auto-entities.js?1549358828.0851512&v=1.0'}
-- {type: js, url: '/local/lovelace/card-tools.js?1549358828.0851512&v=1.0'}
+- {type: js, url: '/local/lovelace/monster-card.js?1549457297.4603267&v=0.2.3'}
+- {type: js, url: '/local/lovelace/group-card.js?1549457297.4603267&v=0.0.2'}
+- {type: js, url: '/local/lovelace/card-modder.js?1549457297.4603267&v=0.3'}
+- {type: js, url: '/local/lovelace/fold-entity-row.js?1549457297.4603267&v=1.0'}
+- {type: js, url: '/local/lovelace/auto-entities.js?1549457297.4603267&v=1.0'}
+- {type: js, url: '/local/lovelace/card-tools.js?1549457297.4603267&v=1.0'}
 title: Home
 views:
 - cards:
   - cards:
-    - card: {title: Engine heater, type: entities}
-      group: group.engine_heater
-      type: custom:group-card
-    - entities: [sensor.heater_departuretime, sensor.heater_activationtime, sensor.heater_forecast,
-        input_number.heater_hour, input_number.heater_minute, input_number.heater_delay,
-        input_number.heater_maxmin, input_boolean.workdays_only, switch.switch_engine_heater]
-      show_header_toggle: false
-      title: motorvarmare
-      type: entities
-    type: horizontal-stack
+    - cards:
+      - entities: [sensor.heater_departuretime, sensor.heater_activationtime, sensor.heater_forecast,
+          input_number.heater_hour, input_number.heater_minute, input_number.heater_delay,
+          input_number.heater_maxmin, input_boolean.workdays_only, switch.switch_engine_heater]
+        show_header_toggle: false
+        title: motorvarmare
+        type: entities
+      - {entity: weather.smhi_home, title: SMHI, type: weather-forecast}
+      type: horizontal-stack
+    - cards:
+      - card: {show_header_toggle: false, title: Media Players, type: entities}
+        filter:
+          include:
+          - {entity_id: media_player.*}
+        show_empty: false
+        type: custom:monster-card
+      type: horizontal-stack
+    type: vertical-stack
   panel: true
   path: home
   title: Home
@@ -36,6 +44,21 @@ views:
       - {entity: switch.apple_tree_light, name: Apple tree}
       show_header_toggle: false
       title: Outdoor
+      type: entities
+    - entities:
+      - {label: Kitchen, type: section}
+      - {entity: switch.switch_tiny_1, name: North window light}
+      - {label: Livingtoom upstarirs, type: section}
+      - {entity: switch.switch_livingroom_upstairs, name: Right window light}
+      - {entity: switch.proove_2, name: Left window light}
+      - {label: Guestroom, type: section}
+      - {entity: switch.proove_1, name: Window light}
+      - {label: Workout room, type: section}
+      - {entity: switch.switch_workout, name: Window light, secondary_info: entity-id}
+      - {label: Bedroom, type: section}
+      - {entity: switch.switch_bedroom, name: Window light, secondary_info: last-changed}
+      show_header_toggle: false
+      title: Window lights
       type: entities
     type: vertical-stack
   icon: mdi:lightbulb-on
@@ -51,6 +74,19 @@ views:
   icon: mdi:flash-auto
   path: automations
   title: Automations
+- cards:
+  - entities:
+    - action_name: Run
+      icon: mdi:refresh
+      name: Regenerate lovelace config
+      service: shell_command.lovelace_gen
+      service_data: {}
+      type: call-service
+    show_header_toggle: false
+    title: Configuration
+    type: entities
+  path: settings
+  title: Settings
 - cards:
   - entities:
     - card:
