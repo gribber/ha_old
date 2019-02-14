@@ -45,6 +45,9 @@ http:
   api_password: !secret http_password
   ip_ban_enabled: true
   login_attempts_threshold: 3
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 10.5.50.250
   trusted_networks:
     - 127.0.0.1
     - ::1
@@ -52,7 +55,6 @@ http:
     - fd00::/8
   base_url: !secret base_url
 
-  #use_x_forwarded_for: true
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
@@ -173,9 +175,9 @@ notify:
     api_key: !secret pushbullet_key
 
 logger:
-  default: warn
+  default: info
   logs:
-    homeassistant.components.zoneminder: debug
+    homeassistant.components.zoneminder: warn
     homeassistant.components.device_tracker: warn
     homeassistant.components.sensor: warn
     homeassistant.components.sensor.scrape: info
