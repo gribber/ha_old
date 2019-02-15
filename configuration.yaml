@@ -137,12 +137,13 @@ tts:
 verisure:
   username: !secret verisure_user
   password: !secret verisure_pass
-  alarm: 0
-  hygrometers: 0
-  smartplugs: 0
-  thermometers: 0
-  mouse: 0
-  door_window: 0
+  alarm: false
+  hygrometers: false
+  smartplugs: false
+  thermometers: false
+  mouse: false
+  door_window: false
+  locks: true
 
 zoneminder:
   - host: !secret zm_host

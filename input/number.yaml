@@ -27,7 +27,7 @@ heater_delay:
 heater_maxmin:
   name: Maximum runtime
   icon: mdi:timer
-  initial: 120
+  initial: 180
   min: 30
   max: 240
   step: 10

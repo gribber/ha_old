@@ -1,7 +1,0 @@
-homeassistant:
-  customize:
-    -
-  sensor:
-    -
-  group:
-    -

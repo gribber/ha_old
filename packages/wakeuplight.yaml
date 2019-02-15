@@ -1,8 +1,4 @@
 homeassistant:
-  sensor:
-    - platform: date_time
-      display_options:
-        - 'time'
   input_boolean:
     wakeup_enabled:
       name: "Wake-up lights"
@@ -28,6 +24,11 @@ homeassistant:
       has_time: true
       has_date: false
       initial: '06:00'
+
+  sensor:
+    - platform: date_time
+      display_options:
+        - 'time'
 
   automations:
     - alias: "Wake-me up using bedroom lights"
