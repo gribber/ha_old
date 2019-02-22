@@ -62,6 +62,11 @@ updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
+googlehome:
+  devices:
+    - host: !secret googlehome1
+    - host: !secret googlehome2
+
 device_tracker:
   - platform: unifi
     host: 10.5.50.152
@@ -90,6 +95,8 @@ device_tracker:
     max_gps_accuracy: 200
 
     #  - platform: bluetooth_le_tracker
+
+person:
 
 # Discover some devices automatically
 discovery:
@@ -163,7 +170,7 @@ cloud:
 
 tellduslive:
   #host: 10.5.50.67
-  update_interval: 5
+  scan_interval: 5
 
 # disabled until summer  
 #automower:
