@@ -72,7 +72,7 @@ device_tracker:
     host: 10.5.50.152
     username: !secret unifi_user
     password: !secret unifi_pass
-    verify_ssl: false
+    verify_ssl: true
     detection_time: 180
     track_new_devices: false
     monitored_conditions: 
