@@ -69,7 +69,7 @@ googlehome:
 
 device_tracker:
   - platform: unifi
-    host: 10.5.50.152
+    host: !secret unifi_host
     username: !secret unifi_user
     password: !secret unifi_pass
     verify_ssl: true
@@ -144,6 +144,7 @@ tts:
 verisure:
   username: !secret verisure_user
   password: !secret verisure_pass
+  default_lock_code: !secret verisure_default_code
   alarm: false
   hygrometers: false
   smartplugs: false
@@ -191,6 +192,7 @@ logger:
     homeassistant.components.sensor.scrape: info
     homeassistant.component.media_player.denonavr: info
     homeassistant.components.unifi: error
+    homeassistant.components.shell_command: debug
 
 recorder:
   purge_keep_days: 5
@@ -221,4 +223,6 @@ automation: !include_dir_merge_list automations/
 script: !include scripts.yaml
 
 shell_command:
-  lovelace_gen: 'python ~/.homeassistant/lovelace-gen.py > ~/.homeassistant/lovelace-gen.log'
+  #lovelace_gen: 'python ~/.homeassistant/lovelace-gen.py > ~/.homeassistant/lovelace-gen.log'
+  #lovelace_gen: 'python /home/homeassistant/.homeassistant/lovelace-gen.py /home/homeassistant/.homeassistant/lovelace/ > /home/homeassistant/.homeassistant/lovelace-gen.log'
+  lovelace_gen: 'python /home/homeassistant/.homeassistant/lovelace-gen.py /home/homeassistant/.homeassistant/lovelace/'
