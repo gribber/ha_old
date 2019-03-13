@@ -43,16 +43,6 @@ linus_trackers:
     - device_tracker.a83e0e0a0bc4
     - device_tracker.nokia_7_plus
 
-devices:
-  name: Devices in network
-  entities:
-    - device_tracker.android7d40d5e0a59e5164
-    - device_tracker.chromecast
-    - device_tracker.chromecast_2
-    - device_tracker.desktopgigob0m
-    - device_tracker.pluto
-    - group.linus_trackers
-
 people:
   name: Friends and family
   entities:

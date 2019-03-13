@@ -12,6 +12,7 @@ input_boolean:
 group:
   alarm_clock:
     name: "Wake-up Lights"
+    control: hidden
     entities:
       - input_datetime.wakeup_time
       - input_boolean.wakeup_enabled
@@ -22,7 +23,7 @@ input_datetime:
     name: 'Start lights at'
     has_time: true
     has_date: false
-    initial: '06:00'
+    #    initial: '06:00'
 
 sensor:
   - platform: date_time
@@ -52,7 +53,7 @@ automation:
               - fri
     action:
       - service: light.turn_on
-        entity_id: light.bedroom_ceiling
+        entity_id: light.tradfri_bulb_e27_cws_opal_600lm
         data:
           transition: 1800
           brightness: 255
