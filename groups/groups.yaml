@@ -63,7 +63,7 @@ bedroom:
     - switch.switch_bedroom
     - sensor.bedroom_temperature
     - sensor.bedroom_humidity
-    - light.tradfri_bulb_e27_cws_opal_600lm
+    - light.bedroom_ceiling
 
 livingroom_downstairs:
   name: Living room downstairs

@@ -122,9 +122,9 @@ map:
 media_player: !include media_player.yaml
 
 # trådfri
-tradfri:
-  host: 10.5.50.72
-  allow_tradfri_groups: false
+#tradfri:
+#  host: 10.5.50.72
+#  allow_tradfri_groups: false
 
 # Track the sun
 sun:
