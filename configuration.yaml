@@ -22,7 +22,30 @@ frontend:
 # Enables configuration UI
 config:
 
-#panel_iframe:
+panel_iframe:
+  grafana:
+    title: "Grafana"
+    url: !secret grafana_url
+    icon: mdi:graphql
+  influx:
+    title: InfluxDB
+    url: !secret influx_url
+    icon: mdi:database
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: !secret influx_db
+  username: !secret influx_user
+  password: !secret influx_pass
+  max_retries: 3
+  default_measurement: state
+  include:
+    domains:
+      - sensor
+  tags_attributes:
+    - grafana_name                  
+
 #  nodered:
 #    title: 'Node-RED'
 #    url: 'http://10.5.50.100:1880'
@@ -203,11 +226,19 @@ recorder:
       - automation
       - weblink
       - updater
+      - mqtt
+      - script
+      - input_select
+      - input_boolean
+      - device_tracker
+      - group
     entities:
       - sensor.time
       - sensor.time_2
+      - sensor.time_3
       - sensor.heater_hour
       - sensor.heater_minute
+      - sensor.daylight
 
 group: !include_dir_merge_named groups/
 light: !include light.yaml
