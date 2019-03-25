@@ -63,6 +63,11 @@ google_assistant:
     - switch
     - light
     - group
+    - lock
+  entity_config:
+    group.all_automations:
+      expose: false
+
 
 http:
   api_password: !secret http_password

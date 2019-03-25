@@ -14,6 +14,15 @@ outdoor_lights:
     - switch.apple_tree_light
     - switch.switch_garage
 
+llvp_garage:
+  name: Garage heat pump
+  entities:
+    - sensor.telldus_tzwp_102_plug_in_switch_current
+    - sensor.telldus_tzwp_102_plug_in_switch_energy
+    - sensor.telldus_tzwp_102_plug_in_switch_power
+    - sensor.telldus_tzwp_102_plug_in_switch_previous_reading
+    - sensor.telldus_tzwp_102_plug_in_switch_voltage
+
 window_lights:
   name: Window lights
   entities:

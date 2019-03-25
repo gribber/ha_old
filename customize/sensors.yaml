@@ -15,6 +15,35 @@ sensor.heater_temptime:
   unit_of_measurement: min
   icon: mdi:timer
 
+sensor.telldus_zwave_switch_1_power:
+  unit_of_measurement: "V"
+  friendly_name: Mains voltage
+sensor.telldus_zwave_switch_1_power_3:
+  unit_of_measurement: "kWh"
+  friendly_name: Energy usage since start
+sensor.telldus_zwave_switch_1_power_4:
+  unit_of_measurement: "W"
+  friendly_name: Power usage
+sensor.telldus_zwave_switch_1_power_5:
+  unit_of_measurement: "A"
+  friendly_name: Current power drain
+
+sensor.telldus_tzwp_102_plug_in_switch_current:
+  grafana_name: "Heat pump current"
+  friendly_name: "Current"
+sensor.telldus_tzwp_102_plug_in_switch_energy:
+  grafana_name: "Heat pump energy"
+  friendly_name: "Energy"
+sensor.telldus_tzwp_102_plug_in_switch_power:
+  grafana_name: "Heat pump power"
+  friendly_name: "Power"
+sensor.telldus_tzwp_102_plug_in_switch_previous_reading:
+  grafana_name: "Heat pump previous energy"
+  friendly_name: "Previous energy reading"
+sensor.telldus_tzwp_102_plug_in_switch_voltage:
+  grafana_name: "Heat pump voltage"
+  friendly_name: "Voltage"
+
 sensor.refriguator_lower_door_state:
   templates:
     icon_color: >
