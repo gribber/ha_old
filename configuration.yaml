@@ -22,6 +22,8 @@ frontend:
 # Enables configuration UI
 config:
 
+system_health:
+
 panel_iframe:
   grafana:
     title: "Grafana"
@@ -66,6 +68,8 @@ google_assistant:
     - lock
   entity_config:
     group.all_automations:
+      expose: false
+    switch.telldus_tzwp_102_plug_in_switch_switch:
       expose: false
 
 
@@ -235,7 +239,6 @@ recorder:
       - script
       - input_select
       - input_boolean
-      - device_tracker
       - group
     entities:
       - sensor.time
@@ -261,4 +264,5 @@ script: !include scripts.yaml
 shell_command:
   #lovelace_gen: 'python ~/.homeassistant/lovelace-gen.py > ~/.homeassistant/lovelace-gen.log'
   #lovelace_gen: 'python /home/homeassistant/.homeassistant/lovelace-gen.py /home/homeassistant/.homeassistant/lovelace/ > /home/homeassistant/.homeassistant/lovelace-gen.log'
-  lovelace_gen: 'python /home/homeassistant/.homeassistant/lovelace-gen.py /home/homeassistant/.homeassistant/lovelace/'
+  #lovelace_gen: 'python /home/homeassistant/.homeassistant/lovelace-gen.py /home/homeassistant/.homeassistant/lovelace/'
+  lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'

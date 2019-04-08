@@ -13,6 +13,7 @@ outdoor_lights:
   entities:
     - switch.apple_tree_light
     - switch.switch_garage
+    - light.entre_1
 
 llvp_garage:
   name: Garage heat pump
@@ -29,9 +30,9 @@ window_lights:
     - switch.proove_1
     - switch.proove_2
     - switch.switch_livingroom_upstairs
-    - switch.switch_bedroom
     - switch.switch_workout
     - switch.switch_tiny_1
+    - light.ikea_e14_400lm
 
 flvp_sensors:
   name: FLVP Sensors
@@ -69,10 +70,10 @@ people:
 bedroom:
   name: Master bedroom
   entities:
-    - switch.switch_bedroom
     - sensor.bedroom_temperature
     - sensor.bedroom_humidity
     - light.bedroom_ceiling
+    - light.ikea_e14_400lm
 
 livingroom_downstairs:
   name: Living room downstairs

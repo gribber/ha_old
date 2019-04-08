@@ -4,12 +4,12 @@
 # Any changes made to it will be overwritten the next time the script is run.
 
 resources:
-- {type: js, url: '/local/lovelace/monster-card.js?1552414674.0516264&v=0.2.3'}
-- {type: js, url: '/local/lovelace/group-card.js?1552414674.0516264&v=0.0.2'}
-- {type: js, url: '/local/lovelace/card-modder.js?1552414674.0516264&v=0.3'}
-- {type: js, url: '/local/lovelace/fold-entity-row.js?1552414674.0516264&v=1.0'}
-- {type: js, url: '/local/lovelace/auto-entities.js?1552414674.0516264&v=1.0'}
-- {type: js, url: '/local/lovelace/card-tools.js?1552414674.0516264&v=1.0'}
+- {type: js, url: '/local/lovelace/monster-card.js?1554125823.0325444&v=0.2.3'}
+- {type: js, url: '/local/lovelace/group-card.js?1554125823.0325444&v=0.0.2'}
+- {type: js, url: '/local/lovelace/card-modder.js?1554125823.0325444&v=0.3'}
+- {type: js, url: '/local/lovelace/fold-entity-row.js?1554125823.0325444&v=1.0'}
+- {type: js, url: '/local/lovelace/auto-entities.js?1554125823.0325444&v=1.0'}
+- {type: js, url: '/local/lovelace/card-tools.js?1554125823.0325444&v=1.0'}
 title: Home
 views:
 - cards:

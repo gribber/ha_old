@@ -1,9 +1,4 @@
 ### Switches ###
-switch.switch_bedroom:
-  icon: mdi:lightbulb
-  assumed_state: false
-  friendly_name: Bed room window light
-
 switch.switch_livingroom_upstairs:
   icon: mdi:lightbulb
   assumed_state: false

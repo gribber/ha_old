@@ -1,0 +1,13 @@
+- alias: Notify on new HA version
+  trigger:
+    platform: state
+    entity_id: sensor.current_ha_version
+  condition:
+    - condition: template
+      value_template: '{{ states.sensor.current_ha_version.state != "" }}'
+  action:
+    service: notify.pushbullet
+    data:
+      title: "New HA release"
+      message: "version: {{ states.sensor.current_ha_version.state }}"
+

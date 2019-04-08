@@ -1,0 +1,12 @@
+- platform: rest
+  name: Current HA version
+  json_attributes:
+    - created_at
+    - published_at
+  resource: https://api.github.com/repos/home-assistant/home-assistant/releases/latest
+  value_template: '{{ value_json.tag_name }}'
+  scan_interval: 900
+  headers:
+    Accept: application/vnd.github.v3+json
+    Content-Type: application/json
+    User-Agent: Home Assistant REST sensor

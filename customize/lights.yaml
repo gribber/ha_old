@@ -1,3 +1,6 @@
 ### Lights ###
 light.10w_driver_1:
   friendly_name: Livingroom window lights downstairs
+
+light.ikea_e14_400lm:
+  friendly_name: Bedroom window light
