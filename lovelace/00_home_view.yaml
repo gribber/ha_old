@@ -33,5 +33,19 @@ cards:
           filter:
             include:
               - entity_id: 'media_player.*'
+        - type: custom:pollenkoll-card
+          title: false
+          city: Sundsvall
+          allergens:
+            - Al
+            - Alm
+            - Ambrosia
+            - Björk
+            - Ek
+            - Gråbo
+            - Gräs
+            - Hassel
+            - Sälg / vide
+
 
 

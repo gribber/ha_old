@@ -11,6 +11,8 @@ resources:
     type: js
   - url: !resource card-tools/card-tools.js?v=1.0
     type: js
+  - url: !resource pollenkoll-card/pollenkoll-card.js?v=1.0
+    type: js
 
 
 title: Home

@@ -13,8 +13,8 @@ homeassistant:
 
 
 # lovelace
-lovelace:
-  mode: yaml
+#lovelace:
+#  mode: yaml
 
 # Enables the frontend
 frontend:
