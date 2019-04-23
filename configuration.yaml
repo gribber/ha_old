@@ -83,7 +83,7 @@ http:
   trusted_networks:
     - 127.0.0.1
     - ::1
-      #- 10.5.50.0/24
+    - 10.5.50.0/24
     - fd00::/8
   base_url: !secret base_url
 
@@ -266,3 +266,4 @@ shell_command:
   #lovelace_gen: 'python /home/homeassistant/.homeassistant/lovelace-gen.py /home/homeassistant/.homeassistant/lovelace/ > /home/homeassistant/.homeassistant/lovelace-gen.log'
   #lovelace_gen: 'python /home/homeassistant/.homeassistant/lovelace-gen.py /home/homeassistant/.homeassistant/lovelace/'
   lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
+  remove_google_cookie: 'rm /config/.google_maps_location_sharing.cookies.*'
