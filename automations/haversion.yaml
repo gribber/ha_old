@@ -4,7 +4,7 @@
     entity_id: sensor.current_ha_version
   condition:
     - condition: template
-      value_template: '{{ states.sensor.current_ha_version.state != "" }}'
+      value_template: '{{ (states.sensor.current_ha_version.state != "") and (states.sensor.current_ha_version.state != "unavailable")}}'
   action:
     service: notify.pushbullet
     data:
