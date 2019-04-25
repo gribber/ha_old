@@ -98,3 +98,10 @@ sensor.south_roof_temperature:
 sensor.south_roof_humidity:
   grafana_name: south_roof_humidity
 
+sensor.temperature_3:
+  grafana_name: outdoor_east_temperature
+sensor.humidity_4:
+  grafana_name: outdoor_east_humidity
+sensor.pressure_5:
+  grafana_name: outdoor_east_pressure
+

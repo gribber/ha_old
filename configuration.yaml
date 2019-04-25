@@ -198,6 +198,9 @@ zoneminder:
 camera:
   - platform: zoneminder
 
+tibber:
+  access_token: !secret tibber_token
+
 # Cloud
 cloud:
 
