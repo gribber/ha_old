@@ -29,19 +29,19 @@ sensor.telldus_zwave_switch_1_power_5:
   friendly_name: Current power drain
 
 sensor.telldus_tzwp_102_plug_in_switch_current:
-  grafana_name: "Heat pump current"
+  grafana_name: "Garage heat pump current"
   friendly_name: "Current"
 sensor.telldus_tzwp_102_plug_in_switch_energy:
-  grafana_name: "Heat pump energy"
+  grafana_name: "Garage heat pump energy"
   friendly_name: "Energy"
 sensor.telldus_tzwp_102_plug_in_switch_power:
-  grafana_name: "Heat pump power"
+  grafana_name: "Garage heat pump power"
   friendly_name: "Power"
 sensor.telldus_tzwp_102_plug_in_switch_previous_reading:
-  grafana_name: "Heat pump previous energy"
+  grafana_name: "Garage heat pump previous energy"
   friendly_name: "Previous energy reading"
 sensor.telldus_tzwp_102_plug_in_switch_voltage:
-  grafana_name: "Heat pump voltage"
+  grafana_name: "Garage heat pump voltage"
   friendly_name: "Voltage"
 
 sensor.refriguator_lower_door_state:
@@ -105,3 +105,27 @@ sensor.humidity_4:
 sensor.pressure_5:
   grafana_name: outdoor_east_pressure
 
+sensor.rtc_voltage:
+  grafana_name: RTC voltage
+sensor.rtc_power_phase1:
+  grafana_name: RTC power phase 1
+sensor.rtc_power_phase2:
+  grafana_name: RTC power phase 2
+sensor.rtc_power_phase3:
+  grafana_name: RTC power phase 3
+sensor.rtc_current_phase1:
+  grafana_name: RTC current phase 1
+sensor.rtc_current_phase2:
+  grafana_name: RTC current phase 2
+sensor.rtc_current_phase3:
+  grafana_name: RTC current phase 3
+sensor.rtc_accumulated_consumption:
+  grafana_name: RTC accumulated consumption
+sensor.rtc_avgpower:
+  grafana_name: RTC average gpower
+sensor.rtc_maxpower:
+  grafana_name: RTC max power
+sensor.rtc_minpower:
+  grafana_name: RTC min power
+sensor.real_time_consumption_johannedalsvagen_75_b:
+  grafana_name: RTC power consumption 

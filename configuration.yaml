@@ -47,7 +47,8 @@ influxdb:
     domains:
       - sensor
   tags_attributes:
-    - grafana_name                  
+    - grafana_name
+    - friendly_name
 
 alexa:
 
