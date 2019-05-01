@@ -79,6 +79,15 @@ updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
+speedtestdotnet:
+  server_id: 21028
+  scan_interval:
+    minutes: 180
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
 googlehome:
   devices:
     - host: !secret googlehome1
@@ -210,7 +219,7 @@ logger:
     homeassistant.components.shell_command: debug
 
 recorder:
-  purge_keep_days: 5
+  purge_keep_days: 1
   purge_interval: 1
   #purge_days: 2
   exclude:
