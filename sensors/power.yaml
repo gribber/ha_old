@@ -1,7 +1,7 @@
 - platform: template
   sensors:
     rtc_voltage:
-      friendly_name: Real time consumtion rtc_current_voltage
+      friendly_name: Real time consumtion voltage
       unit_of_measurement: V
       value_template: >-
         {% set v = states.sensor.telldus_tzwp_102_plug_in_switch_voltage.state %}
