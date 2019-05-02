@@ -222,24 +222,10 @@ logger:
 recorder:
   purge_keep_days: 1
   purge_interval: 1
-  #purge_days: 2
-  exclude:
+  include:
     domains:
-      - automation
-      - weblink
-      - updater
-      - mqtt
-      - script
-      - input_select
-      - input_boolean
-      - group
-    entities:
-      - sensor.time
-      - sensor.time_2
-      - sensor.time_3
-      - sensor.heater_hour
-      - sensor.heater_minute
-      - sensor.daylight
+      - switch
+      - media_player
 
 group: !include_dir_merge_named groups/
 light: !include light.yaml

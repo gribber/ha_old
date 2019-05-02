@@ -122,7 +122,7 @@ sensor.rtc_current_phase3:
 sensor.rtc_accumulated_consumption:
   grafana_name: RTC accumulated consumption
 sensor.rtc_avgpower:
-  grafana_name: RTC average gpower
+  grafana_name: RTC average power
 sensor.rtc_maxpower:
   grafana_name: RTC max power
 sensor.rtc_minpower:
