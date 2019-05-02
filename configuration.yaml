@@ -230,6 +230,8 @@ recorder:
 group: !include_dir_merge_named groups/
 light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
+utility_meter: !include utility_meter.yaml
+
 
 input_boolean: !include input/boolean.yaml
 #input_select: !include input/select.yaml

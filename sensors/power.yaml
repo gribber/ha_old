@@ -69,3 +69,9 @@
       friendly_name: Accumulated Consumption
       unit_of_measurement: kWh
       value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "accumulatedConsumption") }}'
+
+- platform: integration
+  source: sensor.real_time_consumption_johannedalsvagen_75_b
+  name: energy_spent
+  unit_prefix: k
+  round: 2

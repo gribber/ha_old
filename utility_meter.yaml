@@ -1,0 +1,6 @@
+daily_energy:
+  source: sensor.energy_spent
+  cycle: daily
+monthly_energy:
+  source: sensor.energy_spent
+  cycle: monthly
