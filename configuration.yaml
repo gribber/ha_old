@@ -81,7 +81,7 @@ updater:
   # include_used_components: true
 
 speedtestdotnet:
-  server_id: 21028
+  server_id: 6061
   scan_interval:
     minutes: 180
   monitored_conditions:
@@ -247,6 +247,9 @@ recorder:
       - sensor.weekly_energy
       - sensor.monthly_energy
       - sensor.yearly_energy
+      - sensor.time
+      - sensor.time_2
+      - sensor.time_3
 
 
 group: !include_dir_merge_named groups/
