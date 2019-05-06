@@ -80,14 +80,14 @@ updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
-speedtestdotnet:
-  server_id: 6061
-  scan_interval:
-    minutes: 180
-  monitored_conditions:
-    - ping
-    - download
-    - upload
+#speedtestdotnet:
+#  server_id: 6061
+#  scan_interval:
+#    minutes: 180
+#  monitored_conditions:
+#    - ping
+#    - download
+#    - upload
 
 googlehome:
   devices:
@@ -188,8 +188,8 @@ zoneminder:
 camera:
   - platform: zoneminder
 
-#tibber:
-#  access_token: !secret tibber_token
+tibber:
+  access_token: !secret tibber_token
 
 # Cloud
 cloud:
@@ -227,7 +227,7 @@ recorder:
       - switch
       - media_player
       - sensor
-      - device_tracker
+      - person
   exclude:
     entities:
       - sensor.real_time_consumption_johannedalsvagen_75_b
@@ -250,6 +250,10 @@ recorder:
       - sensor.time
       - sensor.time_2
       - sensor.time_3
+      - sensor.heater_departuretime
+      - sensor.heater_activationtime
+      - sensor.heater_temptime
+      - sensor.heater_forecast
 
 
 group: !include_dir_merge_named groups/
