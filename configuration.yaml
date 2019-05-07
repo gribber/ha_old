@@ -80,14 +80,15 @@ updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
-#speedtestdotnet:
-#  server_id: 6061
+speedtestdotnet:
+  server_id: 6061
 #  scan_interval:
 #    minutes: 180
-#  monitored_conditions:
-#    - ping
-#    - download
-#    - upload
+  manual: true
+  monitored_conditions:
+    - ping
+    - download
+    - upload
 
 googlehome:
   devices:

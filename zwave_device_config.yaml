@@ -1,0 +1,6 @@
+sensor.telldus_tzwp_102_plug_in_switch_previous_reading_3:
+  ignored: true
+  polling_intensity: 0
+sensor.telldus_tzwp_102_plug_in_switch_previous_reading_2:
+  ignored: true
+  polling_intensity: 0

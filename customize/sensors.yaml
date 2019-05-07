@@ -104,6 +104,12 @@ sensor.humidity_4:
   grafana_name: outdoor_east_humidity
 sensor.pressure_5:
   grafana_name: outdoor_east_pressure
+sensor.temperature_6:
+  grafana_name: outdoor_west_temperature
+sensor.humidity_7:
+  grafana_name: outdoor_west_humidity
+sensor.pressure_8:
+  grafana_name: outdoor_west_pressure
 
 sensor.rtc_voltage:
   grafana_name: RTC voltage
