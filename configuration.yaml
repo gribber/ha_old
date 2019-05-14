@@ -218,7 +218,9 @@ logger:
     homeassistant.components.sensor.scrape: info
     homeassistant.component.media_player.denonavr: info
     homeassistant.components.unifi: error
-    homeassistant.components.shell_command: debug
+    homeassistant.components.shell_command: warn
+    homeassistant.helpers.script: warn
+    homeassistant.components.websocket_api.http.connection: warn
 
 recorder:
   purge_keep_days: 1
