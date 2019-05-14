@@ -258,6 +258,7 @@ recorder:
       - sensor.heater_activationtime
       - sensor.heater_temptime
       - sensor.heater_forecast
+      - sensor.rtc_power_1min_mean
       - sensor.rtc_accumulated_consumption_1min_mean
       - sensor.rtc_avgpower_1min_mean
       - sensor.rtc_maxpower_1min_mean
