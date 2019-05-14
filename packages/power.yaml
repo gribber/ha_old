@@ -22,7 +22,7 @@ homeassistant:
       grafana_name: RTC max power
     sensor.rtc_minpower:
       grafana_name: RTC min power
-    sensor.real_time_consumption_johannedalsvagen_75_b:
+    sensor.rtc_power:
       grafana_name: RTC power consumption 
 
 input_number:
@@ -145,6 +145,11 @@ sensor:
         friendly_name: Accumulated Consumption
         unit_of_measurement: kWh
         value_template: '{{ states("input_number.rtc_accumulated_consumption") }}'
+
+      rtc_power:
+        friendly_name: Power consumption
+        unit_of_measurement: W
+        value_template: '{{ states("input_number.rtc_power") }}'
 
   - platform: integration
     source: sensor.real_time_consumption_johannedalsvagen_75_b
