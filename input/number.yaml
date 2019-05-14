@@ -32,3 +32,5 @@ heater_maxmin:
   max: 240
   step: 10
   unit_of_measurement: min
+
+

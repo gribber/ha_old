@@ -255,6 +255,22 @@ recorder:
       - sensor.heater_activationtime
       - sensor.heater_temptime
       - sensor.heater_forecast
+      - sensor.rtc_accumulated_consumption_1min_mean
+      - sensor.rtc_avgpower_1min_mean
+      - sensor.rtc_maxpower_1min_mean
+      - sensor.rtc_minpower_1min_mean
+      - sensor.rtc_current_phase1_1min_mean
+      - sensor.rtc_current_phase2_1min_mean
+      - sensor.rtc_current_phase3_1min_mean
+      - sensor.rtc_accumulated_consumption_state
+      - sensor.rtc_avgpower_state
+      - sensor.rtc_maxpower_state
+      - sensor.rtc_minpower_state
+      - sensor.rtc_current_phase1_state
+      - sensor.rtc_current_phase2_state
+      - sensor.rtc_current_phase3_state
+
+
 
 
 group: !include_dir_merge_named groups/

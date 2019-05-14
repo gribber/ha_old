@@ -110,28 +110,16 @@ sensor.humidity_7:
   grafana_name: outdoor_west_humidity
 sensor.pressure_8:
   grafana_name: outdoor_west_pressure
+sensor.temperature_9:
+  grafana_name: outdoor_north_temperature
+sensor.humidity_10:
+  grafana_name: outdoor_north_humidity
+sensor.pressure_11:
+  grafana_name: outdoor_north_pressure
+sensor.pressure_14:
+  grafana_name: outdoor_south_pressure
+sensor.humidity_13: 
+  grafana_name: outdoor_south_humidity
+sensor.temperature_12:
+  grafana_name: outdoor_south_temperature
 
-sensor.rtc_voltage:
-  grafana_name: RTC voltage
-sensor.rtc_power_phase1:
-  grafana_name: RTC power phase 1
-sensor.rtc_power_phase2:
-  grafana_name: RTC power phase 2
-sensor.rtc_power_phase3:
-  grafana_name: RTC power phase 3
-sensor.rtc_current_phase1:
-  grafana_name: RTC current phase 1
-sensor.rtc_current_phase2:
-  grafana_name: RTC current phase 2
-sensor.rtc_current_phase3:
-  grafana_name: RTC current phase 3
-sensor.rtc_accumulated_consumption:
-  grafana_name: RTC accumulated consumption
-sensor.rtc_avgpower:
-  grafana_name: RTC average power
-sensor.rtc_maxpower:
-  grafana_name: RTC max power
-sensor.rtc_minpower:
-  grafana_name: RTC min power
-sensor.real_time_consumption_johannedalsvagen_75_b:
-  grafana_name: RTC power consumption 
