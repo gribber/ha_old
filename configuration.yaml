@@ -114,8 +114,8 @@ device_tracker:
       - uptime
       - user_id
 
-  - platform: bluetooth_tracker
-    request_rssi: true
+#  - platform: bluetooth_tracker
+#    request_rssi: true
 
   - platform: google_maps
     username: !secret maps_user
@@ -220,6 +220,7 @@ logger:
     homeassistant.components.unifi: error
     homeassistant.components.shell_command: warn
     homeassistant.helpers.script: warn
+    homeassistant.components.automation: warn
     homeassistant.components.websocket_api.http.connection: warn
 
 recorder:
