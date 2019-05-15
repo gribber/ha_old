@@ -30,10 +30,6 @@ input_number:
     min: 0
     max: 24000
     mode: box
-  rtc_avgpower:
-    min: 0
-    max: 20000
-    mode: box
   rtc_accumulated_consumption:
     min: 0
     max: 20000
@@ -58,6 +54,10 @@ input_number:
     max: 20000
     mode: box
   rtc_minpower:
+    min: 0
+    max: 20000
+    mode: box
+  rtc_avgpower:
     min: 0
     max: 20000
     mode: box
@@ -120,7 +120,7 @@ sensor:
       rtc_avgpower:
         friendly_name: Average power used
         unit_of_measurement: W
-        value_template: '{{ states("input_number.rtc_minpower") }}'
+        value_template: '{{ states("input_number.rtc_avgpower") }}'
 
       rtc_power_phase1:
         friendly_name: Real time consumtion phase 1
