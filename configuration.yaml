@@ -46,6 +46,36 @@ influxdb:
   include:
     domains:
       - sensor
+  exclude:
+    entities:
+      - sensor.real_time_consumption_johannedalsvagen_75_b
+      - sensor.hourly_energy
+      - sensor.dayly_energy
+      - sensor.weekly_energy
+      - sensor.monthly_energy
+      - sensor.yearly_energy
+      - sensor.time
+      - sensor.time_2
+      - sensor.time_3
+      - sensor.heater_departuretime
+      - sensor.heater_activationtime
+      - sensor.heater_temptime
+      - sensor.heater_forecast
+      - sensor.rtc_power_1min_mean
+      - sensor.rtc_accumulated_consumption_1min_mean
+      - sensor.rtc_avgpower_1min_mean
+      - sensor.rtc_maxpower_1min_mean
+      - sensor.rtc_minpower_1min_mean
+      - sensor.rtc_current_phase1_1min_mean
+      - sensor.rtc_current_phase2_1min_mean
+      - sensor.rtc_current_phase3_1min_mean
+      - sensor.rtc_accumulated_consumption_state
+      - sensor.rtc_avgpower_state
+      - sensor.rtc_maxpower_state
+      - sensor.rtc_minpower_state
+      - sensor.rtc_current_phase1_state
+      - sensor.rtc_current_phase2_state
+      - sensor.rtc_current_phase3_state
   tags_attributes:
     - grafana_name
     - friendly_name
@@ -258,7 +288,6 @@ recorder:
       - sensor.heater_activationtime
       - sensor.heater_temptime
       - sensor.heater_forecast
-      - sensor.real_time_consumption_johannedalsvagen_75_b
       - sensor.rtc_power_1min_mean
       - sensor.rtc_accumulated_consumption_1min_mean
       - sensor.rtc_avgpower_1min_mean

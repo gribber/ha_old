@@ -28,7 +28,7 @@ homeassistant:
 input_number:
   rtc_power:
     min: 0
-    max: 20000
+    max: 24000
     mode: box
   rtc_avgpower:
     min: 0
@@ -160,64 +160,65 @@ sensor:
   - platform: statistics
     entity_id: sensor.real_time_consumption_johannedalsvagen_75_b
     name: rtc_power_1min
-    sampling_size: 240
+    sampling_size: 40
     max_age:
-      minutes: 1
+      seconds: 10
 
   - platform: statistics
     entity_id: sensor.rtc_current_phase1_state
     name: rtc_current_phase1_1min
-    sampling_size: 240
+    sampling_size: 40
     max_age:
-      minutes: 1
+      seconds: 10
   
   - platform: statistics
     entity_id: sensor.rtc_current_phase2_state
     name: rtc_current_phase2_1min
-    sampling_size: 240
+    sampling_size: 40
     max_age:
-      minutes: 1
+      seconds: 10
   
   - platform: statistics
     entity_id: sensor.rtc_current_phase3_state
     name: rtc_current_phase3_1min
-    sampling_size: 240
+    sampling_size: 40
     max_age:
-      minutes: 1
+      seconds: 10
 
   - platform: statistics
     entity_id: sensor.rtc_maxpower_state
     name: rtc_maxpower_1min
-    sampling_size: 240
+    sampling_size: 40
     max_age:
-      minutes: 1
+      seconds: 10
 
   - platform: statistics
     entity_id: sensor.rtc_minpower_state
     name: rtc_minpower_1min
-    sampling_size: 240
+    sampling_size: 40
     max_age:
-      minutes: 1
+      seconds: 10
 
   - platform: statistics
     entity_id: sensor.rtc_avgpower_state
     name: rtc_avgpower_1min
-    sampling_size: 240
+    sampling_size: 40
     max_age:
-      minutes: 1
+      seconds: 10
 
   - platform: statistics
     entity_id: sensor.rtc_accumulated_consumption_state
     name: rtc_accumulated_consumption_1min
-    sampling_size: 240
+    sampling_size: 40
     max_age:
-      minutes: 1
+      seconds: 10
 
 automation:
   - alias: "update power sensors"
     trigger:
       - platform: time_pattern
-        minutes: '*'
+        seconds: '/10'
+        #minutes: '*'
     action:
       - service: input_number.set_value
         data_template:
