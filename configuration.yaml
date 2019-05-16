@@ -229,10 +229,9 @@ tellduslive:
   #host: 10.5.50.67
   scan_interval: 5
 
-# disabled until summer  
-#automower:
-#  username: !secret am_user
-#  password: !secret am_pass
+automower:
+  username: !secret am_user
+  password: !secret am_pass
 
 notify:
   - name: pushbullet
@@ -262,6 +261,7 @@ recorder:
       - media_player
       - sensor
       - person
+      - vacuum
   exclude:
     entities:
       - sensor.real_time_consumption_johannedalsvagen_75_b
