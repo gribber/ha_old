@@ -5,7 +5,6 @@
 !sensors/
 !customize/
 !customize_glob/
-!custom_components/
 !packages/
 !lovelace
 lovelace/*
