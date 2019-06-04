@@ -263,6 +263,7 @@ recorder:
       - person
       - vacuum
       - device_tracker
+      - binary_sensor
   exclude:
     entities:
       - sensor.real_time_consumption_johannedalsvagen_75_b
