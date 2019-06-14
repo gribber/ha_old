@@ -1,0 +1,10 @@
+- alias: "Bathroom upstairs - water leakage detection"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.water_17
+      to: true
+  action:
+    service: notify.pushbullet
+    data:
+      message: "Bathroom upstairs - water leakage detected"
+      title: "ALERT"

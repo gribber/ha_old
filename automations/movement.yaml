@@ -1,0 +1,14 @@
+- alias: "Garage movement"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.presence_16
+      to: true
+  condition:
+    condition: state
+    entity_id: person.linus
+    state: 'not_home'
+  action:
+    service: notify.pushbullet
+    data:
+      message: "Movement in the garage!"
+      title: "ALERT"
