@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.water_17
-      to: true
+      to: 'on'
   action:
     service: notify.pushbullet
     data:

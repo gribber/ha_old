@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.presence_16
-      to: true
+      to: 'on'
   condition:
     condition: state
     entity_id: person.linus
