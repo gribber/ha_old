@@ -1,22 +1,26 @@
 input_boolean:
   wakeup_enabled:
     name: "Wake-up lights"
-    initial: on
+    #initial: on
     icon: mdi:theme-light-dark
 
   wakeup_weekend:
     name: "Enable Wake-up on weekends"
-    initial: off
+    #initial: off
     icon: mdi:calendar-blank
+
+  wakeup_whenhome:
+    name: "Enable Wake-up only when home"
 
 group:
   alarm_clock:
-    name: "Wake-up Lights"
+    name: "Wake-up lights"
     control: hidden
     entities:
       - input_datetime.wakeup_time
       - input_boolean.wakeup_enabled
       - input_boolean.wakeup_weekend
+      - input_boolean.wakeup_whenhome
 
 input_datetime:
   wakeup_time:
@@ -39,6 +43,19 @@ automation:
       - condition: state
         entity_id: input_boolean.wakeup_enabled
         state: 'on'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_boolean.wakeup_whenhome
+            state: 'off'
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id: input_boolean.wakeup_whenhome
+                state: 'on'
+              - condition: state
+                entity_id: person.linus
+                state: home
       - condition: or
         conditions:
           - condition: state

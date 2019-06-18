@@ -188,6 +188,9 @@ sensor: !include_dir_merge_list sensors/
 # Zones
 zone: !include zones.yaml
 
+# Cameras
+camera: !include cameras.yaml
+
 # Text to speech
 tts:
   - platform: google_translate
@@ -215,9 +218,6 @@ zoneminder:
     password: !secret zm_pass
     #host: 10.5.50.84:81
     #path_zms: /cgi-bin/nph-zms
-
-camera:
-  - platform: zoneminder
 
 tibber:
   access_token: !secret tibber_token
