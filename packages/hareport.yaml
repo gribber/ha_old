@@ -1,0 +1,26 @@
+sensor:
+  - platform: version
+    name: current_ha_version
+    source: local
+
+#  - platform: command_line
+#    name: current_ha_version
+#    command: "cat /config/.HA_VERSION"
+
+rest_command:
+  report_ha_version:
+    url: !secret ha_report_url
+    method: POST
+    content_type: 'application/x-www-form-urlencoded'
+    payload: 'u={{ user }}&v={{ states.sensor.current_ha_version.state }}'
+    verify_ssl: true
+
+automation:
+  - alias: "Report version on startup"
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - service: rest_command.report_ha_version
+        data:
+          user: !secret ha_report_user
