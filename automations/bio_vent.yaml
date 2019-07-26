@@ -1,0 +1,28 @@
+- alias: "Biovent: turn on"
+  trigger:
+    platform: template
+    value_template: '{{ states.sensor.temperature_9.state < states.sensor.livingroom_downstairs_temperature.state }}'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.livingroom_downstairs_temperature
+    above: 20
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.switch_tiny_3
+
+- alias: "Biovent: turn off if too warn outside"
+  trigger:
+    platform: template
+    value_template: '{{ states.sensor.temperature_9.state > states.sensor.livingroom_downstairs_temperature.state }}'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.switch_tiny_3
+
+- alias: "Biovent: turn off if cold enough inside"
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.livingroom_downstairs_temperature
+    below: 18
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.switch_tiny_3
