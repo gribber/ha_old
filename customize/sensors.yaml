@@ -83,10 +83,10 @@ sensor.kitchen_temperature:
   grafana_name: kitchen_temperature
 sensor.kitchen_humidity:
   grafana_name: kitchen_humidity
-sensor.livingroom_downstairs_temperature:
-  grafana_name: livingroom_downstairs_temperature
-sensor.livingroom_downstairs_humidity:
-  grafana_name: livingroom_downstairs_humidity
+#sensor.livingroom_downstairs_temperature:
+#  grafana_name: livingroom_downstairs_temperature
+#sensor.livingroom_downstairs_humidity:
+#  grafana_name: livingroom_downstairs_humidity
 sensor.livingroom_upstairs_temperature:
   grafana_name: livingroom_upstairs_temperature
 sensor.north_roof_temperature:
@@ -122,4 +122,11 @@ sensor.humidity_13:
   grafana_name: outdoor_south_humidity
 sensor.temperature_12:
   grafana_name: outdoor_south_temperature
+sensor.temperature_24:
+  grafana_name: livingroom_downstairs_temperature
+sensor.humidity_25:
+  grafana_name: livingroom_downstairs_humidity
+sensor.pressure_26:
+  grafana_name: livingroom_downstairs_pressure
+
 
