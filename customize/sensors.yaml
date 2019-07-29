@@ -59,10 +59,10 @@ sensor.refriguator_lower_door_state:
     #  if is_state('switch.door_sensor_3', 'on') return [120,100];"
     #  return [0,100];
 
-sensor.bedroom_temperature:
-  grafana_name: bedroom_temperature
-sensor.bedroom_humidity:
-  grafana_name: bedroom_humidity
+#sensor.bedroom_temperature:
+#  grafana_name: bedroom_temperature
+#sensor.bedroom_humidity:
+#  grafana_name: bedroom_humidity
 sensor.garage_temperature:
   grafana_name: garage_temperature
 sensor.garage_humidity:
@@ -128,5 +128,11 @@ sensor.humidity_25:
   grafana_name: livingroom_downstairs_humidity
 sensor.pressure_26:
   grafana_name: livingroom_downstairs_pressure
+sensor.temperature_27:
+  grafana_name: bedroom_temperature
+sensor.humidity_28:
+  grafana_name: bedroom_humidity
+sensor.pressure_29:
+  grafana_name: bedroom_pressure
 
 
