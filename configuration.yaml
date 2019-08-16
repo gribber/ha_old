@@ -6,6 +6,7 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Stockholm
   auth_providers:
+    - type: homeassistant
     - type: trusted_networks
       trusted_networks:
         - 127.0.0.1
@@ -121,10 +122,10 @@ speedtestdotnet:
     - download
     - upload
 
-googlehome:
-  devices:
-    - host: !secret googlehome1
-    - host: !secret googlehome2
+#googlehome:
+#  devices:
+#    - host: !secret googlehome1
+#    - host: !secret googlehome2
 
 device_tracker:
   - platform: unifi
@@ -133,7 +134,7 @@ device_tracker:
     password: !secret unifi_pass
     verify_ssl: true
     detection_time: 180
-    track_new_devices: false
+    track_new_devices: true
     monitored_conditions: 
       - ip
       - last_seen
@@ -150,7 +151,7 @@ device_tracker:
 
   - platform: google_maps
     username: !secret maps_user
-    password: !secret maps_pass
+#    password: !secret maps_pass
     max_gps_accuracy: 200
 
     #  - platform: bluetooth_le_tracker
