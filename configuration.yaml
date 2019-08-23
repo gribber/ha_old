@@ -127,29 +127,39 @@ speedtestdotnet:
 #    - host: !secret googlehome1
 #    - host: !secret googlehome2
 
+unifi:
+  controllers:
+    - host: !secret unifi_host
+      site: Default
+      detection_time: 180
+      ssid_filter:
+        - 'ndmek'
+        - 'wormhole'
+
 device_tracker:
-  - platform: unifi
-    host: !secret unifi_host
-    username: !secret unifi_user
-    password: !secret unifi_pass
-    verify_ssl: true
-    detection_time: 180
-    track_new_devices: true
-    monitored_conditions: 
-      - ip
-      - last_seen
-      - latest_assoc_time
-      - name
-      - powersave_enabled
-      - signal
-      - tx_power
-      - uptime
-      - user_id
+#  - platform: unifi
+#    host: !secret unifi_host
+#    username: !secret unifi_user
+#    password: !secret unifi_pass
+#    verify_ssl: true
+#    detection_time: 180
+#    track_new_devices: true
+#    monitored_conditions: 
+#      - ip
+#      - last_seen
+#      - latest_assoc_time
+#      - name
+#      - powersave_enabled
+#      - signal
+#      - tx_power
+#      - uptime
+#      - user_id
 
 #  - platform: bluetooth_tracker
 #    request_rssi: true
 
   - platform: google_maps
+    track_new_devices: true
     username: !secret maps_user
 #    password: !secret maps_pass
     max_gps_accuracy: 200
@@ -243,12 +253,14 @@ notify:
 logger:
   default: info
   logs:
+    #aiounifi: debug
+    #homeassistant.components.unifi: debug
+    #homeassistant.components.device_tracker.unifi: debug
     homeassistant.components.zoneminder: warn
     homeassistant.components.device_tracker: warn
     homeassistant.components.sensor: warn
     homeassistant.components.sensor.scrape: info
     homeassistant.component.media_player.denonavr: info
-    homeassistant.components.unifi: error
     homeassistant.components.shell_command: warn
     homeassistant.helpers.script: warn
     homeassistant.components.automation: warn
@@ -266,6 +278,7 @@ recorder:
       - vacuum
       - device_tracker
       - binary_sensor
+      - light
   exclude:
     entities:
       - sensor.real_time_consumption_johannedalsvagen_75_b

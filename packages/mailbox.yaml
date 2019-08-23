@@ -1,0 +1,32 @@
+input_boolean:
+  mailboxtrigger:
+    
+sensor:
+  - platform: template
+    sensors:
+      yougotmail:
+        friendly_name: "You got mail"
+        value_template: >-
+          {% if is_state('input_boolean.mailboxtrigger', 'on') %}
+            Yes
+          {% else%}
+            No
+          {% endif %}
+        icon_template: >-
+          {% if is_state('input_boolean.mailboxtrigger', 'on') %}
+            mdi:mailbox-up-outline
+          {% else%}
+            mdi:mailbox-outline
+          {% endif %}
+        
+automation:
+  - alias: "mailbox opened"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.openclose_30
+      to: 'on'
+    action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.mailboxtrigger
+
+

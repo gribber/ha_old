@@ -13,4 +13,5 @@ lovelace/*
 secrets.yaml
 known_devices.yaml
 ip_bans.yaml
+zones.yaml
 
