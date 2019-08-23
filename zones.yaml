@@ -42,18 +42,6 @@
   elevation: 29
   radius: 30
 
-- name: Kicki
-  latitude: 62.38050043
-  longitude: 17.29492664
-  elevation: 79
-  radius: 30
-
-- name: Granström
-  latitude: 62.3761455
-  longitude: 17.26274014
-  elevation: 102
-  radius: 30
-
 - name: Mor och far
   latitude: 63.6976303
   longitude: 16.87107325
