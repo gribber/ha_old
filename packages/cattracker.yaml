@@ -1,7 +1,13 @@
 #homeassistant:
 #  customize:
 #    -
-#sensor:
+sensor:
+  - platform: template
+    sensors:
+      catlocation:
+        friendly_name: "Possible location"
+        value_template: '{{ states.device_tracker.prick.state }}'
+        icon_template: mdi:cat
 group:
   people:
     name: Friends and family
@@ -33,7 +39,6 @@ automation:
           dev_id: 'prick'
           location_name: 'bathroom'
 
-automation:
   - alias: "catdetector: closet"
     trigger:
       platform: state
@@ -48,3 +53,33 @@ automation:
         data:
           dev_id: 'prick'
           location_name: 'closet'
+
+  - alias: "catdetector: livingroom downstairs"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.presence_32
+      to: 'on'
+    condition:
+      condition: state
+      entity_id: group.people
+      state: not_home
+    action:
+      - service: device_tracker.see
+        data:
+          dev_id: 'prick'
+          location_name: 'livingroom downstairs'
+
+  - alias: "catdetector: hallway"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.presence_34
+      to: 'on'
+    condition:
+      condition: state
+      entity_id: group.people
+      state: not_home
+    action:
+      - service: device_tracker.see
+        data:
+          dev_id: 'prick'
+          location_name: 'hallway'
