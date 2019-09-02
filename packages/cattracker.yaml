@@ -1,0 +1,50 @@
+#homeassistant:
+#  customize:
+#    -
+#sensor:
+group:
+  people:
+    name: Friends and family
+    entities:
+      - person.bjuhr
+      - person.emma
+      - person.farsan
+      - person.kicki
+      - person.klas
+      - person.linus
+      - person.martin
+      - person.morsan
+      - person.neonis
+      - person.znike
+
+automation:
+  - alias: "catdetector: bathroom"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.presence_19
+      to: 'on'
+    condition:
+      condition: state
+      entity_id: group.people
+      state: not_home
+    action:
+      - service: device_tracker.see
+        data:
+          dev_id: 'prick'
+          location_name: 'bathroom'
+
+automation:
+  - alias: "catdetector: closet"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.presence_21
+      to: 'on'
+    condition:
+      condition: state
+      entity_id: group.people
+      state: not_home
+    action:
+      - service: device_tracker.see
+        data:
+          dev_id: 'prick'
+          location_name: 'closet'
