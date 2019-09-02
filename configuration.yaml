@@ -163,6 +163,7 @@ device_tracker:
     username: !secret maps_user
 #    password: !secret maps_pass
     max_gps_accuracy: 200
+    scan_interval: 60
 
     #  - platform: bluetooth_le_tracker
 
