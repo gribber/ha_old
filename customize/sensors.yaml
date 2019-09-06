@@ -40,6 +40,7 @@ sensor.telldus_tzwp_102_plug_in_switch_power:
 sensor.telldus_tzwp_102_plug_in_switch_previous_reading:
   grafana_name: "Garage heat pump previous energy"
   friendly_name: "Previous energy reading"
+  unit_of_measurement: kWh
 sensor.telldus_tzwp_102_plug_in_switch_voltage:
   grafana_name: "Garage heat pump voltage"
   friendly_name: "Voltage"

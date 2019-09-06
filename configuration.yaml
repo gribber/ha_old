@@ -246,6 +246,9 @@ automower:
   username: !secret am_user
   password: !secret am_pass
 
+hacs:
+  token: !secret hacs_token
+
 notify:
   - name: pushbullet
     platform: pushbullet
