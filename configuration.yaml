@@ -127,14 +127,14 @@ speedtestdotnet:
 #    - host: !secret googlehome1
 #    - host: !secret googlehome2
 
-unifi:
-  controllers:
-    - host: !secret unifi_host
-      site: Default
-      detection_time: 180
-      ssid_filter:
-        - 'ndmek'
-        - 'wormhole'
+#unifi:
+#  controllers:
+#    - host: !secret unifi_host
+#      site: Default
+#      detection_time: 180
+#      ssid_filter:
+#        - 'ndmek'
+#        - 'wormhole'
 
 device_tracker:
 #  - platform: unifi
@@ -175,6 +175,10 @@ discovery:
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
+# APC UPS
+apcupsd:
+  host: a722577e-apcupsd
+  
 # Enables support for tracking state changes over time
 history:
   exclude:
@@ -283,6 +287,7 @@ recorder:
       - device_tracker
       - binary_sensor
       - light
+      - counter
   exclude:
     entities:
       - sensor.real_time_consumption_johannedalsvagen_75_b
@@ -324,6 +329,8 @@ recorder:
       - sensor.rtc_current_phase1_state
       - sensor.rtc_current_phase2_state
       - sensor.rtc_current_phase3_state
+      - sensor.ups_status_date
+      - sensor.ups_status_data
 
 
 

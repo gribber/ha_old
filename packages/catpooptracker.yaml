@@ -1,0 +1,55 @@
+#homeassistant:
+#  customize:
+#    -
+input_boolean:
+  catpooping:
+    initial: false
+
+counter:
+  catpoop_day:
+    name: Poops today
+  catpoop_week:
+    name: Poops this week
+  catpoop_total:
+    name: Poops in total
+
+automation:
+  - alias: Track cat poop
+    trigger:
+      platform: state
+      entity_id: binary_sensor.openclose_35
+      to: 'on'
+    condition:
+      condition: state
+      entity_id: input_boolean.catpooping
+      state: 'off'
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.catpooping
+      - service: counter.increment
+        entity_id:
+          - counter.catpoop_day
+          - counter.catpoop_week
+          - counter.catpoop_total
+      - delay: 00:05
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.catpooping
+
+  - alias: Reset catpoops daily
+    trigger:
+      platform: time
+      at: '00:00'
+    action:
+      service: counter.reset
+      entity_id: counter.catpoop_day
+
+  - alias: Reset catpoops weekly
+    trigger:
+      platform: time
+      at: '00:00'
+    condition:
+      condition: time
+      weekday: mon
+    action:
+      service: counter.reset
+      entity_id: counter.catpoop_week
