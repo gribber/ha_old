@@ -8,13 +8,16 @@ input_boolean:
 counter:
   catpoop_day:
     name: Poops today
+    icon: mdi:emoticon-poop
   catpoop_week:
     name: Poops this week
+    icon: mdi:emoticon-poop
   catpoop_total:
     name: Poops in total
+    icon: mdi:emoticon-poop
 
 automation:
-  - alias: Track cat poop
+  - alias: Track cat poops
     trigger:
       platform: state
       entity_id: binary_sensor.openclose_35
