@@ -253,10 +253,23 @@ automower:
 hacs:
   token: !secret hacs_token
 
+surepetcare:
+  username: !secret sure_petflap_username
+  password: !secret sure_petflap_password
+  household_id: !secret sure_petflap_household_id
+  flaps: !secret sure_petflap_flaps
+  pets: !secret sure_petflap_pets
+
 notify:
-  - name: pushbullet
-    platform: pushbullet
+  - platform: pushbullet
+    name: pushbullet
     api_key: !secret pushbullet_key
+    
+  - platform: html5
+    name: google
+    vapid_pub_key: !secret vapid_pub_key
+    vapid_prv_key: !secret vapid_prv_key
+    vapid_email: !secret vapid_email
 
 logger:
   default: info
@@ -273,6 +286,7 @@ logger:
     homeassistant.helpers.script: warn
     homeassistant.components.automation: warn
     homeassistant.components.websocket_api.http.connection: warn
+    custom_components.nordpool: warn
 
 recorder:
   purge_keep_days: 1
@@ -288,6 +302,7 @@ recorder:
       - binary_sensor
       - light
       - counter
+      - lock
   exclude:
     entities:
       - sensor.real_time_consumption_johannedalsvagen_75_b
@@ -336,7 +351,8 @@ recorder:
 
 
 group: !include_dir_merge_named groups/
-light: !include light.yaml
+light: !include_dir_merge_list lights/
+#light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
 utility_meter: !include utility_meter.yaml
 
@@ -352,4 +368,4 @@ script: !include scripts.yaml
 
 shell_command:
   lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
-  remove_google_cookie: 'rm /config/.google_maps_location_sharing.cookies.*'
+  #remove_google_cookie: 'rm /config/.google_maps_location_sharing.cookies.*'

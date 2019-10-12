@@ -1,0 +1,14 @@
+- alias: UPS notifier
+  trigger:
+    platform: state
+    entity_id: sensor.ups_transfer_count
+  action:
+    - service: notify.google
+      data_template:
+        message: "UPS transfer count changed to {{ states('sensor.ups_transfer_count') }}"
+    - service: notify.pushbullet
+      data:
+        title: "UPS transfer"
+        message: "count: {{ states('sensor.ups_transfer_count') }}"
+    
+    

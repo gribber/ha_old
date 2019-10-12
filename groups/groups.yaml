@@ -27,12 +27,13 @@ llvp_garage:
 window_lights:
   name: Window lights
   entities:
-    - switch.proove_1
+#    - switch.proove_1 # guestroom
     - switch.proove_2
     - switch.switch_livingroom_upstairs
     - switch.switch_workout
     - switch.switch_tiny_1
-    - light.ikea_e14_400lm
+#    - light.ikea_e14_400lm # bedroom
+    - light.livingroom_window
 
 flvp_sensors:
   name: FLVP Sensors

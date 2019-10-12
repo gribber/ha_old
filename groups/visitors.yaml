@@ -1,0 +1,10 @@
+visitors:
+  name: visitors
+  entities:
+    - person.farsan
+    - person.morsan
+    - person.klas
+    - person.emma
+    - person.neonis
+    - person.znike
+

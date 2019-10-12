@@ -83,3 +83,25 @@ automation:
         data:
           dev_id: 'prick'
           location_name: 'hallway'
+
+  - alias: "catdetector: leaving house"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.pet_prick
+      to: 'off'
+    action:
+      - service: device_tracker.see
+        data:
+          dev_id: 'prick'
+          location_name: 'outside'
+
+  - alias: "catdetector: entering house"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.pet_prick
+      to: 'on'
+    action:
+      - service: device_tracker.see
+        data:
+          dev_id: 'prick'
+          location_name: 'inside'

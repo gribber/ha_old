@@ -15,7 +15,11 @@
     at: '23:30'
   action:
     - service: homeassistant.turn_off
-      entity_id: group.window_lights
+      data:
+        entities: 
+          - group.window_lights
+          - switch.proove_1
+          - light.bedroom
 
 - alias: 'Window lights sunrise'
   trigger:
@@ -37,5 +41,40 @@
     after: '06:00'
   action:
     - service: homeassistant.turn_off
-      entity_id: group.window_lights
+      data:
+        entities: 
+          - group.window_lights
+          - switch.proove_1
+          - light.bedroom
 
+- alias: 'Window lights sunrise - bedroom'
+  trigger:
+    platform: time
+    at: '06:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        before: sunrise
+      - condition: state
+        entity_id: person.linus
+        state: not_home
+  action:
+    - service: homeassistant.turn_on
+      entity_id: light.bedroom
+
+- alias: 'Window lights sunrise - guestroom'
+  trigger:
+    platform: time
+    at: '06:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        before: sunrise
+      - condition: state
+        entity_id: group.visitors
+        state: not_home
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.proove_1

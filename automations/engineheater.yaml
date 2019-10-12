@@ -7,7 +7,7 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: group.linus_trackers
+        entity_id: person.linus
         state: home
       - condition: or
         conditions:

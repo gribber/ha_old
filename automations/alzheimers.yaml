@@ -1,7 +1,7 @@
 - alias: "Doorlock reminder"
   trigger:
     - platform: state
-      entity_id: group.linus_trackers
+      entity_id: person.linus
       to: 'not_home'
   condition:
     condition: state
@@ -16,7 +16,7 @@
 - alias: "Garage reminder when leaveing home"
   trigger:
     - platform: state
-      entity_id: group.linus_trackers
+      entity_id: person.linus
       to: 'not_home'
   condition:
     condition: or
