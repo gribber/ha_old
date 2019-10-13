@@ -15,11 +15,10 @@
     at: '23:30'
   action:
     - service: homeassistant.turn_off
-      data:
-        entities: 
-          - group.window_lights
-          - switch.proove_1
-          - light.bedroom
+      entity_id: 
+        - group.window_lights
+        - switch.proove_1
+        - light.bedroom
 
 - alias: 'Window lights sunrise'
   trigger:
@@ -41,11 +40,10 @@
     after: '06:00'
   action:
     - service: homeassistant.turn_off
-      data:
-        entities: 
-          - group.window_lights
-          - switch.proove_1
-          - light.bedroom
+      entity_id: 
+        - group.window_lights
+        - switch.proove_1
+        - light.bedroom
 
 - alias: 'Window lights sunrise - bedroom'
   trigger:
