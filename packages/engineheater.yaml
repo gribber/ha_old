@@ -18,16 +18,6 @@ sensor:
           {% set time = time|string + states.input_number.heater_minute.state|round(0)|string %}
           {{ time }}
 
-      heater_activationtime:
-        friendly_name: 'Calculated activation time'
-        value_template: >-
-          {% set atime = (states.sensor.heater_temptime.state|round(0) * 60) %}
-          {% if states.input_number.heater_hour.state|round(0)|string|length == 1 %} {% set time = 0 %} {% endif %}
-          {% set time = time|string + states.input_number.heater_hour.state|round(0)|string + ':' %}
-          {% if states.input_number.heater_minute.state|round(0)|string|length == 1 %} {% set time = time|string + '0' %} {% endif %}
-          {% set time = time|string + states.input_number.heater_minute.state|round(0)|string %}
-          {{ (as_timestamp(now().strftime("%Y-%m-%d") + ' ' + time) - atime) | timestamp_custom("%H:%M")|string }}
-
       heater_temptime:
         friendly_name: 'Temperature adjusted time'
         value_template: >-
@@ -46,6 +36,16 @@ sensor:
           {% set forecast = states.weather.smhi_home.attributes.temperature %}
           {% endif %}
           {{ forecast }}
+
+      heater_activationtime:
+        friendly_name: 'Calculated activation time'
+        value_template: >-
+          {% set atime = (states.sensor.heater_temptime.state|round(0) * 60) %}
+          {% if states.input_number.heater_hour.state|round(0)|string|length == 1 %} {% set time = 0 %} {% endif %}
+          {% set time = time|string + states.input_number.heater_hour.state|round(0)|string + ':' %}
+          {% if states.input_number.heater_minute.state|round(0)|string|length == 1 %} {% set time = time|string + '0' %} {% endif %}
+          {% set time = time|string + states.input_number.heater_minute.state|round(0)|string %}
+          {{ (as_timestamp(now().strftime("%Y-%m-%d") + ' ' + time) - atime) | timestamp_custom("%H:%M")|string }}
 
   - platform: time_date
     display_options:
