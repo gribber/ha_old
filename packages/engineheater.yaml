@@ -161,7 +161,7 @@ automation:
           - switch.switch_engine_heater
           - switch.light_3
 
-  # - alias: "Engine heater - precheck 1"
+  # - alias: "Engine heater - precheck activate"
   #   trigger:
   #     platform: time
   #     at: 21:00:00
@@ -189,7 +189,7 @@ automation:
   #       entity_id:
   #         - switch.light_3
 
-  # - alias: "Engine heater - precheck 2"
+  # - alias: "Engine heater - precheck measure"
   #   trigger: 
   #     platform: time
   #     at: 21:00:15
@@ -211,6 +211,24 @@ automation:
   #         title: "Engine heater"
   #         message: "You forgot to connect the cable"
 
+  # - alias: "Engine heater - precheck measure"
+  #   trigger: 
+  #     platform: state
+  #     entity_id: switch.light_3
+  #     to: 'on'
+  #     for:
+  #       seconds: 15
+  #   condition:
+  #     - condition: template
+  #       value_template: '{{ switch.light_3.power|int < 500 }}'
+  #   action:
+  #     - service: notify.google
+  #       data_template:
+  #         message: "You forgot to connect the engine heater cable"
+  #     - service: notify.pushbullet
+  #       data:
+  #         title: "Engine heater"
+  #         message: "You forgot to connect the cable"
 
 
       
