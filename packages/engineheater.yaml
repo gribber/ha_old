@@ -179,6 +179,9 @@ automation:
             - condition: state
               entity_id: input_boolean.workdays_only
               state: 'on'
+            - condition: state
+              entity_id: automation.engine_heater_activate
+              state: 'on'
     action:
       - service: homeassistant.turn_on
         entity_id: switch.sp120_1
