@@ -58,7 +58,7 @@ binary_sensor:
 
   - platform: workday
     name: eh_workday_tomorrow
-    offset: 1
+    days_offset: 1
     country: SE
 
 input_number:
@@ -161,74 +161,48 @@ automation:
           - switch.switch_engine_heater
           - switch.light_3
 
-  # - alias: "Engine heater - precheck activate"
-  #   trigger:
-  #     platform: time
-  #     at: 21:00:00
-  #   condition:
-  #     condition: or
-  #     conditions:
-  #       - condition: state
-  #         entity_id: input_boolean.workdays_only
-  #         state: 'off'
-  #       - condition: and
-  #         conditions:
-  #           - condition: state
-  #             entity_id: binary_sensor.eh_workday_tomorrow
-  #             state: 'on'
-  #           - condition: state
-  #             entity_id: input_boolean.workdays_only
-  #             state: 'on'
-  #   action:
-  #     - service: homeassistant.turn_on
-  #       entity_id:
-  #         - switch.light_3
-  #     - delay:
-  #         seconds: : 30
-  #     - service: homeassistant.turn_off
-  #       entity_id:
-  #         - switch.light_3
+  - alias: "Engine heater - precheck activate"
+    trigger:
+      platform: time
+      at: '21:00:00'
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.workdays_only
+          state: 'off'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: binary_sensor.eh_workday_tomorrow
+              state: 'on'
+            - condition: state
+              entity_id: input_boolean.workdays_only
+              state: 'on'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: switch.sp120_1
+      - delay:
+          seconds: 10
+      - service: homeassistant.turn_off
+        entity_id: switch.sp120_1
 
-  # - alias: "Engine heater - precheck measure"
-  #   trigger: 
-  #     platform: time
-  #     at: 21:00:15
-  #   condition:
-  #     condition: and
-  #     conditions:
-  #       - condition: state
-  #         entity_id:
-  #           - switch.light_3
-  #         state: 'on'
-  #       - condition: template
-  #         value_template: '{{ switch.light_3.power|int < 500 }}'
-  #   action:
-  #     - service: notify.google
-  #       data_template:
-  #         message: "You forgot to connect the engine heater cable"
-  #     - service: notify.pushbullet
-  #       data:
-  #         title: "Engine heater"
-  #         message: "You forgot to connect the cable"
+  - alias: "Engine heater - precheck measure"
+    trigger: 
+      platform: state
+      entity_id: switch.sp120_1
+      to: 'on'
+      for:
+        seconds: 5
+    condition:
+      - condition: template
+        value_template: '{{ states.sensor.power_37.state|int < 100 }}'
+    action:
+      # - service: notify.google
+      #   data_template:
+      #     message: "You forgot to connect the engine heater cable"
+      - service: notify.pushbullet
+        data:
+          title: "Engine heater"
+          message: "You forgot to connect the cable"
 
-  # - alias: "Engine heater - precheck measure"
-  #   trigger: 
-  #     platform: state
-  #     entity_id: switch.light_3
-  #     to: 'on'
-  #     for:
-  #       seconds: 15
-  #   condition:
-  #     - condition: template
-  #       value_template: '{{ switch.light_3.power|int < 500 }}'
-  #   action:
-  #     - service: notify.google
-  #       data_template:
-  #         message: "You forgot to connect the engine heater cable"
-  #     - service: notify.pushbullet
-  #       data:
-  #         title: "Engine heater"
-  #         message: "You forgot to connect the cable"
-
-
-      
