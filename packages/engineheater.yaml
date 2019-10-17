@@ -119,7 +119,7 @@ group:
       - switch.switch_engine_heater
 
 automation:
-  - alias: "Engine heater -  activate"
+  - alias: "Engine heater - activate"
     trigger: 
       platform: template
       #value_template: '{{ states.sensor.heater_activationtime.state == states.sensor.time.state }}'
@@ -168,9 +168,14 @@ automation:
     condition:
       condition: or
       conditions:
-        - condition: state
-          entity_id: input_boolean.workdays_only
-          state: 'off'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: input_boolean.workdays_only
+              state: 'off'
+            - condition: state
+              entity_id: automation.engine_heater_activate
+              state: 'on'
         - condition: and
           conditions:
             - condition: state
