@@ -1,33 +1,21 @@
-### Sensors ###
-sensor.radiator_fram_Temperature:
-  icon: mdi:radiator
-  friendly_name: Radiator framledning
+### Grafana sensor customization ###
 
-sensor.radiator_ret_Temperature:
-  icon: mdi:radiator
-  friendly_name: Radiator returledning
 
-sensor.heater_forecast:
-  unit_of_measurement: C
-  icon: mdi:temperature-celsius
+# sensor.telldus_zwave_switch_1_power:
+#   unit_of_measurement: "V"
+#   friendly_name: Mains voltage
+# sensor.telldus_zwave_switch_1_power_3:
+#   unit_of_measurement: "kWh"
+#   friendly_name: Energy usage since start
+# sensor.telldus_zwave_switch_1_power_4:
+#   unit_of_measurement: "W"
+#   friendly_name: Power usage
+# sensor.telldus_zwave_switch_1_power_5:
+#   unit_of_measurement: "A"
+#   friendly_name: Current power drain
 
-sensor.heater_temptime:
-  unit_of_measurement: min
-  icon: mdi:timer
 
-sensor.telldus_zwave_switch_1_power:
-  unit_of_measurement: "V"
-  friendly_name: Mains voltage
-sensor.telldus_zwave_switch_1_power_3:
-  unit_of_measurement: "kWh"
-  friendly_name: Energy usage since start
-sensor.telldus_zwave_switch_1_power_4:
-  unit_of_measurement: "W"
-  friendly_name: Power usage
-sensor.telldus_zwave_switch_1_power_5:
-  unit_of_measurement: "A"
-  friendly_name: Current power drain
-
+# garage heat pump
 sensor.telldus_tzwp_102_plug_in_switch_current:
   grafana_name: "Garage heat pump current"
   friendly_name: "Current"
@@ -44,6 +32,16 @@ sensor.telldus_tzwp_102_plug_in_switch_previous_reading:
 sensor.telldus_tzwp_102_plug_in_switch_voltage:
   grafana_name: "Garage heat pump voltage"
   friendly_name: "Voltage"
+
+# engine heater, innr sp120_1 
+sensor.power_37:
+  grafana_name: "Engine heater power"
+  friendly_name: "Engine heater power"
+sensor.consumption_36:
+  grafana_name: "Engine heater consumption"
+  friendly_name: "Engine heater consumption"
+sensor.innr_sp120_1_voltage:
+  grafana_name: "Engine heater voltage"
 
 sensor.refriguator_lower_door_state:
   templates:

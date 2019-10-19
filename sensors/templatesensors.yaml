@@ -1,0 +1,6 @@
+- platform: template
+  sensors:
+    innr_sp120_1_voltage:
+      friendly_name: "Engine heater voltage"
+      unit_of_measurement: "V"
+      value_template: "{{ state_attr('sensor.power_37', 'voltage') }}"

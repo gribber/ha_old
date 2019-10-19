@@ -1,6 +1,12 @@
-#homeassistant:
-#  customize:
-#    -
+homeassistant:
+  customize:
+    sensor.heater_forecast:
+      unit_of_measurement: C
+      icon: mdi:temperature-celsius
+
+    sensor.heater_temptime:
+      unit_of_measurement: min
+      icon: mdi:timer
 
 sensor:
   ### sensors for engine heater ###
