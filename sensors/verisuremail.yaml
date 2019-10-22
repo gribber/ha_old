@@ -1,5 +1,5 @@
 #
-# originally idea and based on https://community.home-assistant.io/t/changed-by-on-verisure-lock-with-auto-lock/59272
+# original idea and based on https://community.home-assistant.io/t/changed-by-on-verisure-lock-with-auto-lock/59272
 #
 - platform: imap_email_content
   server: imap.gmail.com
@@ -16,10 +16,14 @@
       friendly_name_template: >-
         {% if states.sensor.verisure_mail.attributes.subject == "Upplåst utifrån" %}
           Unlocked by
-        {% elif states.sensor.verisure_mail.attributes.subject == "Upplåst" %}
-          Remotely unlocked by
+        {% elif states.sensor.verisure_mail.attributes.subject == "Upplåst inifrån" %}
+          Unlocked by
         {% elif states.sensor.verisure_mail.attributes.subject == "Låst utifrån" %}
           Locked by
+        {% elif states.sensor.verisure_mail.attributes.subject == "Låst inifrån" %}
+          Locked by
+        {% elif states.sensor.verisure_mail.attributes.subject == "Upplåst" %}
+          Remotely unlocked by
         {% elif states.sensor.verisure_mail.attributes.subject == "Låst via fjärrstyrning" %}
           Remotely locked by
         {% endif %}
@@ -38,6 +42,10 @@
           {% endif %}
         {% elif states.sensor.verisure_mail.attributes.subject == "Låst utifrån" %}
           {% set who = 'Star button' %}
+        {% elif states.sensor.verisure_mail.attributes.subject == "Låst inifrån" %}
+          {% set who = 'Door knob' %}
+        {% elif states.sensor.verisure_mail.attributes.subject == "Upplåst inifrån" %}
+          {% set who = 'Door knob' %}
         {% elif states.sensor.verisure_mail.attributes.subject == "Låst via fjärrstyrning" %}
           {% set pattern = '(rstyrning) av (.+)\.' %}
           {% if states.sensor.verisure_mail.attributes.body|regex_search(find=pattern) %}
