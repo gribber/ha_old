@@ -24,13 +24,13 @@
         {% if states.sensor.verisure_mail.attributes.subject == "Upplåst utifrån" %}
           {% set pattern = '(kod|nyckelbricka) av (.+)\.' %}
           {% if states.sensor.verisure_mail.attributes.body|regex_search(find=pattern) %}
-            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0, ignorecase=true) %}
+            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0) %}
             {% set who = match[1] %}
           {% endif %}
         {% elif states.sensor.verisure_mail.attributes.subject == "Upplåst" %}
           {% set pattern = '(rstyrning) av (.+)\.' %}
           {% if states.sensor.verisure_mail.attributes.body|regex_search(find=pattern) %}
-            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0, ignorecase=true) %}
+            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0) %}
             {% set who = match[1] %}
           {% endif %}
         {% elif states.sensor.verisure_mail.attributes.subject == "Låst utifrån" %}
@@ -38,7 +38,7 @@
         {% elif states.sensor.verisure_mail.attributes.subject == "Låst via fjärrstyrning" %}
           {% set pattern = '(rstyrning) av (.+)\.' %}
           {% if states.sensor.verisure_mail.attributes.body|regex_search(find=pattern) %}
-            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0, ignorecase=true) %}
+            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0) %}
             {% set who = match[1] %}
           {% endif %}
         {% else %}
