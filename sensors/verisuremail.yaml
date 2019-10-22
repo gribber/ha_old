@@ -1,0 +1,48 @@
+- platform: imap_email_content
+  server: imap.gmail.com
+  port: 993
+  name: Verisure Mail
+  username: !secret verisure_mail_user
+  password: !secret verisure_mail_pass
+  senders:
+    - no-reply@verisure.com
+
+- platform: template
+  sensors:
+    lock_lastaction:
+      friendly_name_template: >-
+        {% if states.sensor.verisure_mail.attributes.subject == "Upplåst utifrån" %}
+          Unlocked by
+        {% elif states.sensor.verisure_mail.attributes.subject == "Upplåst" %}
+          Remotely unlocked by
+        {% elif states.sensor.verisure_mail.attributes.subject == "Låst utifrån" %}
+          Locked by
+        {% elif states.sensor.verisure_mail.attributes.subject == "Låst via fjärrstyrning" %}
+          Remotely locked by
+        {% endif %}
+      value_template: >-
+        {% if states.sensor.verisure_mail.attributes.subject == "Upplåst utifrån" %}
+          {% set pattern = '(kod|nyckelbricka) av (.+)\.' %}
+          {% if states.sensor.verisure_mail.attributes.body|regex_search(find=pattern) %}
+            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0, ignorecase=true) %}
+            {% set who = match[1] %}
+          {% endif %}
+        {% elif states.sensor.verisure_mail.attributes.subject == "Upplåst" %}
+          {% set pattern = '(rstyrning) av (.+)\.' %}
+          {% if states.sensor.verisure_mail.attributes.body|regex_search(find=pattern) %}
+            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0, ignorecase=true) %}
+            {% set who = match[1] %}
+          {% endif %}
+        {% elif states.sensor.verisure_mail.attributes.subject == "Låst utifrån" %}
+          {% set who = 'Star button' %}
+        {% elif states.sensor.verisure_mail.attributes.subject == "Låst via fjärrstyrning" %}
+          {% set pattern = '(rstyrning) av (.+)\.' %}
+          {% if states.sensor.verisure_mail.attributes.body|regex_search(find=pattern) %}
+            {% set match = states.sensor.verisure_mail.attributes.body|regex_findall_index(find=pattern, index=0, ignorecase=true) %}
+            {% set who = match[1] %}
+          {% endif %}
+        {% else %}
+          {% set who = 'Unknown' %}
+        {% endif %}
+        {{ who }}
+
