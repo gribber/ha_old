@@ -2,6 +2,7 @@ homeassistant:
   customize:
     sensor.heater_forecast:
       unit_of_measurement: C
+      device_class: temperature
       icon: mdi:temperature-celsius
 
     sensor.heater_temptime:
