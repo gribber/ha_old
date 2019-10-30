@@ -10,7 +10,7 @@
       entity_id: 
         - group.window_lights
         - switch.proove_1
-        - light.bedroom
+        - light.ikea_e14_400lm
 
 - alias: 'Window lights off at night'
   trigger:
@@ -21,7 +21,7 @@
       entity_id: 
         - group.window_lights
         - switch.proove_1
-        - light.bedroom
+        - light.ikea_e14_400lm
 
 - alias: 'Window lights sunrise'
   trigger:
@@ -46,7 +46,7 @@
       entity_id: 
         - group.window_lights
         - switch.proove_1
-        - light.bedroom
+        - light.ikea_e14_400lm
 
 - alias: 'Window lights sunrise - bedroom'
   trigger:
@@ -62,7 +62,7 @@
         state: not_home
   action:
     - service: homeassistant.turn_on
-      entity_id: light.bedroom
+      entity_id: light.ikea_e14_400lm
 
 - alias: 'Window lights sunrise - guestroom'
   trigger:
