@@ -8,3 +8,8 @@ visitors:
     - person.neonis
     - person.znike
 
+everyone:
+  name: everyone
+  entities:
+    - person.linus
+    - group.visitors
