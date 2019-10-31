@@ -1,0 +1,31 @@
+- alias: "Turn on kitchen table light in the mornig if needed"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.presence_34
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.everyone
+        state: 'home'
+      - condition: sun
+        before: sunrise
+      - condition: time
+        after: '05:30'
+        before: '08:00'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: light.kitchentable
+
+
+- alias: "Turn off some lights when leaving home"
+  trigger:
+    - platform: state
+      entity_id: group.everyone
+      to: 'not_home'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        - light.kitchentable
+        - light.bedroom_ceiling
