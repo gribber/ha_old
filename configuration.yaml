@@ -31,11 +31,11 @@ config:
 
 system_health:
 
-panel_iframe:
-  grafana:
-    title: "Grafana"
-    url: !secret grafana_url
-    icon: mdi:graphql
+# panel_iframe:
+#   grafana:
+#     title: "Grafana"
+#     url: !secret grafana_url
+#     icon: mdi:graphql
 
 influxdb:
   host: a0d7b954-influxdb
