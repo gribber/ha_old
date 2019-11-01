@@ -109,6 +109,10 @@ input_boolean:
     name: Only active on workdays
     initial: true
 
+  eh_skipnext:
+    name: Skip next
+    initial: false
+
 group:
   engine_heater:
     name: Engine heater
@@ -123,6 +127,7 @@ group:
       - input_number.heater_delay
       - input_number.heater_maxmin
       - input_boolean.workdays_only
+      - input_boolean.eh_skipnext
       - switch.switch_engine_heater
 
 automation:
@@ -134,6 +139,9 @@ automation:
     condition:
       condition: and
       conditions:
+        - condition: state
+          entity_id: input_boolean.eh_skipnext
+          state: 'off'
         - condition: state
           entity_id: person.linus
           state: home
@@ -167,6 +175,8 @@ automation:
         entity_id: 
           - switch.switch_engine_heater
           - switch.light_3
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.eh_skipnext
 
   - alias: "Engine heater - precheck activate"
     trigger:
