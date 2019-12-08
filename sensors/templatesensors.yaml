@@ -4,3 +4,12 @@
       friendly_name: "Engine heater voltage"
       unit_of_measurement: "V"
       value_template: "{{ state_attr('sensor.power_37', 'voltage') }}"
+
+    flap_livingroom_upstairs_nimh_battery_level:
+      unit_of_measurement: "%"
+      device_class: battery
+      value_template: >-
+        {% set maxcharge = 5.3 %}
+        {% set mincharge = 4.6 %}
+        {% set diffcharge = (maxcharge - mincharge) / 100 %}
+        {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
