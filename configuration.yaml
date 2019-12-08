@@ -94,11 +94,29 @@ google_assistant:
     - light
     - group
     - lock
+    - sensor
   entity_config:
     group.all_automations:
       expose: false
     switch.telldus_tzwp_102_plug_in_switch_switch:
       expose: false
+    light.kitchentable:
+      name: 'Kitchen table'
+      aliases:
+        - 'table light'
+        - 'kökslampa'
+        - 'kökslampan'
+        - 'kökslyset'
+    switch.switch_tiny_1:
+      name: 'Kitchen window'
+      aliases:
+        - 'kitchen window light'
+        - 'köksfönsterlampan'
+    light.bedroom_ceiling:
+      name: 'Bedroom ceiling'
+      aliases:
+        - 'Sovrumslampan'
+        - 'Sovrumstaklampan'
 
 
 http:
