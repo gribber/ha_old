@@ -10,6 +10,6 @@
       device_class: battery
       value_template: >-
         {% set maxcharge = 5.3 %}
-        {% set mincharge = 4.6 %}
+        {% set mincharge = 4.0 %}
         {% set diffcharge = (maxcharge - mincharge) / 100 %}
         {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
