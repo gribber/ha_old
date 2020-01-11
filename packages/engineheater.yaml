@@ -128,7 +128,7 @@ group:
       - input_number.heater_maxmin
       - input_boolean.workdays_only
       - input_boolean.eh_skipnext
-      - switch.switch_engine_heater
+      - switch.ubisys_powerswitch_s1_r
 
 automation:
   - alias: "Engine heater - activate"
@@ -161,8 +161,7 @@ automation:
     action:
       - service: homeassistant.turn_on
         entity_id: 
-          - switch.switch_engine_heater
-          - switch.light_3
+          - switch.ubisys_powerswitch_s1_r
 
   - alias: "Engine heater - deactivate"
     trigger:
@@ -173,8 +172,7 @@ automation:
           minutes: "{{ states('input_number.heater_delay') | int }}"
       - service: homeassistant.turn_off
         entity_id: 
-          - switch.switch_engine_heater
-          - switch.light_3
+          - switch.ubisys_powerswitch_s1_r
       - service: input_boolean.turn_off
         entity_id: input_boolean.eh_skipnext
 
@@ -206,22 +204,22 @@ automation:
               state: 'on'
     action:
       - service: homeassistant.turn_on
-        entity_id: switch.sp120_1
+        entity_id: switch.ubisys_powerswitch_s1_r
       - delay:
           seconds: 10
       - service: homeassistant.turn_off
-        entity_id: switch.sp120_1
+        entity_id: switch.ubisys_powerswitch_s1_r
 
   - alias: "Engine heater - precheck measure"
     trigger: 
       platform: state
-      entity_id: switch.sp120_1
+      entity_id: switch.ubisys_powerswitch_s1_r
       to: 'on'
       for:
         seconds: 5
     condition:
       - condition: template
-        value_template: '{{ states.sensor.power_37.state|int < 100 }}'
+        value_template: '{{ states.sensor.power_40.state|int < 100 }}'
     action:
       # - service: notify.google
       #   data_template:
