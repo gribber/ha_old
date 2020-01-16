@@ -34,14 +34,22 @@ sensor.telldus_tzwp_102_plug_in_switch_voltage:
   friendly_name: "Voltage"
 
 # engine heater, innr sp120_1 
-sensor.power_37:
+# sensor.power_37:
+#   grafana_name: "Engine heater power"
+#   friendly_name: "Engine heater power"
+# sensor.consumption_36:
+#   grafana_name: "Engine heater consumption"
+#   friendly_name: "Engine heater consumption"
+# sensor.innr_sp120_1_voltage:
+#   grafana_name: "Engine heater voltage"
+
+# engine heater, ubisys s1-r
+sensor.power_40:
   grafana_name: "Engine heater power"
   friendly_name: "Engine heater power"
-sensor.consumption_36:
+sensor.consumption_39:
   grafana_name: "Engine heater consumption"
   friendly_name: "Engine heater consumption"
-sensor.innr_sp120_1_voltage:
-  grafana_name: "Engine heater voltage"
 
 sensor.refriguator_lower_door_state:
   templates:

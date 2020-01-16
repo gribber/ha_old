@@ -1,18 +1,18 @@
-- platform: rest
-  name: deconz sensors
-  json_attributes:
-    - "2"
-    - "3"
-    - "4"
-    - "5"
-  resource: !secret deconz_sensors
-  #value_template: '{{ value_json.2.name }}'
-  value_template: 'OK'
-- platform: template
-  sensors:
-    button_state_event_id:
-      friendly_name: Button state event id
-      value_template: '{{ states.sensor.deconz_sensors.attributes["2"].state.buttonevent }}'
+# - platform: rest
+#   name: deconz sensors
+#   json_attributes:
+#     - "2"
+#     - "3"
+#     - "4"
+#     - "5"
+#   resource: !secret deconz_sensors
+#   #value_template: '{{ value_json.2.name }}'
+#   value_template: 'OK'
+# - platform: template
+#   sensors:
+#     button_state_event_id:
+#       friendly_name: Button state event id
+#       value_template: '{{ states.sensor.deconz_sensors.attributes["2"].state.buttonevent }}'
       #    button_state_lastupdate:
       #friendly_name: Button state last update
       #value_template: '{{ states.sensor.button_state.attributes["state"].lastupdated }}'

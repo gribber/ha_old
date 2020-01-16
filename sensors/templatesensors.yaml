@@ -10,6 +10,11 @@
       device_class: battery
       value_template: >-
         {% set maxcharge = 5.3 %}
-        {% set mincharge = 4.0 %}
+        {% set mincharge = 4.2 %}
         {% set diffcharge = (maxcharge - mincharge) / 100 %}
-        {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
+        {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
+
+    flap_livingroom_upstairs_nimh_battery_voltage:
+      friendly_name: "Catflap battery voltage"
+      unit_of_measurement: "V"
+      value_template: "{{ state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage') }}"

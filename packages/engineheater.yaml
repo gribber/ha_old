@@ -107,7 +107,7 @@ input_number:
 input_boolean:
   workdays_only:
     name: Only active on workdays
-    initial: true
+    #initial: true
 
   eh_skipnext:
     name: Skip next
@@ -206,7 +206,7 @@ automation:
       - service: homeassistant.turn_on
         entity_id: switch.ubisys_powerswitch_s1_r
       - delay:
-          seconds: 10
+          seconds: 20
       - service: homeassistant.turn_off
         entity_id: switch.ubisys_powerswitch_s1_r
 
@@ -216,7 +216,7 @@ automation:
       entity_id: switch.ubisys_powerswitch_s1_r
       to: 'on'
       for:
-        seconds: 5
+        seconds: 15
     condition:
       - condition: template
         value_template: '{{ states.sensor.power_40.state|int < 100 }}'
@@ -227,5 +227,5 @@ automation:
       - service: notify.pushbullet
         data:
           title: "Engine heater"
-          message: "You forgot to connect the cable"
+          message: "You forgot to connect the cable ({{ states.sensor.power_40.state }}W)"
 
