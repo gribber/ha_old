@@ -16,24 +16,32 @@
 
 
 # garage heat pump
-sensor.telldus_tzwp_102_plug_in_switch_current:
-  grafana_name: "Garage heat pump current"
-  friendly_name: "Current"
-sensor.telldus_tzwp_102_plug_in_switch_energy:
-  grafana_name: "Garage heat pump energy"
-  friendly_name: "Energy"
-sensor.telldus_tzwp_102_plug_in_switch_power:
+# sensor.telldus_tzwp_102_plug_in_switch_current:
+#   grafana_name: "Garage heat pump current"
+#   friendly_name: "Current"
+# sensor.telldus_tzwp_102_plug_in_switch_energy:
+#   grafana_name: "Garage heat pump energy"
+#   friendly_name: "Energy"
+# sensor.telldus_tzwp_102_plug_in_switch_power:
+#   grafana_name: "Garage heat pump power"
+#   friendly_name: "Power"
+# sensor.telldus_tzwp_102_plug_in_switch_previous_reading:
+#   grafana_name: "Garage heat pump previous energy"
+#   friendly_name: "Previous energy reading"
+#   unit_of_measurement: kWh
+# sensor.telldus_tzwp_102_plug_in_switch_voltage:
+#   grafana_name: "Garage heat pump voltage"
+#   friendly_name: "Voltage"
+
+# garage heat pump, innr sp120_1
+sensor.sp120_1_power:
   grafana_name: "Garage heat pump power"
-  friendly_name: "Power"
-sensor.telldus_tzwp_102_plug_in_switch_previous_reading:
-  grafana_name: "Garage heat pump previous energy"
-  friendly_name: "Previous energy reading"
-  unit_of_measurement: kWh
-sensor.telldus_tzwp_102_plug_in_switch_voltage:
+sensor.sp120_1_voltage:
   grafana_name: "Garage heat pump voltage"
   friendly_name: "Voltage"
+sensor.sp120_1_consumption:
+  grafana_name: "Garage heat pump energy"
 
-# engine heater, innr sp120_1 
 # sensor.power_37:
 #   grafana_name: "Engine heater power"
 #   friendly_name: "Engine heater power"

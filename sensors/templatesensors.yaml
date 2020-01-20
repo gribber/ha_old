@@ -1,9 +1,9 @@
 - platform: template
   sensors:
-    innr_sp120_1_voltage:
-      friendly_name: "Engine heater voltage"
+    sp120_1_voltage:
+      #friendly_name: "Garage heat pump voltage"
       unit_of_measurement: "V"
-      value_template: "{{ state_attr('sensor.power_37', 'voltage') }}"
+      value_template: "{{ state_attr('sensor.sp120_1_power', 'voltage') }}"
 
     flap_livingroom_upstairs_nimh_battery_level:
       unit_of_measurement: "%"

@@ -99,7 +99,7 @@ google_assistant:
   entity_config:
     group.all_automations:
       expose: false
-    switch.telldus_tzwp_102_plug_in_switch_switch:
+    switch.sp120_1:
       expose: false
     light.kitchentable:
       name: 'Kitchen table'

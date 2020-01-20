@@ -69,7 +69,7 @@ sensor:
         friendly_name: Real time consumtion voltage
         unit_of_measurement: V
         value_template: >-
-          {% set v = states('sensor.telldus_tzwp_102_plug_in_switch_voltage') %}
+          {% set v = states('sensor.sp120_1_voltage') %}
           {% if v|round(0)|string|length != 3 %} {% set v = 230 %} {% endif %}
           {{ v }}
 

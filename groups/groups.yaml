@@ -12,7 +12,7 @@ outdoor_lights:
   name: Outdoor lights
   entities:
     - switch.apple_tree_light
-    - switch.switch_garage
+    - switch.ikea_outlet_1
     - light.entre_1
     - switch.switch_tiny_3
 
@@ -72,12 +72,12 @@ livingroom_upstairs:
 garage:
   name: Garage
   entities:
-    - switch.switch_garage
+    - switch.ikea_outlet_1
     - sensor.garage_temperature
     - sensor.garage_humidity
     - sensor.garage_door_state
     - sensor.garage_port_state
-    - switch.switch_engine_heater
+    - switch.ubisys_powerswitch_s1_r
 
 guestroom:
   name: Guest room

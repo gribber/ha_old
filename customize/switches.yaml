@@ -53,7 +53,4 @@ switch.switch_tiny_1:
   icon: mdi:lightbulb
   friendly_name: Kitchen windows light north
 
-switch.switch_engine_heater:
-  icon: mdi:engine
-  friendly_name: Engine heater switch
 
