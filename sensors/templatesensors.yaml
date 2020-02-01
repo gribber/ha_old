@@ -5,6 +5,10 @@
       unit_of_measurement: "V"
       value_template: "{{ state_attr('sensor.sp120_1_power', 'voltage') }}"
 
+    sp120_1_current: 
+      unit_of_measurement: "A"
+      value_template: "{{ state_attr('sensor.sp120_1_power', 'current') / 1000 }}"
+
     flap_livingroom_upstairs_nimh_battery_level:
       unit_of_measurement: "%"
       device_class: battery

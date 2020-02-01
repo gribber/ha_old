@@ -41,6 +41,9 @@ sensor.sp120_1_voltage:
   friendly_name: "Voltage"
 sensor.sp120_1_consumption:
   grafana_name: "Garage heat pump energy"
+sensor.sp120_1_current:
+  grafana_name: "Garage heat pump current"
+  friendly_name: "Current"
 
 # sensor.power_37:
 #   grafana_name: "Engine heater power"
