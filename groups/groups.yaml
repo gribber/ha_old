@@ -1,10 +1,4 @@
-automation:
-  view: yes
-  entities:
-    - group.all_automations
-
 sensors:
-  view: yes
   entities:
     - sensor.all_sensors
 
@@ -135,7 +129,6 @@ remotes:
     - switch.remote_1_alloff
 
 rooms:
-  view: yes
   entities:
     - group.bedroom
     - group.livingroom_downstairs
@@ -148,7 +141,6 @@ rooms:
     - group.workoutroom
 
 house:
-  view: yes
   entities:
     - group.flvp_sensors
     - group.roof

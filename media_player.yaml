@@ -7,9 +7,9 @@
   host: 10.5.50.110
   name: Marantz SR7010
 
-- platform: spotify
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
+# - platform: spotify
+#   client_id: !secret spotify_client_id
+#   client_secret: !secret spotify_client_secret
 
   #- platform: cast
   #  media_player:

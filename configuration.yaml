@@ -88,8 +88,10 @@ alexa:
 
 google_assistant:
   project_id: !secret ga_project_id
-  api_key: !secret ga_api_key
+  #api_key: !secret ga_api_key
+  service_account: !include ga_homeassistant.json
   secure_devices_pin: !secret verisure_default_code
+  report_state: true
   exposed_domains:
     - switch
     - light
@@ -225,7 +227,7 @@ sun:
 sensor: !include_dir_merge_list sensors/
 
 # Zones
-zone: !include zones.yaml
+#zone: !include zones.yaml
 
 # Cameras
 camera: !include cameras.yaml
@@ -248,18 +250,23 @@ verisure:
   door_window: false
   locks: true
 
-zoneminder:
-  - host: !secret zm_host
-    ssl: true
-    verify_ssl: true
-    path_zms: '/cgi-bin/nph-zms'
-    username: !secret zm_user
-    password: !secret zm_pass
+# zoneminder:
+#   - host: !secret zm_host
+#     ssl: true
+#     verify_ssl: true
+#     path_zms: '/cgi-bin/nph-zms'
+#     username: !secret zm_user
+#     password: !secret zm_pass
     #host: 10.5.50.84:81
     #path_zms: /cgi-bin/nph-zms
 
 #tibber:
 #  access_token: !secret tibber_token
+
+# spotify
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
 
 # Cloud
 cloud:
@@ -274,7 +281,7 @@ automower:
 
 hacs:
   token: !secret hacs_token
-  theme: true
+#  theme: true
 
 surepetcare:
   username: !secret sure_petflap_username

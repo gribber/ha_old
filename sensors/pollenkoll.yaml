@@ -1,16 +1,16 @@
-- platform: pollenniva
-  scan_interval: 4
-  state_as_string: false
-  sensors:
-    - city: Sundsvall
-      days_to_track: 3
-      allergens:
-        - Al
-        - Alm
-        - Ambrosia
-        - Björk
-        - Ek
-        - Gråbo
-        - Gräs
-        - Hassel
-        - "Sälg / Vide"
+# - platform: pollenniva
+#   scan_interval: 4
+#   state_as_string: false
+#   sensors:
+#     - city: Sundsvall
+#       days_to_track: 3
+#       allergens:
+#         - Al
+#         - Alm
+#         - Ambrosia
+#         - Björk
+#         - Ek
+#         - Gråbo
+#         - Gräs
+#         - Hassel
+#         - "Sälg / Vide"
