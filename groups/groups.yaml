@@ -8,7 +8,6 @@ outdoor_lights:
     - switch.apple_tree_light
     - switch.ikea_outlet_1
     - light.entre_1
-    - switch.switch_tiny_3
 
 llvp_garage:
   name: Garage heat pump
