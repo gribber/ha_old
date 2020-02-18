@@ -216,7 +216,7 @@ automation:
       entity_id: switch.ubisys_powerswitch_s1_r
       to: 'on'
       for:
-        seconds: 15
+        seconds: 18
     condition:
       - condition: template
         value_template: '{{ states.sensor.power_40.state|int < 100 }}'

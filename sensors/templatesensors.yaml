@@ -13,13 +13,15 @@
       unit_of_measurement: "%"
       device_class: battery
       # mincharge of 4.2v seems to be too low, voltage drops quickly after 4.6v (4.6 to 4.0 in 24 hours)
+      # {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
       value_template: >-
         {% set maxcharge = 5.3 %}
         {% set mincharge = 4.6 %}
         {% set diffcharge = (maxcharge - mincharge) / 100 %}
-        {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
+        {{ (100 - ((maxcharge - (state_attr('binary_sensor.flap_livingroom_upstairs', 'battery_voltage') * 4) | float) / diffcharge)) | round(1) }}
 
     flap_livingroom_upstairs_nimh_battery_voltage:
       friendly_name: "Catflap battery voltage"
       unit_of_measurement: "V"
-      value_template: "{{ state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage') }}"
+#      value_template: "{{ state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage') }}"
+      value_template: "{{ state_attr('binary_sensor.flap_livingroom_upstairs', 'battery_voltage') * 4 }}"
