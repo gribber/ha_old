@@ -1,0 +1,13 @@
+- alias: 'Play SVT Morgonstudion on workdays'
+  trigger:
+    platform: time
+    at: "06:20"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+  action:
+    - service: svt_play.play_suggested
+      entity_id: media_player.nesthub_kitchen
+      data:
+        program_name: morgonstudion

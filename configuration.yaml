@@ -279,10 +279,15 @@ automower:
   username: !secret am_user
   password: !secret am_pass
 
+# HACS
 hacs:
   token: !secret hacs_token
 #  theme: true
 
+# HACS integrations
+svt_play:
+
+# sure catflap
 surepetcare:
   username: !secret sure_petflap_username
   password: !secret sure_petflap_password
