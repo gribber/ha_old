@@ -206,7 +206,7 @@ automation:
       - service: homeassistant.turn_on
         entity_id: switch.ubisys_powerswitch_s1_r
       - delay:
-          seconds: 25
+          seconds: 30
       - service: homeassistant.turn_off
         entity_id: switch.ubisys_powerswitch_s1_r
 
@@ -216,7 +216,7 @@ automation:
       entity_id: switch.ubisys_powerswitch_s1_r
       to: 'on'
       for:
-        seconds: 22
+        seconds: 28
     condition:
       - condition: template
         value_template: '{{ states.sensor.power_40.state|int < 100 }}'

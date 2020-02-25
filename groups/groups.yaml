@@ -6,26 +6,25 @@ outdoor_lights:
   name: Outdoor lights
   entities:
     - switch.apple_tree_light
-    - switch.ikea_outlet_1
+    - light.garage_roof
     - light.entre_1
 
-llvp_garage:
-  name: Garage heat pump
-  entities:
-    - sensor.telldus_tzwp_102_plug_in_switch_current
-    - sensor.telldus_tzwp_102_plug_in_switch_energy
-    - sensor.telldus_tzwp_102_plug_in_switch_power
-    - sensor.telldus_tzwp_102_plug_in_switch_previous_reading
-    - sensor.telldus_tzwp_102_plug_in_switch_voltage
+# llvp_garage:
+#   name: Garage heat pump
+#   entities:
+#     - sensor.telldus_tzwp_102_plug_in_switch_current
+#     - sensor.telldus_tzwp_102_plug_in_switch_energy
+#     - sensor.telldus_tzwp_102_plug_in_switch_power
+#     - sensor.telldus_tzwp_102_plug_in_switch_previous_reading
+#     - sensor.telldus_tzwp_102_plug_in_switch_voltage
 
 window_lights:
   name: Window lights
   entities:
-#    - switch.proove_1 # guestroom
+    - light.kitchen_window_1
+    - light.workoutroom_window_1
     - switch.proove_2
     - switch.switch_livingroom_upstairs
-    - switch.switch_workout
-    - switch.switch_tiny_1
 #    - light.ikea_e14_400lm # bedroom
     - light.livingroom_window
 
@@ -62,15 +61,15 @@ livingroom_upstairs:
     - switch.proove_2
     - sensor.livingroom_upstairs_temperature
 
-garage:
-  name: Garage
-  entities:
-    - switch.ikea_outlet_1
-    - sensor.garage_temperature
-    - sensor.garage_humidity
-    - sensor.garage_door_state
-    - sensor.garage_port_state
-    - switch.ubisys_powerswitch_s1_r
+# garage:
+#   name: Garage
+#   entities:
+#     - switch.ikea_outlet_1
+#     - sensor.garage_temperature
+#     - sensor.garage_humidity
+#     - sensor.garage_door_state
+#     - sensor.garage_port_state
+#     - switch.ubisys_powerswitch_s1_r
 
 guestroom:
   name: Guest room
@@ -79,14 +78,14 @@ guestroom:
     - sensor.guestroom_temperature
     - sensor.guestroom_humidity
 
-kitchen:
-  name: Kitchen
-  entities:
-    - sensor.kitchen_temperature
-    - sensor.kitchen_humidity
-    - switch.switch_tiny_1
-    - sensor.refriguator_upper_door_state
-    - sensor.refriguator_lower_door_state
+# kitchen:
+#   name: Kitchen
+#   entities:
+#     - sensor.kitchen_temperature
+#     - sensor.kitchen_humidity
+#     - switch.switch_tiny_1
+#     - sensor.refriguator_upper_door_state
+#     - sensor.refriguator_lower_door_state
 
 hobbyroom:
   name: Hobby room
@@ -100,10 +99,10 @@ closet:
     - sensor.closet_temperature
     - sensor.closet_humidity
 
-workoutroom:
-  name: Workout room
-  entities:
-    - switch.switch_workout
+# workoutroom:
+#   name: Workout room
+#   entities:
+#     - switch.switch_workout
 
 roof:
   name: Roof
