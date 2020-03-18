@@ -291,7 +291,7 @@ svt_play:
 surepetcare:
   username: !secret sure_petflap_username
   password: !secret sure_petflap_password
-  household_id: !secret sure_petflap_household_id
+  #household_id: !secret sure_petflap_household_id
   flaps: !secret sure_petflap_flaps
   pets: !secret sure_petflap_pets
 

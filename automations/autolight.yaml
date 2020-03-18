@@ -29,3 +29,22 @@
       entity_id:
         - light.kitchentable
         - light.bedroom_ceiling
+
+- alias: "Light up the driveway when getting home"
+  trigger:
+    - platform: state
+      entity_id: person.linus
+      to: 'home'
+  condition:
+    - condition: sun
+      after: sunset
+  action:
+    - service: light.turn_on
+      entity_id: light.garage_roof
+      data:
+        brightness: 255
+    - delay: 180
+    - service: light.turn_on
+      entity_id: light.garage_roof
+      data:
+        brightness: 150

@@ -7,7 +7,7 @@ outdoor_lights:
   entities:
     - switch.apple_tree_light
     - light.garage_roof
-    - light.entre_1
+    - light.entre
 
 # llvp_garage:
 #   name: Garage heat pump
