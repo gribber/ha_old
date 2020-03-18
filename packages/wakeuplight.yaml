@@ -15,7 +15,6 @@ input_boolean:
 group:
   alarm_clock:
     name: "Wake-up lights"
-    control: hidden
     entities:
       - input_datetime.wakeup_time
       - input_boolean.wakeup_enabled
