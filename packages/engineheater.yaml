@@ -116,7 +116,6 @@ input_boolean:
 group:
   engine_heater:
     name: Engine heater
-    control: hidden
     entities:
       - sensor.heater_departuretime
       - sensor.heater_activationtime
