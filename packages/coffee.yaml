@@ -34,10 +34,34 @@ sensor:
           {% else %}
             mdi:cloud-question
           {% endif %}
+      
+      coffee_filled:
+        friendly_name: 'Machine loaded'
+        value_template: >-
+          {% if states('binary_sensor.water_coffeemaker') == 'off' %}
+            no
+          {% else %}
+            yes
+          {% endif %}
+        icon_template: >-
+          {% if states('binary_sensor.water_coffeemaker') == 'off' %}
+            mdi:gauge-empty
+          {% else %}
+            mdi:gauge-full
+          {% endif %}
 
+input_datetime:
+  coffee_start:
+    name: 'Start at'
+    has_time: true
+    has_date: false
+
+input_boolean:
+  coffee_autostart:
+    name: 'Autostart if loaded'
 
 automation:
-  - alias: "coffee: coffee ready"
+  - alias: 'coffee: coffee ready'
     trigger:
       platform: state
       entity_id: sensor.coffee_state
@@ -51,3 +75,21 @@ automation:
           title: "Coffee maker"
           message: "Coffee is ready!"
 
+  - alias: 'coffee: autostart'
+    trigger:
+      platform: template
+      value_template: "{{ states('sensor.time') == states('input_datetime.coffee_start')[0:5] }}"
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.water_coffeemaker
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.coffee_autostart
+          state: 'on'
+    action:
+      - service: notify.mobile_app_nokia_7_plus
+        data:
+          title: "Coffee maker"
+          message: "making coffee"
