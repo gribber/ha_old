@@ -5,7 +5,7 @@ sensors:
 outdoor_lights:
   name: Outdoor lights
   entities:
-    - switch.apple_tree_light
+    - switch.ikea_outlet_1
     - light.garage_roof
     - light.entre
 
