@@ -1,13 +1,18 @@
 - platform: template
   sensors:
     sp120_1_voltage:
-      #friendly_name: "Garage heat pump voltage"
       unit_of_measurement: "V"
       value_template: "{{ state_attr('sensor.sp120_1_power', 'voltage') }}"
-
     sp120_1_current: 
       unit_of_measurement: "A"
-      value_template: "{{ state_attr('sensor.sp120_1_power', 'current') / 1000 }}"
+      value_template: "{{ state_attr('sensor.sp120_1_power', 'current')|int / 1000 }}"
+
+    sp120_coffee_voltage:
+      unit_of_measurement: "V"
+      value_template: "{{ state_attr('sensor.sp120_coffee_power', 'voltage') }}"
+    sp120_coffee_current: 
+      unit_of_measurement: "A"
+      value_template: "{{ state_attr('sensor.sp120_coffee_power', 'current')|int / 1000 }}"
 
     flap_livingroom_upstairs_nimh_battery_level:
       unit_of_measurement: "%"

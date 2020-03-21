@@ -1,10 +1,10 @@
 homeassistant:
-  name: Home
-  latitude: !secret latitude_home
-  longitude: !secret longitude_home
-  elevation: !secret elevation_home
-  unit_system: metric
-  time_zone: Europe/Stockholm
+  # name: Home
+  # latitude: !secret latitude_home
+  # longitude: !secret longitude_home
+  # elevation: !secret elevation_home
+  # unit_system: metric
+  # time_zone: Europe/Stockholm
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
@@ -271,9 +271,9 @@ spotify:
 # Cloud
 cloud:
 
-tellduslive:
-  #host: 10.5.50.67
-  scan_interval: 5
+# tellduslive:
+#   #host: 10.5.50.67
+#   scan_interval: 5
 
 automower:
   username: !secret am_user

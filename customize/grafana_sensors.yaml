@@ -45,6 +45,15 @@ sensor.sp120_1_current:
   grafana_name: "Garage heat pump current"
   friendly_name: "Current"
 
+sensor.sp120_coffee_power:
+  grafana_name: "Coffee power"
+sensor.sp120_coffee_voltage:
+  grafana_name: "Coffee voltage"
+sensor.sp120_coffee_consumption:
+  grafana_name: "Coffee energy"
+sensor.sp120_coffee_current:
+  grafana_name: "Coffee current"
+
 # sensor.power_37:
 #   grafana_name: "Engine heater power"
 #   friendly_name: "Engine heater power"
@@ -85,6 +94,9 @@ sensor.garage_temperature:
   grafana_name: garage_temperature
 sensor.garage_humidity:
   grafana_name: garage_humidity
+sensor.garage_pressure:
+  grafana_name: garage_pressure
+
 sensor.closet_temperature:
   grafana_name: closet_temperature
 sensor.closet_humidity:
@@ -101,6 +113,8 @@ sensor.kitchen_temperature:
   grafana_name: kitchen_temperature
 sensor.kitchen_humidity:
   grafana_name: kitchen_humidity
+sensor.kitchen_pressure:
+  grafana_name: kitchen_pressure
 #sensor.livingroom_downstairs_temperature:
 #  grafana_name: livingroom_downstairs_temperature
 #sensor.livingroom_downstairs_humidity:
@@ -111,10 +125,14 @@ sensor.north_roof_temperature:
   grafana_name: north_roof_temperature
 sensor.north_roof_humidity:
   grafana_name: north_roof_humidity
+sensor.north_roof_pressure:
+  grafana_name: north_roof_pressure
 sensor.south_roof_temperature:
   grafana_name: south_roof_temperature
 sensor.south_roof_humidity:
   grafana_name: south_roof_humidity
+sensor.south_roof_pressure:
+  grafana_name: south_roof_pressure
 
 sensor.temperature_3:
   grafana_name: outdoor_east_temperature
