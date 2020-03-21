@@ -1,3 +1,14 @@
+# homeassistant:
+#   customize:
+#     sensor.coffee_state:
+#       templates:
+#         icon: mdi:coffee-maker
+#         icon_color: >
+#           if (state === 'off') return '';
+#           if (state === 'heating') return 'rgb(59, 247, 81)';
+#           if (state === 'making') return 'rgb(246, 255, 66)';
+#           return 'rgb(235, 64, 52)';
+
 sensor:
   - platform: template
     sensors:
@@ -8,10 +19,20 @@ sensor:
             off
           {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 100) %}
             heating
-          {% elif (states('sensor.sp120_coffee_power')|int > 1300) and (states('sensor.sp120_coffee_power')|int < 1400) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1400) %}
             making
           {% else %}
             unknown ({{ states('sensor.sp120_coffee_power') }}W)
+          {% endif %}
+        icon_template: >-
+          {% if states('sensor.sp120_coffee_power')|int < 1 %}
+            mdi:coffee-off
+          {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 100) %}
+            mdi:coffee-to-go
+          {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1400) %}
+            mdi:coffee-maker
+          {% else %}
+            mdi:cloud-question
           {% endif %}
 
 
@@ -25,7 +46,8 @@ automation:
       for:
         seconds: 30
     action:
-      - service: notify.google
-        data_template:
-          message: "Coffee ready!"
+      - service: notify.mobile_app_nokia_7_plus
+        data:
+          title: "Coffee maker"
+          message: "Coffee is ready!"
 
