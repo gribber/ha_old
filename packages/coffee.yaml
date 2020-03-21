@@ -1,0 +1,31 @@
+sensor:
+  - platform: template
+    sensors:
+      coffee_state:
+        friendly_name: 'Coffee machine status'
+        value_template: >-
+          {% if states('sensor.sp120_coffee_power')|int < 1 %}
+            off
+          {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 100) %}
+            heating
+          {% elif (states('sensor.sp120_coffee_power')|int > 1300) and (states('sensor.sp120_coffee_power')|int < 1400) %}
+            making
+          {% else %}
+            unknown ({{ states('sensor.sp120_coffee_power') }}W)
+          {% endif %}
+
+
+automation:
+  - alias: "coffee: coffee ready"
+    trigger:
+      platform: state
+      entity_id: sensor.coffee_state
+      from: 'making'
+      to: 'heating'
+      for:
+        seconds: 30
+    action:
+      - service: notify.google
+        data_template:
+          message: "Coffee ready!"
+
