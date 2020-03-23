@@ -36,7 +36,7 @@ sensor:
           {% endif %}
       
       coffee_filled:
-        friendly_name: 'Machine loaded'
+        friendly_name: 'Machine preloaded'
         value_template: >-
           {% if states('binary_sensor.water_coffeemaker') == 'off' %}
             no
@@ -50,15 +50,23 @@ sensor:
             mdi:gauge-full
           {% endif %}
 
+switch:
+  - platform: mqtt
+    name: 'Coffee maker switch'
+    state_topic: 'coffeemaker/gpio/12'
+    command_topic: 'coffeemaker/gpio/12'
+    payload_on: '1'
+    payload_off: '0'
+
 input_datetime:
   coffee_start:
-    name: 'Start at'
+    name: 'Autostart at'
     has_time: true
     has_date: false
 
 input_boolean:
   coffee_autostart:
-    name: 'Autostart if loaded'
+    name: 'Autostart if preloaded'
 
 automation:
   - alias: 'coffee: coffee ready'
@@ -67,8 +75,7 @@ automation:
       entity_id: sensor.coffee_state
       from: 'making'
       to: 'heating'
-      for:
-        seconds: 30
+      for: '00:01:30' # takes some time before the coffee has passed thru the filter
     action:
       - service: notify.mobile_app_nokia_7_plus
         data:
@@ -89,7 +96,23 @@ automation:
           entity_id: input_boolean.coffee_autostart
           state: 'on'
     action:
+      - service: switch.turn_on
+        entity_id: switch.coffee_maker_switch
+      - delay: '00:00:01'
+      - service: switch.turn_off
+        entity_id: switch.coffee_maker_switch
       - service: notify.mobile_app_nokia_7_plus
         data:
           title: "Coffee maker"
           message: "making coffee"
+
+  - alias: 'coffee: auto turn off switch'
+    trigger:
+      platform: state
+      entity_id: switch.coffee_maker_switch
+      to: 'on'
+      for:
+        seconds: 2
+    action:
+      - service: switch.turn_off
+        entity_id: switch.coffee_maker_switch
