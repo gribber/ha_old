@@ -29,7 +29,7 @@ sensor:
             mdi:coffee-off
           {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 100) %}
             mdi:coffee-to-go
-          {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1400) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1500) %}
             mdi:coffee-maker
           {% else %}
             mdi:cloud-question
