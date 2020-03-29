@@ -7,13 +7,17 @@ sensor:
       yougotmail:
         friendly_name: "You got mail"
         value_template: >-
-          {% if is_state('input_boolean.mailboxtrigger', 'on') %}
-            Yes
+          {% if is_state('binary_sensor.openclose_30', 'on') %}
+            open
+          {% elif is_state('input_boolean.mailboxtrigger', 'on') %}
+            yes
           {% else%}
-            No
+            no
           {% endif %}
         icon_template: >-
-          {% if is_state('input_boolean.mailboxtrigger', 'on') %}
+          {% if is_state('binary_sensor.openclose_30', 'on') %}
+            mdi:mailbox-open-outline
+          {% elif is_state('input_boolean.mailboxtrigger', 'on') %}
             mdi:mailbox-up-outline
           {% else%}
             mdi:mailbox-outline
