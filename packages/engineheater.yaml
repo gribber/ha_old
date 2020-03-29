@@ -113,6 +113,9 @@ input_boolean:
     name: Skip next
     initial: false
 
+  eh_enabled:
+    name: 'Engine heater automations'
+
 group:
   engine_heater:
     name: Engine heater
@@ -142,6 +145,9 @@ automation:
           entity_id: input_boolean.eh_skipnext
           state: 'off'
         - condition: state
+          entity_id: input_boolean.eh_enabled
+          state: 'on'
+        - condition: state
           entity_id: person.linus
           state: home
         - condition: or
@@ -166,6 +172,10 @@ automation:
     trigger:
       platform: template
       value_template: '{{ states.sensor.heater_departuretime.state == states.sensor.time.state }}'
+    condition:
+      - condition: state
+        entity_id: input_boolean.eh_enabled
+        state: 'on'
     action:
       - delay:
           minutes: "{{ states('input_number.heater_delay') | int }}"
@@ -185,6 +195,9 @@ automation:
         - condition: and
           conditions:
             - condition: state
+              entity_id: input_boolean.eh_enabled
+              state: 'on'
+            - condition: state
               entity_id: input_boolean.workdays_only
               state: 'off'
             - condition: state
@@ -192,6 +205,9 @@ automation:
               state: 'on'
         - condition: and
           conditions:
+            - condition: state
+              entity_id: input_boolean.eh_enabled
+              state: 'on'
             - condition: state
               entity_id: binary_sensor.eh_workday_tomorrow
               state: 'on'
@@ -217,8 +233,13 @@ automation:
       for:
         seconds: 28
     condition:
-      - condition: template
-        value_template: '{{ states.sensor.power_40.state|int < 100 }}'
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.eh_enabled
+          state: 'on'
+        - condition: template
+          value_template: '{{ states.sensor.power_40.state|int < 100 }}'
     action:
       # - service: notify.google
       #   data_template:
