@@ -96,6 +96,12 @@ sensor.garage_humidity:
   grafana_name: garage_humidity
 sensor.garage_pressure:
   grafana_name: garage_pressure
+sensor.refrigerator_temperature:
+  grafana_name: refrigerator_temperature
+sensor.refrigerator_humidity:
+  grafana_name: refrigerator_humidity
+sensor.refrigerator_pressure:
+  grafana_name: refrigerator_pressure
 
 sensor.closet_temperature:
   grafana_name: closet_temperature

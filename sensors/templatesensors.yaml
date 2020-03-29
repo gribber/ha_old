@@ -20,7 +20,7 @@
       # mincharge of 4.2v seems to be too low, voltage drops quickly after 4.6v (4.6 to 4.0 in 24 hours)
       # {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
       value_template: >-
-        {% set maxcharge = 5.3 %}
+        {% set maxcharge = 5.37 %}
         {% set mincharge = 4.6 %}
         {% set diffcharge = (maxcharge - mincharge) / 100 %}
         {% set charge = (100 - ((maxcharge - state_attr('sensor.pet_flap_pet_door_battery_level', 'voltage') | float) / diffcharge)) | round(1) %}
