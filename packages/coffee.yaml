@@ -17,7 +17,7 @@ sensor:
         value_template: >-
           {% if states('sensor.sp120_coffee_power')|int < 1 %}
             off
-          {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 100) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 120) %}
             heating
           {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1400) %}
             making
@@ -27,7 +27,7 @@ sensor:
         icon_template: >-
           {% if states('sensor.sp120_coffee_power')|int < 1 %}
             mdi:coffee-off
-          {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 100) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 120) %}
             mdi:coffee-to-go
           {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1500) %}
             mdi:coffee-maker
