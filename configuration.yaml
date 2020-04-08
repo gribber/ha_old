@@ -295,6 +295,13 @@ surepetcare:
   flaps: !secret sure_petflap_flaps
   pets: !secret sure_petflap_pets
 
+# midea cloud
+climate:
+  - platform: midea
+    app_key: 3742e9e5842d4ad59c2db887e12449f9
+    username: !secret midea_user
+    password: !secret midea_pass
+
 notify:
   - platform: pushbullet
     name: pushbullet
