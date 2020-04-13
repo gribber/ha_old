@@ -73,9 +73,9 @@ automation:
     trigger:
       platform: state
       entity_id: sensor.coffee_state
-      from: 'making'
+#      from: 'making'
       to: 'heating'
-      for: '00:01:30' # takes some time before the coffee has passed thru the filter
+      for: '00:01:30' # takes some time before all coffee has passed thru the filter
     action:
       - service: notify.mobile_app_nokia_7_plus
         data:
