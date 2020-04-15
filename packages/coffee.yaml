@@ -17,9 +17,9 @@ sensor:
         value_template: >-
           {% if states('sensor.sp120_coffee_power')|int < 1 %}
             off
-          {% elif (states('sensor.sp120_coffee_power')|int > 70) and (states('sensor.sp120_coffee_power')|int < 120) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 30) and (states('sensor.sp120_coffee_power')|int < 120) %}
             heating
-          {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1400) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1500) %}
             making
           {% else %}
             unknown ({{ states('sensor.sp120_coffee_power') }}W)
