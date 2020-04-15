@@ -1,0 +1,13 @@
+- alias: "Refrigerator: temperature too high"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.refrigerator_temperature
+      above: 12.8
+  action:
+    - service: notify.pushbullet
+      data:
+        title: "ALERT"
+        message: "Refrigerator: temperature too high ({{ states('sensor.refrigerator_temperature') }}C)"
+    - service: notify.google
+      data_template:
+        message: "Refrigerator: temperature too high ({{ states('sensor.refrigerator_temperature') }}C)"
