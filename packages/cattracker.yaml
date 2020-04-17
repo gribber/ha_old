@@ -22,6 +22,7 @@ group:
       - person.morsan
       - person.neonis
       - person.znike
+      - person.bella
 
 automation:
   - alias: "catdetector: bathroom"

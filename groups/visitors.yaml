@@ -12,4 +12,5 @@ everyone:
   name: everyone
   entities:
     - person.linus
+    - person.bella
     - group.visitors
