@@ -12,6 +12,9 @@ input_boolean:
   wakeup_whenhome:
     name: "Enable Wake-up only when home"
 
+  wakeup_whenhomealone:
+    name: "Enable Wake-up only when home alone"
+
 group:
   alarm_clock:
     name: "Wake-up lights"
@@ -55,6 +58,14 @@ automation:
               - condition: state
                 entity_id: person.linus
                 state: home
+              - condition: and
+                conditions:
+                  - condition: state
+                    entity_id: input_boolean.wakeup_whenalone
+                    state: 'on'
+                  - condition: state
+                    entity_id: person.bella
+                    state: home
       - condition: or
         conditions:
           - condition: state
