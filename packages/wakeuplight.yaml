@@ -45,6 +45,7 @@ automation:
       - condition: state
         entity_id: input_boolean.wakeup_enabled
         state: 'on'
+
       - condition: or
         conditions:
           - condition: state
@@ -57,15 +58,22 @@ automation:
                 state: 'on'
               - condition: state
                 entity_id: person.linus
-                state: home
-              - condition: and
-                conditions:
-                  - condition: state
-                    entity_id: input_boolean.wakeup_whenalone
-                    state: 'on'
-                  - condition: state
-                    entity_id: person.bella
-                    state: home
+                state: 'home'
+
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_boolean.wakeup_whenhomealone
+            state: 'off'
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id: input_boolean.wakeup_whenhomealone
+                state: 'on'
+              - condition: state
+                entity_id: person.bella
+                state: 'not_home'
+
       - condition: or
         conditions:
           - condition: state
