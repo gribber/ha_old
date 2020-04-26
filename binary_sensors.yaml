@@ -2,3 +2,5 @@
   country: SE
 
 - platform: apcupsd
+
+- platform: unifiprotect

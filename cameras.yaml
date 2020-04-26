@@ -4,3 +4,5 @@
 #   name: Automower Location
 #   still_image_url: !secret google_maps_url_api
 #   limit_refetch_to_url_change: true
+
+- platform: unifiprotect

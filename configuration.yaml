@@ -232,6 +232,9 @@ sensor: !include_dir_merge_list sensors/
 # Cameras
 camera: !include cameras.yaml
 
+# Switches
+switch: !include switch.yaml
+
 # Text to speech
 tts:
   - platform: google_translate
@@ -296,11 +299,20 @@ surepetcare:
   pets: !secret sure_petflap_pets
 
 # midea cloud
-climate:
-  - platform: midea
-    app_key: 3742e9e5842d4ad59c2db887e12449f9
-    username: !secret midea_user
-    password: !secret midea_pass
+# climate:
+#   - platform: midea
+#     app_key: 3742e9e5842d4ad59c2db887e12449f9
+#     username: !secret midea_user
+#     password: !secret midea_pass
+
+# unifi protect
+unifiprotect:
+  host: !secret protect_host
+  username: !secret protect_user
+  password: !secret protect_pass
+  # port: 7443
+  # image_width: 640px
+  # minimum_score: 0
 
 notify:
   - platform: pushbullet
