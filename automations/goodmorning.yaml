@@ -11,3 +11,7 @@
       entity_id: media_player.nesthub_kitchen
       data:
         program_name: morgonstudion
+    - service: tv4_play.play_suggested
+      entity_id: media_player.bedroom_tv
+      data:
+        program_name: nyhetsmorgon
