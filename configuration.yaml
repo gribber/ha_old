@@ -263,8 +263,8 @@ verisure:
     #host: 10.5.50.84:81
     #path_zms: /cgi-bin/nph-zms
 
-#tibber:
-#  access_token: !secret tibber_token
+tibber:
+  access_token: !secret tibber_token
 
 # spotify
 spotify:
