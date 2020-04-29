@@ -1,10 +1,4 @@
 homeassistant:
-  # name: Home
-  # latitude: !secret latitude_home
-  # longitude: !secret longitude_home
-  # elevation: !secret elevation_home
-  # unit_system: metric
-  # time_zone: Europe/Stockholm
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
@@ -20,9 +14,6 @@ homeassistant:
   packages: !include_dir_named packages
 
 
-#lovelace:
-#  mode: yaml
-
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes
@@ -31,12 +22,6 @@ frontend:
 config:
 
 system_health:
-
-# panel_iframe:
-#   grafana:
-#     title: "Grafana"
-#     url: !secret grafana_url
-#     icon: mdi:graphql
 
 influxdb:
   host: a0d7b954-influxdb
@@ -151,34 +136,7 @@ speedtestdotnet:
 #    - host: !secret googlehome1
 #    - host: !secret googlehome2
 
-#unifi:
-#  controllers:
-#    - host: !secret unifi_host
-#      site: Default
-#      detection_time: 180
-#      ssid_filter:
-#        - 'ndmek'
-#        - 'wormhole'
-
 device_tracker:
-#  - platform: unifi
-#    host: !secret unifi_host
-#    username: !secret unifi_user
-#    password: !secret unifi_pass
-#    verify_ssl: true
-#    detection_time: 180
-#    track_new_devices: true
-#    monitored_conditions: 
-#      - ip
-#      - last_seen
-#      - latest_assoc_time
-#      - name
-#      - powersave_enabled
-#      - signal
-#      - tx_power
-#      - uptime
-#      - user_id
-
 #  - platform: bluetooth_tracker
 #    request_rssi: true
 
@@ -253,15 +211,6 @@ verisure:
   door_window: false
   locks: true
 
-# zoneminder:
-#   - host: !secret zm_host
-#     ssl: true
-#     verify_ssl: true
-#     path_zms: '/cgi-bin/nph-zms'
-#     username: !secret zm_user
-#     password: !secret zm_pass
-    #host: 10.5.50.84:81
-    #path_zms: /cgi-bin/nph-zms
 
 tibber:
   access_token: !secret tibber_token
@@ -274,10 +223,6 @@ spotify:
 # Cloud
 cloud:
 
-# tellduslive:
-#   #host: 10.5.50.67
-#   scan_interval: 5
-
 automower:
   username: !secret am_user
   password: !secret am_pass
@@ -289,6 +234,7 @@ hacs:
 
 # HACS integrations
 svt_play:
+tv4_play:
 
 # sure catflap
 surepetcare:
@@ -344,7 +290,6 @@ logger:
 
 recorder:
   purge_keep_days: 1
-  purge_interval: 1
   include:
     domains:
       - switch
@@ -421,5 +366,4 @@ automation: !include_dir_merge_list automations/
 script: !include scripts.yaml
 
 shell_command:
-  lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
-  #remove_google_cookie: 'rm /config/.google_maps_location_sharing.cookies.*'
+  #lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
