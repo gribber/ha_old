@@ -31,6 +31,11 @@ input_datetime:
     has_date: false
     #    initial: '06:00'
 
+binary_sensor:
+  - platform: workday
+    name: wakeup_workday
+    country: SE
+
 sensor:
   - platform: time_date
     display_options:
@@ -79,13 +84,16 @@ automation:
           - condition: state
             entity_id: input_boolean.wakeup_weekend
             state: 'on'
-          - condition: time
-            weekday:
-              - mon
-              - tue
-              - wed
-              - thu
-              - fri
+          - condition: state
+            entity_id: binary_sensor.wakeup_workday
+            state: 'on'
+          # - condition: time
+          #   weekday:
+          #     - mon
+          #     - tue
+          #     - wed
+          #     - thu
+          #     - fri
     action:
       - service: light.turn_on
         entity_id: light.bedroom_ceiling
