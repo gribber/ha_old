@@ -1,38 +1,5 @@
 ### Grafana sensor customization ###
 
-
-# sensor.telldus_zwave_switch_1_power:
-#   unit_of_measurement: "V"
-#   friendly_name: Mains voltage
-# sensor.telldus_zwave_switch_1_power_3:
-#   unit_of_measurement: "kWh"
-#   friendly_name: Energy usage since start
-# sensor.telldus_zwave_switch_1_power_4:
-#   unit_of_measurement: "W"
-#   friendly_name: Power usage
-# sensor.telldus_zwave_switch_1_power_5:
-#   unit_of_measurement: "A"
-#   friendly_name: Current power drain
-
-
-# garage heat pump
-# sensor.telldus_tzwp_102_plug_in_switch_current:
-#   grafana_name: "Garage heat pump current"
-#   friendly_name: "Current"
-# sensor.telldus_tzwp_102_plug_in_switch_energy:
-#   grafana_name: "Garage heat pump energy"
-#   friendly_name: "Energy"
-# sensor.telldus_tzwp_102_plug_in_switch_power:
-#   grafana_name: "Garage heat pump power"
-#   friendly_name: "Power"
-# sensor.telldus_tzwp_102_plug_in_switch_previous_reading:
-#   grafana_name: "Garage heat pump previous energy"
-#   friendly_name: "Previous energy reading"
-#   unit_of_measurement: kWh
-# sensor.telldus_tzwp_102_plug_in_switch_voltage:
-#   grafana_name: "Garage heat pump voltage"
-#   friendly_name: "Voltage"
-
 # garage heat pump, innr sp120_1
 sensor.sp120_1_power:
   grafana_name: "Garage heat pump power"
@@ -71,25 +38,7 @@ sensor.consumption_39:
   grafana_name: "Engine heater consumption"
   friendly_name: "Engine heater consumption"
 
-sensor.refriguator_lower_door_state:
-  templates:
-    icon_color: >
-      if (state == 'on') return 'rgb(251, 210, 41)'; 
-      return 'rgb(54, 95, 140)';
-    #hs_color: "if (state == 'on') return [120, 100];
-    #  else return [0, 100];"
-    #icon_color: >
-    #  if is_state('switch.door_sensor_3', 'on') return 'rgb(255,0,0)';
-    #  return 'rgb(0,255,0)';
-    #icon_color: "if is_state('switch.door_sensor_3', 'on') return 'rgb[255,0,0]';"
-    #hs_color: >
-    #  if is_state('switch.door_sensor_3', 'on') return [120,100];"
-    #  return [0,100];
 
-#sensor.bedroom_temperature:
-#  grafana_name: bedroom_temperature
-#sensor.bedroom_humidity:
-#  grafana_name: bedroom_humidity
 sensor.garage_temperature:
   grafana_name: garage_temperature
 sensor.garage_humidity:

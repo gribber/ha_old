@@ -290,6 +290,7 @@ logger:
 
 recorder:
   purge_keep_days: 1
+  auto_purge: true
   include:
     domains:
       - switch
@@ -328,14 +329,12 @@ recorder:
       - sensor.heater_activationtime
       - sensor.heater_temptime
       - sensor.heater_forecast
-      - sensor.rtc_power_1min_mean
-      - sensor.rtc_accumulated_consumption_1min_mean
-      - sensor.rtc_avgpower_1min_mean
-      - sensor.rtc_maxpower_1min_mean
-      - sensor.rtc_minpower_1min_mean
-      - sensor.rtc_current_phase1_1min_mean
-      - sensor.rtc_current_phase2_1min_mean
-      - sensor.rtc_current_phase3_1min_mean
+      - sensor.rtc_power_1min
+      - sensor.rtc_accumulated_consumption_1min
+      - sensor.rtc_avgpower_1min
+      - sensor.rtc_current_phase1_1min
+      - sensor.rtc_current_phase2_1min
+      - sensor.rtc_current_phase3_1min
       - sensor.rtc_accumulated_consumption_state
       - sensor.rtc_avgpower_state
       - sensor.rtc_maxpower_state
