@@ -1,0 +1,48 @@
+input_boolean:
+  bella_is_here:
+    name: "Bella is here"
+    icon: mdi:account-heart
+
+automation:
+  - alias: "bella: activating flight mode"
+    trigger:
+      - platform: state
+        entity_id: person.bella
+        from: 'home'
+        to: 'not_home'
+    condition:
+      - condition: time
+        after: '22:00:00'
+        before: '03:00:00'
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.bella_is_here
+
+  - alias: "bella: leaving"
+    trigger:
+      - platform: state
+        entity_id: person.bella
+        to: 'not_home'
+    condition:
+      - condition: time
+        before: '22:00:00'
+        after: '03:00:00'
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.bella_is_here
+
+  - alias: "bella: entering"
+    trigger:
+      - platform: state
+        entity_id: person.bella
+        to: 'home'
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.bella_is_here
+
+
+
+
+
+
+

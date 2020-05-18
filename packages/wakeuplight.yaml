@@ -76,8 +76,8 @@ automation:
                 entity_id: input_boolean.wakeup_whenhomealone
                 state: 'on'
               - condition: state
-                entity_id: person.bella
-                state: 'not_home'
+                entity_id: input_boolean.bella_is_here
+                state: 'off'
 
       - condition: or
         conditions:

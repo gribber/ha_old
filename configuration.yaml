@@ -50,14 +50,14 @@ influxdb:
       - sensor.heater_activationtime
       - sensor.heater_temptime
       - sensor.heater_forecast
-      - sensor.rtc_power_1min_mean
-      - sensor.rtc_accumulated_consumption_1min_mean
-      - sensor.rtc_avgpower_1min_mean
-      - sensor.rtc_maxpower_1min_mean
-      - sensor.rtc_minpower_1min_mean
-      - sensor.rtc_current_phase1_1min_mean
-      - sensor.rtc_current_phase2_1min_mean
-      - sensor.rtc_current_phase3_1min_mean
+      - sensor.rtc_power_1min
+      - sensor.rtc_accumulated_consumption_1min
+      - sensor.rtc_avgpower_1min
+      - sensor.rtc_maxpower_1min
+      - sensor.rtc_minpower_1min
+      - sensor.rtc_current_phase1_1min
+      - sensor.rtc_current_phase2_1min
+      - sensor.rtc_current_phase3_1min
       - sensor.rtc_accumulated_consumption_state
       - sensor.rtc_avgpower_state
       - sensor.rtc_maxpower_state
@@ -245,11 +245,11 @@ surepetcare:
   pets: !secret sure_petflap_pets
 
 # midea cloud
-# climate:
-#   - platform: midea
-#     app_key: 3742e9e5842d4ad59c2db887e12449f9
-#     username: !secret midea_user
-#     password: !secret midea_pass
+climate:
+  - platform: midea
+    app_key: 3742e9e5842d4ad59c2db887e12449f9
+    username: !secret midea_user
+    password: !secret midea_pass
 
 # unifi protect
 unifiprotect:
@@ -300,6 +300,7 @@ recorder:
       - vacuum
       - device_tracker
       - binary_sensor
+      - input_boolean
       - light
       - counter
       - lock
