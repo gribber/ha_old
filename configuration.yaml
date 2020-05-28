@@ -113,7 +113,7 @@ http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 10.5.50.250
-  base_url: !secret base_url
+  #base_url: !secret base_url
 
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
@@ -223,9 +223,6 @@ spotify:
 # Cloud
 cloud:
 
-automower:
-  username: !secret am_user
-  password: !secret am_pass
 
 # HACS
 hacs:
@@ -233,8 +230,15 @@ hacs:
 #  theme: true
 
 # HACS integrations
+# -----------------
 svt_play:
+
 tv4_play:
+
+# HQ automower
+automower:
+  username: !secret am_user
+  password: !secret am_pass
 
 # sure catflap
 surepetcare:
@@ -246,10 +250,14 @@ surepetcare:
 
 # midea cloud
 climate:
-  - platform: midea
-    app_key: 3742e9e5842d4ad59c2db887e12449f9
-    username: !secret midea_user
-    password: !secret midea_pass
+  # - platform: midea
+  #   app_key: 3742e9e5842d4ad59c2db887e12449f9
+  #   username: !secret midea_user
+  #   password: !secret midea_pass
+
+  - platform: midea_ac
+    host: !secret midea_host
+    id: !secret midea_id
 
 # unifi protect
 unifiprotect:
@@ -259,6 +267,8 @@ unifiprotect:
   # port: 7443
   # image_width: 640px
   # minimum_score: 0
+
+
 
 notify:
   - platform: pushbullet
@@ -274,10 +284,11 @@ notify:
 logger:
   default: info
   logs:
-    #aiounifi: debug
-    #homeassistant.components.unifi: debug
-    #homeassistant.components.device_tracker.unifi: debug
-    homeassistant.components.zoneminder: warn
+    # temp debug for unifi
+    # aiounifi: debug
+    # homeassistant.components.unifi: debug
+    # homeassistant.components.device_tracker.unifi: debug
+    # homeassistant.components.switch.unifi: debug
     homeassistant.components.device_tracker: warn
     homeassistant.components.sensor: warn
     homeassistant.components.sensor.scrape: info
@@ -289,6 +300,7 @@ logger:
     custom_components.nordpool: warn
 
 recorder:
+  db_url: !secret mariadb
   purge_keep_days: 1
   auto_purge: true
   include:

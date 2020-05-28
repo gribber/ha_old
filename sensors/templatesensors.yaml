@@ -32,3 +32,9 @@
       unit_of_measurement: "V"
       value_template: "{{ state_attr('sensor.pet_flap_pet_door_battery_level', 'voltage') }}"
 #      value_template: "{{ state_attr('binary_sensor.flap_livingroom_upstairs', 'battery_voltage') * 4 }}"
+
+    automower_battery_level:
+      unit_of_measurement: "%"
+      friendly_name: "Battery"
+      device_class: battery
+      value_template: "{{ state_attr('device_tracker.automower_g_170912997_170502790', 'battery') }}"
