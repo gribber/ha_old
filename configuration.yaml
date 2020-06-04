@@ -301,7 +301,7 @@ logger:
 
 recorder:
   db_url: !secret mariadb
-  purge_keep_days: 1
+  purge_keep_days: 2
   auto_purge: true
   include:
     domains:
