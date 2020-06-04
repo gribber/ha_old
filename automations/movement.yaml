@@ -1,4 +1,4 @@
-- alias: "Garage movement"
+- alias: "Garage movement: when not home"
   trigger:
     - platform: state
       entity_id: binary_sensor.presence_16
@@ -11,4 +11,19 @@
     service: notify.pushbullet
     data:
       message: "Movement in the garage!"
+      title: "ALERT"
+
+- alias: "Garage movement: when dark"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.unifiprotect_motion_garage
+      to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.motion_garage_lightlevel
+    below: 10
+  action:
+    service: notify.pushbullet
+    data:
+      message: "Probably an animal or insect in the garage"
       title: "ALERT"
