@@ -18,10 +18,6 @@ homeassistant:
       grafana_name: RTC accumulated consumption
     sensor.rtc_avgpower:
       grafana_name: RTC average power
-    # sensor.rtc_maxpower:
-    #   grafana_name: RTC max power
-    # sensor.rtc_minpower:
-    #   grafana_name: RTC min power
     sensor.rtc_power:
       grafana_name: RTC power consumption 
 
@@ -49,14 +45,6 @@ input_number:
     max: 20000
     mode: box
     step: 0.001
-  # rtc_maxpower:
-  #   min: 0
-  #   max: 20000
-  #   mode: box
-  # rtc_minpower:
-  #   min: 0
-  #   max: 20000
-  #   mode: box
   rtc_avgpower:
     min: 0
     max: 20000
@@ -83,12 +71,6 @@ sensor:
         unit_of_measurement: A
         value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL3") }}'
 
-      # rtc_maxpower_state:
-      #   unit_of_measurement: W
-      #   value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "maxPower") }}'
-      # rtc_minpower_state:
-      #   unit_of_measurement: W
-      #   value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "minPower") }}'
       rtc_avgpower_state:
         unit_of_measurement: W
         value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "averagePower") }}'
@@ -109,14 +91,6 @@ sensor:
         unit_of_measurement: A
         value_template: '{{ states("input_number.rtc_current_phase3") }}'
 
-      # rtc_maxpower:
-      #   friendly_name: Max power used
-      #   unit_of_measurement: W
-      #   value_template: '{{ states("input_number.rtc_maxpower") }}'
-      # rtc_minpower:
-      #   friendly_name: Min power used
-      #   unit_of_measurement: W
-      #   value_template: '{{ states("input_number.rtc_minpower") }}'
       rtc_avgpower:
         friendly_name: Average power used
         unit_of_measurement: W
@@ -185,26 +159,13 @@ sensor:
     max_age:
       seconds: 10
 
-  # - platform: statistics
-  #   entity_id: sensor.rtc_maxpower_state
-  #   name: rtc_maxpower_1min
-  #   sampling_size: 40
-  #   max_age:
-  #     seconds: 10
-
-  # - platform: statistics
-  #   entity_id: sensor.rtc_minpower_state
-  #   name: rtc_minpower_1min
-  #   sampling_size: 40
-  #   max_age:
-  #     seconds: 10
-
   - platform: statistics
     entity_id: sensor.rtc_avgpower_state
     name: rtc_avgpower_1min
-    sampling_size: 40
-    max_age:
-      seconds: 10
+    sampling_size: 10
+    # does not update often enough causing unknown values with max_age set? reducing sampling_size above for the same reason
+    # max_age:
+    #   seconds: 10
 
   - platform: statistics
     entity_id: sensor.rtc_accumulated_consumption_state
@@ -218,46 +179,29 @@ automation:
     trigger:
       - platform: time_pattern
         seconds: '/10'
-        #minutes: '*'
     action:
       - service: input_number.set_value
         data_template:
           entity_id: input_number.rtc_power
           value: "{{ state_attr('sensor.rtc_power_1min', 'mean') }}"
-          #value: "{{ states.sensor.rtc_power_1min_mean.state }}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.rtc_accumulated_consumption
           value: "{{ state_attr('sensor.rtc_accumulated_consumption_1min', 'mean') }}"
-          #value: "{{ states.sensor.rtc_accumulated_consumption_1min_mean.state }}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.rtc_avgpower
           value: "{{ state_attr('sensor.rtc_avgpower_1min', 'mean') }}"
-          #value: "{{ states.sensor.rtc_avgpower_1min_mean.state }}"
-      # - service: input_number.set_value
-      #   data_template:
-      #     entity_id: input_number.rtc_minpower
-      #     value: "{{ state_attr('sensor.rtc_minpower_1min', 'mean') }}"
-      #     #value: "{{ states.sensor.rtc_minpower_1min_mean.state }}"
-      # - service: input_number.set_value
-      #   data_template:
-      #     entity_id: input_number.rtc_maxpower
-      #     value: "{{ state_attr('sensor.rtc_maxpower_1min', 'mean') }}"
-      #     #value: "{{ states.sensor.rtc_maxpower_1min_mean.state }}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.rtc_current_phase1
           value: "{{ state_attr('sensor.rtc_current_phase1_1min', 'mean') }}"
-          #value: "{{ states.sensor.rtc_current_phase1_1min_mean.state }}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.rtc_current_phase2
           value: "{{ state_attr('sensor.rtc_current_phase2_1min', 'mean') }}"
-          #value: "{{ states.sensor.rtc_current_phase2_1min_mean.state }}"
       - service: input_number.set_value
         data_template:
           entity_id: input_number.rtc_current_phase3
           value: "{{ state_attr('sensor.rtc_current_phase3_1min', 'mean') }}"
-          #value: "{{ states.sensor.rtc_current_phase3_1min_mean.state }}"
           
