@@ -260,10 +260,10 @@ climate:
     id: !secret midea_id
 
 # unifi protect
-unifiprotect:
-  host: !secret protect_host
-  username: !secret protect_user
-  password: !secret protect_pass
+# unifiprotect:
+#   host: !secret protect_host
+#   username: !secret protect_user
+#   password: !secret protect_pass
   # port: 7443
   # image_width: 640px
   # minimum_score: 0

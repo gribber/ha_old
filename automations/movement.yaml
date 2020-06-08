@@ -16,7 +16,7 @@
 - alias: "Garage movement: when dark"
   trigger:
     - platform: state
-      entity_id: binary_sensor.unifiprotect_motion_garage
+      entity_id: binary_sensor.motion_garage
       to: 'on'
   condition:
     condition: numeric_state
