@@ -2,7 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.refrigerator_temperature
-      above: 12.8
+      above: 9
   action:
     - service: notify.pushbullet
       data:
