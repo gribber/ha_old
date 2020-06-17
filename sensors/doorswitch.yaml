@@ -3,13 +3,13 @@
   sensors:
     garage_door_state:
       value_template: >-
-        {% if is_state('switch.door_sensor_1', 'on') %}
+        {% if is_state('binary_sensor.garage_door', 'on') %}
           Open
         {% else %}
           Closed
         {% endif %}
       icon_template: >-
-        {% if is_state('switch.door_sensor_1', 'on') %}
+        {% if is_state('binary_sensor.garage_door', 'on') %}
           mdi:garage-open
         {% else %}
           mdi:garage
@@ -17,13 +17,13 @@
       friendly_name: Garage door
     garage_port_state:
       value_template: >-
-        {% if is_state('switch.door_sensor_2', 'on') %}
+        {% if is_state('binary_sensor.garage_port', 'on') %}
           Open
         {% else %}
           Closed
         {% endif %}
       icon_template: >-
-        {% if is_state('switch.door_sensor_2', 'on') %}
+        {% if is_state('binary_sensor.garage_port', 'on') %}
           mdi:garage-open
         {% else %}
           mdi:garage
