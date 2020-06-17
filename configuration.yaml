@@ -7,6 +7,7 @@ homeassistant:
         - fd00::/8
         - ::1
         - 172.30.32.2
+        - 10.5.50.149
 #        - 10.5.50.0/24
 
   customize: !include_dir_merge_named customize
@@ -317,19 +318,20 @@ recorder:
       - counter
       - lock
   exclude:
+    event_types:
+      # - state_changed # this is history stats
+      - call_service
     entities:
       - sensor.real_time_consumption_johannedalsvagen_75_b
-      - sensor.rtc_accumulated_consumption
-      - sensor.rtc_avgpower
-      - sensor.rtc_maxpower
-      - sensor.rtc_minpower
-      - sensor.rtc_current_phase1
-      - sensor.rtc_current_phase2
-      - sensor.rtc_current_phase3
-      - sensor.rtc_power_phase1
-      - sensor.rtc_power_phase2
-      - sensor.rtc_power_phase3
-      - sensor.rtc_voltage
+      # - sensor.rtc_accumulated_consumption
+      # - sensor.rtc_avgpower
+      # - sensor.rtc_current_phase1
+      # - sensor.rtc_current_phase2
+      # - sensor.rtc_current_phase3
+      # - sensor.rtc_power_phase1
+      # - sensor.rtc_power_phase2
+      # - sensor.rtc_power_phase3
+      # - sensor.rtc_voltage
       - sensor.hourly_energy
       - sensor.dayly_energy
       - sensor.weekly_energy
