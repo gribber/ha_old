@@ -19,9 +19,15 @@
       entity_id: binary_sensor.motion_garage
       to: 'on'
   condition:
-    condition: numeric_state
-    entity_id: sensor.motion_garage_lightlevel
-    below: 10
+    - condition: numeric_state
+      entity_id: sensor.motion_garage_lightlevel
+      below: 10
+    - condition: state
+      entity_id: sensor.garage_door_state
+      state: 'Closed'
+    - condition: state
+      entity_id: sensor.garage_port_state
+      state: 'Closed'
   action:
     service: notify.pushbullet
     data:
