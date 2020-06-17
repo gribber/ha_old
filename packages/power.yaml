@@ -1,66 +1,47 @@
 homeassistant:
   customize:
     sensor.rtc_voltage:
-      grafana_name: RTC voltage
+      grafana_name: "RTC voltage"
+      friendly_name: "Real time consumtion voltage"
     sensor.rtc_power_phase1:
-      grafana_name: RTC power phase 1
+      grafana_name: "RTC power phase 1"
+      friendly_name: "Real time consumtion phase 1"
     sensor.rtc_power_phase2:
-      grafana_name: RTC power phase 2
+      grafana_name: "RTC power phase 2"
+      friendly_name: "Real time consumtion phase 2"
     sensor.rtc_power_phase3:
-      grafana_name: RTC power phase 3
+      grafana_name: "RTC power phase 3"
+      friendly_name: "Real time consumtion phase 3"
     sensor.rtc_current_phase1:
-      grafana_name: RTC current phase 1
+      grafana_name: "RTC current phase 1"
+      friendly_name: "Real time consumtion phase 1"
     sensor.rtc_current_phase2:
-      grafana_name: RTC current phase 2
+      grafana_name: "RTC current phase 2"
+      friendly_name: "Real time consumtion phase 2"
     sensor.rtc_current_phase3:
-      grafana_name: RTC current phase 3
+      grafana_name: "RTC current phase 3"
+      friendly_name: "Real time consumtion phase 3"
     sensor.rtc_accumulated_consumption:
-      grafana_name: RTC accumulated consumption
+      grafana_name: "RTC accumulated consumption"
+      friendly_name: "Accumulated Consumption"
     sensor.rtc_avgpower:
-      grafana_name: RTC average power
+      grafana_name: "RTC average power"
+      friendly_name: "Average power used"
     sensor.rtc_power:
-      grafana_name: RTC power consumption 
-
-input_number:
-  rtc_power:
-    min: 0
-    max: 24000
-    mode: box
-  rtc_accumulated_consumption:
-    min: 0
-    max: 20000
-    mode: box
-  rtc_current_phase1:
-    min: 0
-    max: 20000
-    mode: box
-    step: 0.001
-  rtc_current_phase2:
-    min: 0
-    max: 20000
-    mode: box
-    step: 0.001
-  rtc_current_phase3:
-    min: 0
-    max: 20000
-    mode: box
-    step: 0.001
-  rtc_avgpower:
-    min: 0
-    max: 20000
-    mode: box
+      grafana_name: "RTC power consumption"
+      friendly_name: "Power consumption"
 
 sensor:
   - platform: template
     sensors:
       rtc_voltage:
-        friendly_name: Real time consumtion voltage
         unit_of_measurement: V
         value_template: >-
           {% set v = states('sensor.sp120_1_voltage') %}
           {% if v|round(0)|string|length != 3 %} {% set v = 230 %} {% endif %}
           {{ v }}
 
+      # current reading for each phase
       rtc_current_phase1_state:
         unit_of_measurement: A
         value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL1") }}'    
@@ -71,6 +52,7 @@ sensor:
         unit_of_measurement: A
         value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL3") }}'
 
+      # power reading 
       rtc_avgpower_state:
         unit_of_measurement: W
         value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "averagePower") }}'
@@ -78,52 +60,22 @@ sensor:
         unit_of_measurement: kWh
         value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "accumulatedConsumption") }}'
 
-      rtc_current_phase1:
-        friendly_name: Real time consumtion phase 1
-        unit_of_measurement: A
-        value_template: '{{ states("input_number.rtc_current_phase1") }}'    
-      rtc_current_phase2:
-        friendly_name: Real time consumtion phase 2
-        unit_of_measurement: A
-        value_template: '{{ states("input_number.rtc_current_phase2") }}'
-      rtc_current_phase3:
-        friendly_name: Real time consumtion phase 3
-        unit_of_measurement: A
-        value_template: '{{ states("input_number.rtc_current_phase3") }}'
-
-      rtc_avgpower:
-        friendly_name: Average power used
-        unit_of_measurement: W
-        value_template: '{{ states("input_number.rtc_avgpower") }}'
-
+      # calculated power reading
       rtc_power_phase1:
-        friendly_name: Real time consumtion phase 1
         unit_of_measurement: W
         value_template: >- 
-          {% set w = (states("input_number.rtc_current_phase1") | float) * (states("sensor.rtc_voltage") | float) %}
+          {% set w = (states("sensor.rtc_current_phase1") | float) * (states("sensor.rtc_voltage") | float) %}
           {{ w | round(2) }}
       rtc_power_phase2:
-        friendly_name: Real time consumtion phase 2
         unit_of_measurement: W
         value_template: >- 
-          {% set w = (states("input_number.rtc_current_phase2") | float) * (states("sensor.rtc_voltage") | float) %}
+          {% set w = (states("sensor.rtc_current_phase2") | float) * (states("sensor.rtc_voltage") | float) %}
           {{ w | round(2) }}
       rtc_power_phase3:
-        friendly_name: Real time consumtion phase 3
         unit_of_measurement: W
         value_template: >- 
-          {% set w = (states("input_number.rtc_current_phase3") | float) * (states("sensor.rtc_voltage") | float) %}
+          {% set w = (states("sensor.rtc_current_phase3") | float) * (states("sensor.rtc_voltage") | float) %}
           {{ w | round(2) }}
-
-      rtc_accumulated_consumption:
-        friendly_name: Accumulated Consumption
-        unit_of_measurement: kWh
-        value_template: '{{ states("input_number.rtc_accumulated_consumption") }}'
-
-      rtc_power:
-        friendly_name: Power consumption
-        unit_of_measurement: W
-        value_template: '{{ states("input_number.rtc_power") }}'
 
   - platform: integration
     source: sensor.real_time_consumption_johannedalsvagen_75_b
@@ -174,34 +126,41 @@ sensor:
     max_age:
       seconds: 10
 
-automation:
-  - alias: "update power sensors"
-    trigger:
-      - platform: time_pattern
-        seconds: '/10'
-    action:
-      - service: input_number.set_value
-        data_template:
-          entity_id: input_number.rtc_power
-          value: "{{ state_attr('sensor.rtc_power_1min', 'mean') }}"
-      - service: input_number.set_value
-        data_template:
-          entity_id: input_number.rtc_accumulated_consumption
-          value: "{{ state_attr('sensor.rtc_accumulated_consumption_1min', 'mean') }}"
-      - service: input_number.set_value
-        data_template:
-          entity_id: input_number.rtc_avgpower
-          value: "{{ state_attr('sensor.rtc_avgpower_1min', 'mean') }}"
-      - service: input_number.set_value
-        data_template:
-          entity_id: input_number.rtc_current_phase1
-          value: "{{ state_attr('sensor.rtc_current_phase1_1min', 'mean') }}"
-      - service: input_number.set_value
-        data_template:
-          entity_id: input_number.rtc_current_phase2
-          value: "{{ state_attr('sensor.rtc_current_phase2_1min', 'mean') }}"
-      - service: input_number.set_value
-        data_template:
-          entity_id: input_number.rtc_current_phase3
-          value: "{{ state_attr('sensor.rtc_current_phase3_1min', 'mean') }}"
-          
+  # throttle sensors
+  - platform: filter
+    entity_id: sensor.rtc_power_1min
+    name: "rtc_power"
+    filters:
+      - filter: time_throttle
+        window_size: "00:00:10"
+  - platform: filter
+    entity_id: sensor.rtc_accumulated_consumption_1min
+    name: "rtc_accumulated_consumption"
+    filters:
+      - filter: time_throttle
+        window_size: "00:00:10"
+  - platform: filter
+    entity_id: sensor.rtc_avgpower_1min
+    name: "rtc_avgpower"
+    filters:
+      - filter: time_throttle
+        window_size: "00:00:10"
+
+  - platform: filter
+    entity_id: sensor.rtc_current_phase1_1min
+    name: "rtc_current_phase1"
+    filters:
+      - filter: time_throttle
+        window_size: "00:00:10"
+  - platform: filter
+    entity_id: sensor.rtc_current_phase2_1min
+    name: "rtc_current_phase2"
+    filters:
+      - filter: time_throttle
+        window_size: "00:00:10"
+  - platform: filter
+    entity_id: sensor.rtc_current_phase3_1min
+    name: "rtc_current_phase3"
+    filters:
+      - filter: time_throttle
+        window_size: "00:00:10"
