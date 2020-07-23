@@ -1,0 +1,42 @@
+# camera:
+#   - name: parking last person
+#     platform: mqtt
+#     topic: "frigate/parking/person/snapshot"
+#   - name: frontporch last person
+#     platform: mqtt
+#     topic: "frigate/frontporch/person/snapshot"
+#   - name: backporch last person
+#     platform: mqtt
+#     topic: "frigate/backporch/person/snapshot"
+#   # - name: anycam last person
+#   #   platform: mqtt
+#   #   topic: "frigate/#/person/snapshot"
+
+#   - name: parking cat
+#     platform: mqtt
+#     topic: frigate/parking/cat/snapshot
+
+# binary_sensor:
+#   - name: parking person
+#     platform: mqtt
+#     state_topic: "frigate/parking/person"
+#     device_class: motion
+#     availability_topic: "frigate/available"
+
+#   - name: frontporch person
+#     platform: mqtt
+#     state_topic: "frigate/frontporch/person"
+#     device_class: motion
+#     availability_topic: "frigate/available"
+
+#   - name: backporch person
+#     platform: mqtt
+#     state_topic: "frigate/backporch/person"
+#     device_class: motion
+#     availability_topic: "frigate/available"
+
+#   - name: backyard person
+#     platform: mqtt
+#     state_topic: "frigate/backyard/person"
+#     device_class: motion
+#     availability_topic: "frigate/available"

@@ -1,0 +1,76 @@
+# - alias: Alert if person detected at parking
+#   trigger: 
+#     platform: state
+#     entity_id: binary_sensor.parking_person
+#     from: 'off'
+#     to: 'on'
+#   condition:
+#     - condition: time
+#       after: '22:30:00'
+#       before: '08:00:00'
+#   action:
+#     - service: notify.castle
+#       data:
+#         title: "Mooo"
+#         message: "Person detected"
+#         data:
+#           photo:
+#             url: http://drones.local.hellburner.net:5000/parking/person/best.jpg
+
+# - alias: Alert if person detected at frontporch
+#   trigger: 
+#     platform: state
+#     entity_id: binary_sensor.frontporch_person
+#     from: 'off'
+#     to: 'on'
+#   condition:
+#     - condition: time
+#       after: '22:30:00'
+#       before: '08:00:00'
+#   action:
+#     - service: notify.castle
+#       data:
+#         title: "Mooo"
+#         message: "Person detected"
+#         data:
+#           photo:
+#             url: http://drones.local.hellburner.net:5000/frontporch/person/best.jpg
+
+
+# - alias: Alert if person detected at backporch
+#   trigger: 
+#     platform: state
+#     entity_id: binary_sensor.backporch_person
+#     from: 'off'
+#     to: 'on'
+#   condition:
+#     - condition: time
+#       after: '22:30:00'
+#       before: '08:00:00'
+#   action:
+#     - service: notify.castle
+#       data:
+#         title: "Mooo"
+#         message: "Person detected"
+#         data:
+#           photo:
+#             url: http://drones.local.hellburner.net:5000/backporch/person/best.jpg
+
+# - alias: Alert if person detected at backyard
+#   trigger: 
+#     platform: state
+#     entity_id: binary_sensor.backyard_person
+#     from: 'off'
+#     to: 'on'
+#   condition:
+#     - condition: time
+#       after: '22:30:00'
+#       before: '08:00:00'
+#   action:
+#     - service: notify.castle
+#       data:
+#         title: "Mooo"
+#         message: "Person detected"
+#         data:
+#           photo:
+#             url: http://drones.local.hellburner.net:5000/backyard/person/best.jpg

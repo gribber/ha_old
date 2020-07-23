@@ -1,0 +1,63 @@
+
+- platform: rest
+  name: 'Frigate Debug'
+  resource: 'http://drones.local.hellburner.net:5000/debug/stats'
+  scan_interval: 5
+  json_attributes:
+    - 'backyard'
+    - 'frontporch'
+    - 'backporch'
+    - 'parking'
+    - 'coral'
+  value_template: 'OK'
+
+- platform: template
+  sensors:
+    backyard_process_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["backyard"]["process_fps"] }}'
+      unit_of_measurement: 'FPS'
+    backyard_skipped_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["backyard"]["skipped_fps"] }}'
+      unit_of_measurement: 'FPS'
+    backyard_detection_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["backyard"]["detection_fps"] }}'
+      unit_of_measurement: 'FPS'
+
+    frontporch_process_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["frontporch"]["process_fps"] }}'
+      unit_of_measurement: 'FPS'
+    frontporch_skipped_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["frontporch"]["skipped_fps"] }}'
+      unit_of_measurement: 'FPS'
+    frontporch_detection_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["frontporch"]["detection_fps"] }}'
+      unit_of_measurement: 'FPS'
+
+    backporch_process_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["backporch"]["process_fps"] }}'
+      unit_of_measurement: 'FPS'
+    backporch_skipped_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["backporch"]["skipped_fps"] }}'
+      unit_of_measurement: 'FPS'
+    backporch_detection_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["backporch"]["detection_fps"] }}'
+      unit_of_measurement: 'FPS'
+
+    parking_process_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["parking"]["process_fps"] }}'
+      unit_of_measurement: 'FPS'
+    parking_skipped_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["parking"]["skipped_fps"] }}'
+      unit_of_measurement: 'FPS'
+    parking_detection_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["parking"]["detection_fps"] }}'
+      unit_of_measurement: 'FPS'
+  
+    frigate_coral_fps: 
+      value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps"] }}'
+      unit_of_measurement: 'FPS'
+    frigate_coral_inference:
+      value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["inference_speed"] }}' 
+      unit_of_measurement: 'ms'
+
+
