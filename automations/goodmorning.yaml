@@ -1,7 +1,7 @@
 - alias: 'Play SVT Morgonstudion on workdays'
   trigger:
     platform: time
-    at: "06:20"
+    at: "07:00"
   condition:
     - condition: state
       entity_id: binary_sensor.workday_sensor

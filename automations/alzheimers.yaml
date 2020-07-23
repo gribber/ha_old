@@ -13,7 +13,7 @@
       message: 'You forgot to lock the door'
       title: 'Alzheimers'
 
-- alias: "Garage reminder when leaveing home"
+- alias: "Garage reminder when leaveing home" 
   trigger:
     - platform: state
       entity_id: person.linus
