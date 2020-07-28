@@ -200,7 +200,8 @@ switch: !include switch.yaml
 tts:
   - platform: google_translate
     service_name: google_say
-
+    base_url: !secret base_url
+    
 # verisure
 verisure:
   username: !secret verisure_user
