@@ -81,7 +81,15 @@ automation:
         data:
           title: "Coffee maker"
           message: "Coffee is ready!"
-
+      - service: tts.google_say
+        entity_id:
+          - media_player.bedroom_speaker
+          - media_player.nesthub_kitchen
+          - media_player.hobbyroom_speaker
+        data_template:
+          message: "Kaffet är klart"
+          language: sv
+  
   - alias: 'coffee: autostart'
     trigger:
       platform: template
@@ -105,7 +113,7 @@ automation:
         data:
           title: "Coffee maker"
           message: "making coffee"
-
+  
   - alias: 'coffee: auto turn off switch'
     trigger:
       platform: state
