@@ -227,6 +227,12 @@ spotify:
 # Cloud
 cloud:
 
+# vacuum cleaners
+vacuum:
+  - platform: xiaomi_miio
+    name: 'Vac-It Ralph'
+    host: !secret roborock_s5max_host
+    token: !secret roborock_s5max_token
 
 # HACS
 hacs:
@@ -330,6 +336,7 @@ recorder:
       - light
       - counter
       - lock
+      - vacuum
   exclude:
     event_types:
       # - state_changed # this is history stats
