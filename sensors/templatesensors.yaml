@@ -17,6 +17,7 @@
     flap_livingroom_upstairs_nimh_battery_level:
       unit_of_measurement: "%"
       device_class: battery
+      friendly_name: "Petdoor"
       # mincharge of 4.2v seems to be too low, voltage drops quickly after 4.6v (4.6 to 4.0 in 24 hours)
       # {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
       value_template: >-
@@ -24,6 +25,20 @@
         {% set mincharge = 4.6 %}
         {% set diffcharge = (maxcharge - mincharge) / 100 %}
         {% set charge = (100 - ((maxcharge - state_attr('sensor.pet_flap_pet_door_battery_level', 'voltage') | float) / diffcharge)) | round(1) %}
+        {% if charge < 0 %} {% set charge = 0 %} {% endif %}
+        {{ charge }}
+
+    flap_catflapdual_nimh_battery_level:
+      unit_of_measurement: "%"
+      device_class: battery
+      friendly_name: "Catflap"
+      # mincharge of 4.2v seems to be too low, voltage drops quickly after 4.6v (4.6 to 4.0 in 24 hours)
+      # {{ (100 - ((maxcharge - state_attr('sensor.flap_livingroom_upstairs_battery_level_2', 'voltage')[0:4] | float) / diffcharge)) | round(1) }}
+      value_template: >-
+        {% set maxcharge = 5.37 %}
+        {% set mincharge = 4.6 %}
+        {% set diffcharge = (maxcharge - mincharge) / 100 %}
+        {% set charge = (100 - ((maxcharge - state_attr('sensor.pet_flap_catflapdual_battery_level', 'voltage') | float) / diffcharge)) | round(1) %}
         {% if charge < 0 %} {% set charge = 0 %} {% endif %}
         {{ charge }}
 
@@ -38,3 +53,8 @@
       friendly_name: "Annie battery level"
       device_class: battery
       value_template: "{{ state_attr('device_tracker.automower_g_170912997_170502790', 'battery') }}"
+
+    outdoor_temperatures:
+      device_class: temperature
+      friendly_name: "Outdoor temperatures"
+      value_template: "S:{{ states('sensor.outdoor_south_temperature') }} N:{{ states('sensor.outdoor_north_temperature') }} E:{{ states('sensor.outdoor_east_temperature') }} W:{{ states('sensor.outdoor_west_temperature') }}"
