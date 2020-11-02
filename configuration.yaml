@@ -260,23 +260,10 @@ surepetcare:
 
 # midea cloud
 climate:
-  # - platform: midea
-  #   app_key: 3742e9e5842d4ad59c2db887e12449f9
-  #   username: !secret midea_user
-  #   password: !secret midea_pass
-
   - platform: midea_ac
     host: !secret midea_host
     id: !secret midea_id
 
-# unifi protect
-# unifiprotect:
-#   host: !secret protect_host
-#   username: !secret protect_user
-#   password: !secret protect_pass
-  # port: 7443
-  # image_width: 640px
-  # minimum_score: 0
 
 telegram_bot:
   - platform: polling
@@ -352,6 +339,7 @@ recorder:
       # - sensor.rtc_power_phase2
       # - sensor.rtc_power_phase3
       # - sensor.rtc_voltage
+      - sensor.outdoor_temperatures
       - sensor.hourly_energy
       - sensor.dayly_energy
       - sensor.weekly_energy

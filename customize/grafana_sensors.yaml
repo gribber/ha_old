@@ -38,7 +38,11 @@ sensor.consumption_39:
   grafana_name: "Engine heater consumption"
   friendly_name: "Engine heater consumption"
 
+# nibe
+sensor.nibe_bt1_outdoor_temperature:
+  grafana_name: nibe_bt1_outdoor_temperature
 
+# generic sensors
 sensor.garage_temperature:
   grafana_name: garage_temperature
 sensor.garage_humidity:
@@ -64,6 +68,8 @@ sensor.hobbyroom_temperature:
   grafana_name: hobbyroom_temperature
 sensor.hobbyroom_humidity:
   grafana_name: hobbyroom_humidity
+sensor.hobbyroom_pressure:
+  grafana_name: hobbyroom_pressure
 sensor.kitchen_temperature:
   grafana_name: kitchen_temperature
 sensor.kitchen_humidity:
@@ -125,5 +131,5 @@ sensor.bedroom_humidity:
   grafana_name: bedroom_humidity
 sensor.bedroom_pressure:
   grafana_name: bedroom_pressure
-
+  
 

@@ -1,0 +1,37 @@
+- alias: Kitchen remote bindings left
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: tradfri_remote_control_kitchen
+      event: 4002
+  action:
+    - service: svt_play.play_suggested
+      entity_id: media_player.nesthub_kitchen
+      data:
+        program_name: morgonstudion
+
+- alias: Kitchen remote bindings right
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: tradfri_remote_control_kitchen
+      event: 5002
+  action:
+    - service: tv4_play.play_suggested
+      entity_id: media_player.nesthub_kitchen
+      data:
+        program_name: nyhetsmorgon
+
+- alias: Kitchen remote bindings right long
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: tradfri_remote_control_kitchen
+      event: 5001
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.nesthub_kitchen
+      

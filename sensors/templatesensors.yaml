@@ -43,10 +43,15 @@
         {{ charge }}
 
     flap_livingroom_upstairs_nimh_battery_voltage:
-      friendly_name: "Catflap battery voltage"
+      friendly_name: "Petdoor battery voltage"
       unit_of_measurement: "V"
       value_template: "{{ state_attr('sensor.pet_flap_pet_door_battery_level', 'voltage') }}"
 #      value_template: "{{ state_attr('binary_sensor.flap_livingroom_upstairs', 'battery_voltage') * 4 }}"
+
+    flap_catflapdual_nimh_battery_voltage:
+      friendly_name: "Catflap battery voltage"
+      unit_of_measurement: "V"
+      value_template: "{{ state_attr('sensor.pet_flap_catflapdual_battery_level', 'voltage') }}"
 
     automower_battery_level:
       unit_of_measurement: "%"

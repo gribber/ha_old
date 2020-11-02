@@ -1,0 +1,30 @@
+- alias: 'mqtt sensors: house_downstairs'
+  trigger:
+    platform: state
+    entity_id: sensor.cinema_temperature
+  action:
+    service: mqtt.publish
+    data:
+      topic: 'sensors/temperature/downstairs'
+      payload: "{{ trigger.to_state.state }}"
+
+- alias: 'mqtt sensors: house_upstairs'
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen_temperature
+  action:
+    service: mqtt.publish
+    data:
+      topic: 'sensors/temperature/upstairs'
+      payload: "{{ trigger.to_state.state }}"
+    
+- alias: 'mqtt sensors: cinema'
+  trigger:
+    platform: state
+    entity_id: sensor.cinema_temperature
+  action:
+    service: mqtt.publish
+    data:
+      topic: 'sensors/temperature/cinema'
+      payload: "{{ trigger.to_state.state }}"
+

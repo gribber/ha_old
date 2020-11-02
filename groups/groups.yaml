@@ -26,7 +26,7 @@ window_lights:
     - switch.proove_2
     - switch.switch_livingroom_upstairs
 #    - light.ikea_e14_400lm # bedroom
-    - light.livingroom_window
+    - light.cinema_window
 
 flvp_sensors:
   name: FLVP Sensors

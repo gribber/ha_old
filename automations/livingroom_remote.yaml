@@ -1,0 +1,23 @@
+- alias: Livingroom remote bindings up
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: tradfri_on_off_switch_livingroom
+      event: 1001
+  action:
+    service: light.toggle
+    entity_id:
+      - light.living_room_lamps
+
+- alias: Livingroom remote bindings down
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: tradfri_on_off_switch_livingroom
+      event: 2001
+  action:
+    service: light.toggle
+    entity_id:
+      - light.living_room_couch_lamp
