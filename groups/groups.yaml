@@ -8,6 +8,7 @@ outdoor_lights:
     - switch.ikea_outlet_1
     - light.garage_roof
     - light.entre
+    - light.parking
 
 # llvp_garage:
 #   name: Garage heat pump
@@ -22,7 +23,7 @@ window_lights:
   name: Window lights
   entities:
     - light.kitchen_window_1
-    - light.workoutroom_window_1
+    - light.guestroom_window_1
     - switch.proove_2
     - switch.switch_livingroom_upstairs
 #    - light.ikea_e14_400lm # bedroom

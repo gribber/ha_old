@@ -7,6 +7,7 @@
     data:
       topic: 'sensors/temperature/downstairs'
       payload: "{{ trigger.to_state.state }}"
+      retain: true
 
 - alias: 'mqtt sensors: house_upstairs'
   trigger:
@@ -17,6 +18,7 @@
     data:
       topic: 'sensors/temperature/upstairs'
       payload: "{{ trigger.to_state.state }}"
+      retain: true
     
 - alias: 'mqtt sensors: cinema'
   trigger:
@@ -27,4 +29,5 @@
     data:
       topic: 'sensors/temperature/cinema'
       payload: "{{ trigger.to_state.state }}"
+      retain: true
 

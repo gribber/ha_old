@@ -40,4 +40,8 @@ automation:
         data:
           title: "Mailbox"
           message: "You got mail!"
+      - service: notify.ALL_DEVICES
+        data:
+          title: "Postlådan"
+          message: "Kom och töm mig på post!"
 

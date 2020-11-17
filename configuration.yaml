@@ -89,23 +89,25 @@ google_assistant:
       expose: false
     switch.sp120_1:
       expose: false
-    light.kitchentable:
-      name: 'Kitchen table'
-      aliases:
-        - 'table light'
-        - 'kökslampa'
-        - 'kökslampan'
-        - 'kökslyset'
-    switch.switch_tiny_1:
-      name: 'Kitchen window'
-      aliases:
-        - 'kitchen window light'
-        - 'köksfönsterlampan'
-    light.bedroom_ceiling:
-      name: 'Bedroom ceiling'
-      aliases:
-        - 'Sovrumslampan'
-        - 'Sovrumstaklampan'
+    sensor.outdoor_temperatures:
+      expose: false
+    # light.kitchentable:
+    #   name: 'Kitchen table'
+    #   aliases:
+    #     - 'table light'
+    #     - 'kökslampa'
+    #     - 'kökslampan'
+    #     - 'kökslyset'
+    # switch.switch_tiny_1:
+    #   name: 'Kitchen window'
+    #   aliases:
+    #     - 'kitchen window light'
+    #     - 'köksfönsterlampan'
+    # light.bedroom_ceiling:
+    #   name: 'Bedroom ceiling'
+    #   aliases:
+    #     - 'Sovrumslampan'
+    #     - 'Sovrumstaklampan'
 
 
 http:
@@ -183,6 +185,9 @@ media_player: !include media_player.yaml
 
 # Track the sun
 sun:
+
+# stream
+stream:
 
 # Weather prediction
 sensor: !include_dir_merge_list sensors/
@@ -287,6 +292,11 @@ notify:
     name: castle
     chat_id: !secret telegram_bot_id_group
 
+  - platform: group
+    name: ALL_DEVICES
+    services:
+      - service: mobile_app_nokia_7_plus
+      - service: mobile_app_isabells_iphone
 
 logger:
   default: info
