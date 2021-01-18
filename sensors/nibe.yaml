@@ -1,0 +1,31 @@
+- platform: history_stats
+  name: NIBE compressor runtime
+  entity_id: sensor.nibe_cpr_status_ep14
+  state: 1
+  type: time
+  start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+  end: '{{ now() }}'
+
+- platform: history_stats
+  name: NIBE compressor starts
+  entity_id: binary_sensor.nibe_compressor_state
+  state: 'on'
+  type: count
+  start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+  end: '{{ now() }}'
+
+- platform: history_stats
+  name: NIBE defrost runtime
+  entity_id: sensor.nibe_alarm
+  state: 183
+  type: time
+  start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+  end: '{{ now() }}'
+
+- platform: history_stats
+  name: NIBE defrost count
+  entity_id: sensor.nibe_alarm
+  state: 183
+  type: count
+  start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+  end: '{{ now() }}'

@@ -28,6 +28,7 @@ window_lights:
     - switch.switch_livingroom_upstairs
 #    - light.ikea_e14_400lm # bedroom
     - light.cinema_window
+    - light.bella_window_1
 
 flvp_sensors:
   name: FLVP Sensors

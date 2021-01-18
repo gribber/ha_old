@@ -180,26 +180,12 @@ logbook:
 # Enables a map showing the location of tracked devices
 map:
 
-# media players
-media_player: !include media_player.yaml
-
 # Track the sun
 sun:
 
 # stream
 stream:
 
-# Weather prediction
-sensor: !include_dir_merge_list sensors/
-
-# Zones
-#zone: !include zones.yaml
-
-# Cameras
-camera: !include cameras.yaml
-
-# Switches
-switch: !include switch.yaml
 
 # Text to speech
 tts:
@@ -380,11 +366,23 @@ recorder:
 
 
 
+# media players
+media_player: !include media_player.yaml
+
+# include sensors
+sensor: !include_dir_merge_list sensors/
+
+# Cameras
+camera: !include cameras.yaml
+
+# Switches
+switch: !include switch.yaml
 
 group: !include_dir_merge_named groups/
 light: !include_dir_merge_list lights/
 #light: !include light.yaml
-binary_sensor: !include binary_sensors.yaml
+#binary_sensor: !include binary_sensors.yaml
+binary_sensor: !include_dir_merge_list binary_sensors/
 utility_meter: !include utility_meter.yaml
 
 

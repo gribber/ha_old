@@ -1,0 +1,11 @@
+- platform: scrape
+  resource: "https://www.svk.se/drift-av-transmissionsnatet/kontrollrummet/"
+  scan_interval: 300
+  select: "#productionImportExportView > div:nth-child(2)"
+  name: "svk_se_impexp"
+  unit_of_measurement: MW
+  value_template: >
+    {% set v = value.split("\n")[2] %}
+    {% set power = value.split("\n")[3].split(" ")[0]|regex_replace("[^0-9]", "")|int  %}
+    {% if v == "Exporterar" %} {% set impexp = power %} {% else %} {% set impexp = power - (power + power) %} {% endif %}
+    {{ impexp }}

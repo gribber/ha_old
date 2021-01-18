@@ -1,6 +1,0 @@
-- platform: workday
-  country: SE
-
-- platform: apcupsd
-
-#- platform: unifiprotect
