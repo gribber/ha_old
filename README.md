@@ -1,0 +1,2 @@
+# ha
+Home Assistant configuration
