@@ -6,7 +6,7 @@
     - condition: template
       value_template: '{{ (as_timestamp(now())+(86400*30)|int) > (as_timestamp(state_attr("sensor.halebop", "expires") + "00:00:00")|int) }}'
   action:
-    - service: notify.mobile_app_nokia_7_plus
+    - service: notify.mobile_app_oneplus_8t
       data:
         title: "Halebop sim"
         message: "Dags att fylla på kortet! Det går ut {{ state_attr('sensor.halebop', 'expires') }} och saldot är {{ states('sensor.halebop') }}kr"
