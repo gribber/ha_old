@@ -8,6 +8,27 @@
 #           if (state === 'heating') return 'rgb(59, 247, 81)';
 #           if (state === 'making') return 'rgb(246, 255, 66)';
 #           return 'rgb(235, 64, 52)';
+counter:
+  coffeecups_day:
+    name: 'Koppar idag'
+    icon: mdi:coffee
+  coffeecups_week:
+    name: 'Koppar den här veckan'
+    icon: mdi:coffee
+  coffeecups_month:
+    name: 'Koppar den här månaden'
+    icon: mdi:coffee
+  coffeecups_total:
+    name: 'Koppar totalt'
+    icon: mdi:coffee
+
+input_number:
+  coffeecups_last:
+    initial: 0
+    min: 0
+    max: 10
+    name: 'Koppar senaste bryggningen'
+    icon: mdi:coffee
 
 sensor:
   - platform: template
@@ -17,9 +38,9 @@ sensor:
         value_template: >-
           {% if states('sensor.sp120_coffee_power')|int < 1 %}
             off
-          {% elif (states('sensor.sp120_coffee_power')|int > 30) and (states('sensor.sp120_coffee_power')|int < 120) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 30) and (states('sensor.sp120_coffee_power')|int < 200) %}
             heating
-          {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1500) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 800) and (states('sensor.sp120_coffee_power')|int < 1500) %}
             making
           {% else %}
             unknown ({{ states('sensor.sp120_coffee_power') }}W)
@@ -27,9 +48,9 @@ sensor:
         icon_template: >-
           {% if states('sensor.sp120_coffee_power')|int < 1 %}
             mdi:coffee-off
-          {% elif (states('sensor.sp120_coffee_power')|int > 30) and (states('sensor.sp120_coffee_power')|int < 120) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 30) and (states('sensor.sp120_coffee_power')|int < 200) %}
             mdi:coffee-to-go
-          {% elif (states('sensor.sp120_coffee_power')|int > 1200) and (states('sensor.sp120_coffee_power')|int < 1500) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 800) and (states('sensor.sp120_coffee_power')|int < 1500) %}
             mdi:coffee-maker
           {% else %}
             mdi:cloud-question
@@ -64,6 +85,11 @@ input_datetime:
     has_time: true
     has_date: false
 
+  coffee_brewing_start:
+    name: 'Start of brewing'
+    has_time: true
+    has_date: true
+
 input_boolean:
   coffee_autostart:
     name: 'Autostart if preloaded'
@@ -77,10 +103,10 @@ automation:
       to: 'heating'
       for: '00:01:30' # takes some time before all coffee has passed thru the filter
     action:
-      - service: notify.mobile_app_nokia_7_plus
+      - service: notify.mobile_app_oneplus_8t
         data:
-          title: "Coffee maker"
-          message: "Coffee is ready!"
+          title: "Kaffebryggaren"
+          message: "{{ states('input_number.coffeecups_last')|int }} koppar är färdiga!"
       - service: tts.google_say
         entity_id:
           # - media_player.bedroom_speaker
@@ -109,7 +135,7 @@ automation:
       - delay: '00:00:01'
       - service: switch.turn_off
         entity_id: switch.coffee_maker_switch
-      - service: notify.mobile_app_nokia_7_plus
+      - service: notify.mobile_app_oneplus_8t
         data:
           title: "Coffee maker"
           message: "making coffee"
@@ -124,3 +150,74 @@ automation:
     action:
       - service: switch.turn_off
         entity_id: switch.coffee_maker_switch
+
+  - alias: 'coffee: time of start brewing'
+    trigger:
+      platform: state
+      entity_id: sensor.coffee_state
+      to: 'making'
+    action:
+      service: input_datetime.set_datetime
+      data:
+        entity_id: input_datetime.coffee_brewing_start
+        timestamp: '{{ now().timestamp() }}'
+
+  - alias: 'coffee: counter'
+    trigger:
+      platform: state
+      entity_id: sensor.coffee_state
+      from: 'making'
+      # for: '00:00:10' 
+    action:
+      # - service: input_number.set_value
+      #   data_template:
+      #     entity_id: input_number.coffeecups_last
+      #     value: "{{ ((as_timestamp(now())-as_timestamp(states.sensor.coffee_state.last_changed))/38)|round(0) }}" # 38 = average time for each cup in seconds 
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.coffeecups_last
+          value: "{{ ((as_timestamp(now())-as_timestamp(states.input_datetime.coffee_brewing_start.state))/38)|round(0) }}" # 38 = average time for each cup in seconds 
+      - service: counter.configure
+        data_template:
+          entity_id:
+            - counter.coffeecups_day
+            - counter.coffeecups_week
+            - counter.coffeecups_month
+            - counter.coffeecups_total
+          step: "{{ states('input_number.coffeecups_last')|int }}"
+      - service: counter.increment
+        entity_id:
+          - counter.coffeecups_day
+          - counter.coffeecups_week
+          - counter.coffeecups_month
+          - counter.coffeecups_total
+
+  - alias: 'Coffee: reset daily'
+    trigger:
+      platform: time
+      at: '00:00'
+    action:
+      service: counter.reset
+      entity_id: counter.coffeecups_day
+
+  - alias: 'Coffee: reset weekly'
+    trigger:
+      platform: time
+      at: '00:00'
+    condition:
+      condition: time
+      weekday: mon
+    action:
+      service: counter.reset
+      entity_id: counter.coffeecups_week
+
+  - alias: 'Coffee: reset monthly'
+    trigger:
+      platform: time
+      at: '00:00'
+    condition:
+      condition: template
+      value_template: "{{ now().strftime('%d')  == '01' }}"
+    action:
+      service: counter.reset
+      entity_id: counter.coffeecups_month
