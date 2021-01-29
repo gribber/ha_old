@@ -1,18 +1,4 @@
 ### Switches ###
-switch.switch_livingroom_upstairs:
-  icon: mdi:lightbulb
-  assumed_state: false
-  friendly_name: Living room upstairs light right
-
-switch.proove_1:
-  icon: mdi:lightbulb
-  assumed_state: false
-  friendly_name: Guestroom window light
-
-switch.proove_2:
-  icon: mdi:lightbulb
-  friendly_name: Living room upstairs light left
-
 switch.switch_workout:
   icon: mdi:lightbulb
   friendly_name: Workout room window light
@@ -48,9 +34,5 @@ switch.door_sensor_3:
 
 switch.door_sensor_4:
   friendly_name: Refrigerator upper door
-
-switch.switch_tiny_1:
-  icon: mdi:lightbulb
-  friendly_name: Kitchen windows light north
 
 

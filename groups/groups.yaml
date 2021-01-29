@@ -1,7 +1,3 @@
-sensors:
-  entities:
-    - sensor.all_sensors
-
 outdoor_lights:
   name: Outdoor lights
   entities:
@@ -10,35 +6,14 @@ outdoor_lights:
     - light.entre
     - light.parking
 
-# llvp_garage:
-#   name: Garage heat pump
-#   entities:
-#     - sensor.telldus_tzwp_102_plug_in_switch_current
-#     - sensor.telldus_tzwp_102_plug_in_switch_energy
-#     - sensor.telldus_tzwp_102_plug_in_switch_power
-#     - sensor.telldus_tzwp_102_plug_in_switch_previous_reading
-#     - sensor.telldus_tzwp_102_plug_in_switch_voltage
 
 window_lights:
   name: Window lights
   entities:
     - light.kitchen_window_1
-    - light.guestroom_window_1
-    - switch.proove_2
-    - switch.switch_livingroom_upstairs
 #    - light.ikea_e14_400lm # bedroom
     - light.cinema_window
     - light.bella_window_1
-
-flvp_sensors:
-  name: FLVP Sensors
-  entities:
-    - sensor.radiator_fram_temperature
-    - sensor.radiator_ret_temperature
-    - sensor.tilluft_temperature
-    - sensor.uteluft_temperature
-    - sensor.franluft_temperature
-    - sensor.avluft_temperature
 
 
 bedroom:
@@ -60,7 +35,6 @@ livingroom_upstairs:
   name: Living room upstairs
   entities:
     - switch.switch_livingroom_upstairs
-    - switch.proove_2
     - sensor.livingroom_upstairs_temperature
 
 # garage:
@@ -76,7 +50,6 @@ livingroom_upstairs:
 guestroom:
   name: Guest room
   entities:
-    - switch.switch_guestroom
     - sensor.guestroom_temperature
     - sensor.guestroom_humidity
 
@@ -118,32 +91,4 @@ verisure:
   name: Verisure
   entities:
     - lock.ytterdorr
-
-remotes:
-  name: Remotes
-  entities:
-    - switch.remote_1
-    - switch.remote_1_a
-    - switch.remote_1_b
-    - switch.remote_1_c
-    - switch.remote_1_alloff
-
-rooms:
-  entities:
-    - group.bedroom
-    - group.livingroom_downstairs
-    - group.livingroom_upstairs
-    - group.garage
-    - group.guestroom
-    - group.kitchen
-    - group.hobbyroom
-    - group.closet
-    - group.workoutroom
-
-house:
-  entities:
-    - group.flvp_sensors
-    - group.roof
-    - group.garage
-    - group.verisure
 
