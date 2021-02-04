@@ -285,7 +285,7 @@ notify:
       - service: mobile_app_isabells_iphone
 
 logger:
-  default: info
+  default: warn
   logs:
     # temp debug for unifi
     # aiounifi: debug
