@@ -40,7 +40,7 @@ sensor:
             off
           {% elif (states('sensor.sp120_coffee_power')|int > 30) and (states('sensor.sp120_coffee_power')|int < 200) %}
             heating
-          {% elif (states('sensor.sp120_coffee_power')|int > 800) and (states('sensor.sp120_coffee_power')|int < 1500) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 800) and (states('sensor.sp120_coffee_power')|int < 1600) %}
             making
           {% else %}
             unknown ({{ states('sensor.sp120_coffee_power') }}W)
@@ -50,7 +50,7 @@ sensor:
             mdi:coffee-off
           {% elif (states('sensor.sp120_coffee_power')|int > 30) and (states('sensor.sp120_coffee_power')|int < 200) %}
             mdi:coffee-to-go
-          {% elif (states('sensor.sp120_coffee_power')|int > 800) and (states('sensor.sp120_coffee_power')|int < 1500) %}
+          {% elif (states('sensor.sp120_coffee_power')|int > 800) and (states('sensor.sp120_coffee_power')|int < 1600) %}
             mdi:coffee-maker
           {% else %}
             mdi:cloud-question
@@ -176,7 +176,7 @@ automation:
       - service: input_number.set_value
         data_template:
           entity_id: input_number.coffeecups_last
-          value: "{{ ((as_timestamp(now())-as_timestamp(states.input_datetime.coffee_brewing_start.state))/38)|round(0) }}" # 38 = average time for each cup in seconds 
+          value: "{{ ((as_timestamp(now())-as_timestamp(states.input_datetime.coffee_brewing_start.state))/36)|round(0) }}" # 36 = average time for each cup in seconds 
       - service: counter.configure
         data_template:
           entity_id:
