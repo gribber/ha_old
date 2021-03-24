@@ -172,7 +172,7 @@ automation:
       # - service: input_number.set_value
       #   data_template:
       #     entity_id: input_number.coffeecups_last
-      #     value: "{{ ((as_timestamp(now())-as_timestamp(states.sensor.coffee_state.last_changed))/38)|round(0) }}" # 38 = average time for each cup in seconds 
+      #     value: "{{ ((as_timestamp(now())-as_timestamp(states.sensor.coffee_state.last_changed))/37)|round(0) }}" # 37 = average time for each cup in seconds 
       - service: input_number.set_value
         data_template:
           entity_id: input_number.coffeecups_last

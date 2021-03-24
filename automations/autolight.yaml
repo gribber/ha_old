@@ -29,6 +29,9 @@
       entity_id:
         - light.kitchentable
         - light.bedroom_ceiling
+        - light.living_room
+        - light.shelly_cinema_backrow
+        - light.shelly_cinema_frontrow
 
 - alias: "Light up the driveway when getting home"
   trigger:

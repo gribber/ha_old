@@ -1,0 +1,17 @@
+- platform: template
+  sensors:
+    electricity_price_total:
+      friendly_name: "Elpris"
+      value_template: >-
+        {% set transfer = 0.1438 %}
+        {% set tax = 0.4413 %}
+        {% set vat = 1.25 %}
+        {% set total = (states('sensor.electricity_price_johannedalsvagen_75_b')|float + transfer + tax) * vat %}
+        {{ total | round(3) }}
+      unit_of_measurement: "SEK/kWh"
+
+    electricity_current_cost:
+      friendly_name: "Nuvarande elkostnad"
+      value_template: >-
+        {{ ((states('sensor.rtc_power')|float / 1000) * states('sensor.electricity_price_total')|float) | round(2) }}
+      unit_of_measurement: "SEK/h"

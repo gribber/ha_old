@@ -6,3 +6,12 @@
 #   limit_refetch_to_url_change: true
 
 #- platform: unifiprotect
+
+- platform: xiaomi_cloud_map_extractor
+  host: !secret roborock_s5max_host
+  token: !secret roborock_s5max_token
+  username: !secret xiaomi_cloud_username
+  password: !secret xiaomi_cloud_password
+  draw: ['all']
+  attributes:
+    - calibration_points    

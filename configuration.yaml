@@ -143,12 +143,12 @@ device_tracker:
 #  - platform: bluetooth_tracker
 #    request_rssi: true
 
-  - platform: google_maps
-    track_new_devices: true
-    username: !secret maps_user
-#    password: !secret maps_pass
-    max_gps_accuracy: 200
-    scan_interval: 60
+#   - platform: google_maps
+#     track_new_devices: true
+#     username: !secret maps_user
+# #    password: !secret maps_pass
+#     max_gps_accuracy: 200
+#     scan_interval: 60
 
     #  - platform: bluetooth_le_tracker
 

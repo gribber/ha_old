@@ -8,6 +8,11 @@ visitors:
     - person.neonis
     - person.znike
 
+vi:
+  name: vi
+  entities:
+    - person.bella
+    - person.linus
 everyone:
   name: everyone
   entities:

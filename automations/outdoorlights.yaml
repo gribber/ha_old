@@ -6,7 +6,9 @@
   condition: []
   action:
     - service: homeassistant.turn_on
-      entity_id: group.outdoor_lights
+      entity_id: 
+        - light.outdoor_lights
+        - switch.ikea_outlet_1
 
 - alias: 'Sunrise outdoor lights'
   trigger:
@@ -16,5 +18,7 @@
   condition: []
   action:
     - service: homeassistant.turn_off
-      entity_id: group.outdoor_lights
+      entity_id: 
+        - light.outdoor_lights
+        - switch.ikea_outlet_1
 

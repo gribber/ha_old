@@ -32,11 +32,7 @@
   action:
     - service: light.toggle
       entity_id:
-        - light.liv_front_1
-    - delay: 0.1
-    - service: light.toggle
-      entity_id:
-        - light.liv_front_2
+        - light.liv_front_4
     - delay: 0.1
     - service: light.toggle
       entity_id:
@@ -44,7 +40,11 @@
     - delay: 0.1
     - service: light.toggle
       entity_id:
-        - light.liv_front_4
+        - light.liv_front_2
+    - delay: 0.1
+    - service: light.toggle
+      entity_id:
+        - light.liv_front_1
     - delay: 0.1
 
 - alias: TEST - Livingroom short down
@@ -57,11 +57,7 @@
   action:
     - service: light.toggle
       entity_id:
-        - light.liv_back_1
-    - delay: 0.1
-    - service: light.toggle
-      entity_id:
-        - light.liv_back_2
+        - light.liv_back_4
     - delay: 0.1
     - service: light.toggle
       entity_id:
@@ -69,6 +65,10 @@
     - delay: 0.1
     - service: light.toggle
       entity_id:
-        - light.liv_back_4
+        - light.liv_back_2
+    - delay: 0.1
+    - service: light.toggle
+      entity_id:
+        - light.liv_back_1
     - delay: 0.1
   

@@ -88,36 +88,35 @@ sensor:
     name: rtc_power_1min
     sampling_size: 40
     max_age:
-      seconds: 10
+      seconds: 30
 
   - platform: statistics
     entity_id: sensor.rtc_current_phase1_state
     name: rtc_current_phase1_1min
     sampling_size: 40
     max_age:
-      seconds: 10
+      seconds: 30
   
   - platform: statistics
     entity_id: sensor.rtc_current_phase2_state
     name: rtc_current_phase2_1min
     sampling_size: 40
     max_age:
-      seconds: 10
+      seconds: 30
   
   - platform: statistics
     entity_id: sensor.rtc_current_phase3_state
     name: rtc_current_phase3_1min
     sampling_size: 40
     max_age:
-      seconds: 10
+      seconds: 30
 
   - platform: statistics
     entity_id: sensor.rtc_avgpower_state
     name: rtc_avgpower_1min
     sampling_size: 10
-    # does not update often enough causing unknown values with max_age set? reducing sampling_size above for the same reason
-    # max_age:
-    #   seconds: 10
+    max_age:
+      seconds: 30
 
   - platform: statistics
     entity_id: sensor.rtc_accumulated_consumption_state
