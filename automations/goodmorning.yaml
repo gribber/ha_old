@@ -1,4 +1,5 @@
 - alias: 'Play SVT Morgonstudion on workdays'
+  id: 0f78d2f7-45cb-4325-a57e-6413be373789
   trigger:
     platform: time
     at: "07:01:00"

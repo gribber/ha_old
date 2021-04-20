@@ -1,4 +1,5 @@
 - alias: 'Window lights sunset'
+  id: 75470e48-9bd8-472f-b3f5-8834ff2d6833
   trigger:
     platform: sun
     event: sunset
@@ -13,6 +14,7 @@
         - light.guestroom_window_1
 
 - alias: 'Window lights off at night'
+  id: be207a50-3dce-478d-bf0e-14c5e2c941eb
   trigger:
     platform: time
     at: '23:30'
@@ -23,6 +25,7 @@
         - light.ikea_e14_400lm
 
 - alias: 'Window lights sunrise'
+  id: c073f007-09d7-4fc7-b749-3b39bbad60de
   trigger:
     platform: time
     at: '06:00'
@@ -34,6 +37,7 @@
       entity_id: light.window_lights
 
 - alias: 'Window lights off at sunrise'
+  id: 03cc22b2-c269-4842-855a-0c28558a9886
   trigger:
     platform: sun
     event: sunrise
@@ -46,7 +50,9 @@
         - light.window_lights
         - light.ikea_e14_400lm
         - light.guestroom_window_1
+
 - alias: 'Window lights sunrise - bedroom'
+  id: 1aac9f51-40b7-40b7-a337-ab6c12017e89
   trigger:
     platform: time
     at: '06:00'
@@ -64,6 +70,7 @@
         - light.ikea_e14_400lm
 
 - alias: 'Window lights sunrise - guestroom'
+  id: f80c5d2b-a1f9-4ecb-86e9-53e437849ef0
   trigger:
     platform: time
     at: '06:00'

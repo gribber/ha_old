@@ -1,4 +1,5 @@
 - alias: Notify on new HA version
+  id: f98ff89c-0513-4993-a404-8e72f01da65a
   trigger:
     platform: state
     entity_id: sensor.latest_ha_version

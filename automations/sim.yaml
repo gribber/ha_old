@@ -1,4 +1,5 @@
 - alias: "SIM card reminder"
+  id: c5cbc50b-af44-42e7-a2df-2ccd586089f8
   trigger:
     platform: time
     at: "12:00:00"

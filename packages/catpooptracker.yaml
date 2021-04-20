@@ -18,6 +18,7 @@ counter:
 
 automation:
   - alias: Track cat poops
+    id: 8ea9776a-8bac-4938-bcdc-0435bf119572
     trigger:
       platform: state
       entity_id: binary_sensor.openclose_35
@@ -39,6 +40,7 @@ automation:
         entity_id: input_boolean.catpooping
 
   - alias: Reset catpoops daily
+    id: 37a5daa4-1155-478e-88bb-4948e3dd091b
     trigger:
       platform: time
       at: '00:00'
@@ -47,6 +49,7 @@ automation:
       entity_id: counter.catpoop_day
 
   - alias: Reset catpoops weekly
+    id: f0d169b6-a63a-4901-b19c-0e79e2304125
     trigger:
       platform: time
       at: '00:00'

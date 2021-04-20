@@ -1,4 +1,5 @@
 - alias: "Turn on kitchen table light in the mornig if needed"
+  id: 817ff13b-498f-46c2-aa7c-7f4017145ed1
   trigger:
     - platform: state
       entity_id: binary_sensor.presence_34
@@ -20,6 +21,7 @@
 
 
 - alias: "Turn off some lights when leaving home"
+  id: 18baae12-4d70-4341-9e32-ccc9a7fb90da
   trigger:
     - platform: state
       entity_id: group.everyone
@@ -34,6 +36,7 @@
         - light.shelly_cinema_frontrow
 
 - alias: "Light up the driveway when getting home"
+  id: 93c8c1f8-2923-476a-9202-a13cd22e3742
   trigger:
     - platform: state
       entity_id: person.linus

@@ -1,4 +1,5 @@
 - alias: "Garage movement: when not home"
+  id: 0e9e7874-0d12-4eae-81a3-3de11ae66fee
   trigger:
     - platform: state
       entity_id: binary_sensor.presence_16
@@ -14,6 +15,7 @@
       title: "ALERT"
 
 - alias: "Garage movement: when dark"
+  id: bbcbc4fa-7f3e-4cfb-9ee6-69016f23b874
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_garage

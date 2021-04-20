@@ -1,4 +1,5 @@
 - alias: "Doorlock reminder"
+  id: a294f437-43c5-4268-b023-62b20a573220
   trigger:
     - platform: state
       entity_id: person.linus
@@ -13,7 +14,8 @@
       message: 'You forgot to lock the door'
       title: 'Alzheimers'
 
-- alias: "Garage reminder when leaveing home" 
+- alias: "Garage reminder when leaveing home"
+  id: 1539e4c6-4909-4f37-9462-0856b771aa23
   trigger:
     - platform: state
       entity_id: person.linus
@@ -34,6 +36,7 @@
       title: 'Alzheimers'
 
 - alias: "Garage reminder at night"
+  id: e475dc52-ca84-4a4a-8443-2162a5845f19
   trigger:
     - platform: time
       at: '23:00:00'

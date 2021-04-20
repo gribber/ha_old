@@ -1,4 +1,5 @@
 - alias: "Bathroom upstairs - water leakage detection"
+  id: dfbdd527-0bf4-481c-b0ea-6257a098842c
   trigger:
     - platform: state
       entity_id: binary_sensor.water_17

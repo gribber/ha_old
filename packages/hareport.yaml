@@ -17,6 +17,7 @@ rest_command:
 
 automation:
   - alias: "Report version on startup"
+    id: 1faad88f-0758-4ef9-820e-d31df12a46b2
     trigger:
       - platform: homeassistant
         event: start

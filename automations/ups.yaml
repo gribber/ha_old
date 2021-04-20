@@ -1,4 +1,5 @@
 - alias: UPS notifier
+  id: 17883fac-54bf-4063-99ce-b8746c31968f
   trigger:
     platform: state
     entity_id: sensor.ups_transfer_count

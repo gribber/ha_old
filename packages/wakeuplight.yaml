@@ -43,6 +43,7 @@ sensor:
 
 automation:
   - alias: "Wake-me up using bedroom lights"
+    id: 65ca59e7-28f9-4eb0-a852-57b00dda3f05
     trigger:
       platform: template
       value_template: "{{ states('sensor.time') == (states.input_datetime.wakeup_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"

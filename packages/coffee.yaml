@@ -96,6 +96,7 @@ input_boolean:
 
 automation:
   - alias: 'coffee: coffee ready'
+    id: 413e84c6-0ed4-47c1-b3c4-159c044d07e5
     trigger:
       platform: state
       entity_id: sensor.coffee_state
@@ -117,6 +118,7 @@ automation:
           language: sv
   
   - alias: 'coffee: autostart'
+    id: a740c72b-a019-48d9-9425-1e6dcc608cf3
     trigger:
       platform: template
       value_template: "{{ states('sensor.time') == states('input_datetime.coffee_start')[0:5] }}"
@@ -141,6 +143,7 @@ automation:
           message: "making coffee"
   
   - alias: 'coffee: auto turn off switch'
+    id: db86b221-4ea1-4d6b-8713-69a00e48f284
     trigger:
       platform: state
       entity_id: switch.coffee_maker_switch
@@ -152,6 +155,7 @@ automation:
         entity_id: switch.coffee_maker_switch
 
   - alias: 'coffee: time of start brewing'
+    id: d5312d00-17e5-4f7d-9549-8fb6f40d1d9f
     trigger:
       platform: state
       entity_id: sensor.coffee_state
@@ -163,6 +167,7 @@ automation:
         timestamp: '{{ now().timestamp() }}'
 
   - alias: 'coffee: counter'
+    id: b23582b2-077a-4334-a9e7-3a752617bcca
     trigger:
       platform: state
       entity_id: sensor.coffee_state
@@ -176,7 +181,7 @@ automation:
       - service: input_number.set_value
         data_template:
           entity_id: input_number.coffeecups_last
-          value: "{{ ((as_timestamp(now())-as_timestamp(states.input_datetime.coffee_brewing_start.state))/36)|round(0) }}" # 36 = average time for each cup in seconds 
+          value: "{{ ((as_timestamp(now())-as_timestamp(states.input_datetime.coffee_brewing_start.state))/35)|round(0) }}" # 35 = average time for each cup in seconds 
       - service: counter.configure
         data_template:
           entity_id:
@@ -193,6 +198,7 @@ automation:
           - counter.coffeecups_total
 
   - alias: 'Coffee: reset daily'
+    id: 06e268ab-f399-4934-9003-3bfb2b51c12f
     trigger:
       platform: time
       at: '00:00'
@@ -201,6 +207,7 @@ automation:
       entity_id: counter.coffeecups_day
 
   - alias: 'Coffee: reset weekly'
+    id: 95ab584a-968d-4630-9818-3de72153a5ac
     trigger:
       platform: time
       at: '00:00'
@@ -212,6 +219,7 @@ automation:
       entity_id: counter.coffeecups_week
 
   - alias: 'Coffee: reset monthly'
+    id: 1c828a95-2ad3-4d3e-839e-ebf660b44166
     trigger:
       platform: time
       at: '00:00'

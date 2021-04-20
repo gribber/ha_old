@@ -5,6 +5,7 @@ input_boolean:
 
 automation:
   - alias: "bella: activating flight mode"
+    id: 44f52ae3-8259-4513-a1e1-1b435a89eee1
     trigger:
       - platform: state
         entity_id: person.bella
@@ -19,6 +20,7 @@ automation:
         entity_id: input_boolean.bella_is_here
 
   - alias: "bella: leaving"
+    id: 90ecc5b6-cddd-44bc-94e1-62b0b9ede1b8
     trigger:
       - platform: state
         entity_id: person.bella
@@ -32,6 +34,7 @@ automation:
         entity_id: input_boolean.bella_is_here
 
   - alias: "bella: entering"
+    id: 4c620b1c-c855-4d30-a895-bebca0f6464f
     trigger:
       - platform: state
         entity_id: person.bella

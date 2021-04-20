@@ -15,7 +15,7 @@ homeassistant:
   packages: !include_dir_named packages
 
 
-# Enables the frontend
+  # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes
 
@@ -186,7 +186,12 @@ sun:
 # stream
 stream:
 
+# media source
+media_source:
 
+# zeroconf
+zeroconf:
+  
 # Text to speech
 tts:
   - platform: google_translate
@@ -194,17 +199,17 @@ tts:
     base_url: !secret base_url
     
 # verisure
-verisure:
-  username: !secret verisure_user
-  password: !secret verisure_pass
-  default_lock_code: !secret verisure_default_code
-  alarm: false
-  hygrometers: false
-  smartplugs: false
-  thermometers: false
-  mouse: false
-  door_window: false
-  locks: true
+# verisure:
+#   username: !secret verisure_user
+#   password: !secret verisure_pass
+#   default_lock_code: !secret verisure_default_code
+#   alarm: false
+#   hygrometers: false
+#   smartplugs: false
+#   thermometers: false
+#   mouse: false
+#   door_window: false
+#   locks: true
 
 
 tibber:

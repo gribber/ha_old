@@ -1,4 +1,5 @@
 - alias: 'Sunset outdoor lights'
+  id: 00f5acc1-28d1-4418-9b1b-e80f3ee004a7
   trigger:
     platform: sun
     event: sunset
@@ -11,6 +12,7 @@
         - switch.ikea_outlet_1
 
 - alias: 'Sunrise outdoor lights'
+  id: f1924b0e-ba10-41b2-b67f-fa70b4ea2045
   trigger:
     platform: sun
     event: sunrise
