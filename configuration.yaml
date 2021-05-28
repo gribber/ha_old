@@ -251,8 +251,8 @@ surepetcare:
   username: !secret sure_petflap_username
   password: !secret sure_petflap_password
   #household_id: !secret sure_petflap_household_id
-  flaps: !secret sure_petflap_flaps
-  pets: !secret sure_petflap_pets
+  # flaps: !secret sure_petflap_flaps
+  # pets: !secret sure_petflap_pets
 
 # midea cloud
 climate:
@@ -286,7 +286,7 @@ notify:
   - platform: group
     name: ALL_DEVICES
     services:
-      - service: mobile_app_nokia_7_plus
+      - service: mobile_app_oneplus_8t
       - service: mobile_app_isabells_iphone
 
 logger:
@@ -306,6 +306,10 @@ logger:
     homeassistant.components.automation: warn
     homeassistant.components.websocket_api.http.connection: warn
     custom_components.nordpool: warn
+    # custom_components.husqvarna_automower: debug
+    # custom_components.husqvarna_automower.vacuum: debug
+    # custom_components.husqvarna_automower.config_flow: debug
+    # aioautomower: debug
 
 recorder:
   db_url: !secret mariadb
@@ -331,15 +335,6 @@ recorder:
       - call_service
     entities:
       - sensor.real_time_consumption_johannedalsvagen_75_b
-      # - sensor.rtc_accumulated_consumption
-      # - sensor.rtc_avgpower
-      # - sensor.rtc_current_phase1
-      # - sensor.rtc_current_phase2
-      # - sensor.rtc_current_phase3
-      # - sensor.rtc_power_phase1
-      # - sensor.rtc_power_phase2
-      # - sensor.rtc_power_phase3
-      # - sensor.rtc_voltage
       - sensor.outdoor_temperatures
       - sensor.hourly_energy
       - sensor.dayly_energy
@@ -353,26 +348,35 @@ recorder:
       - sensor.heater_activationtime
       - sensor.heater_temptime
       - sensor.heater_forecast
-      - sensor.rtc_power_1min
-      - sensor.rtc_accumulated_consumption_1min
-      - sensor.rtc_avgpower_1min
-      - sensor.rtc_current_phase1_1min
-      - sensor.rtc_current_phase2_1min
-      - sensor.rtc_current_phase3_1min
-      - sensor.rtc_accumulated_consumption_state
-      - sensor.rtc_avgpower_state
-      - sensor.rtc_maxpower_state
-      - sensor.rtc_minpower_state
-      - sensor.rtc_current_phase1_state
-      - sensor.rtc_current_phase2_state
-      - sensor.rtc_current_phase3_state
+      # - sensor.rtc_power_1min
+      # - sensor.rtc_accumulated_consumption_1min
+      # - sensor.rtc_avgpower_1min
+      # - sensor.rtc_current_phase1_1min
+      # - sensor.rtc_current_phase2_1min
+      # - sensor.rtc_current_phase3_1min
+      # - sensor.rtc_accumulated_consumption_state
+      # - sensor.rtc_avgpower_state
+      # - sensor.rtc_maxpower_state
+      # - sensor.rtc_minpower_state
+      # - sensor.rtc_current_phase1_state
+      # - sensor.rtc_current_phase2_state
+      # - sensor.rtc_current_phase3_state
       - sensor.ups_status_date
       - sensor.ups_status_data
-
+    entity_globs:
+      # power cunsumption
+      - sensor.rtc_*_1min
+      - sensor.rtc_*_state
+      # frigate
+      - sensor.*_process_fps
+      - sensor.*_camera_fps
+      - sensor.*_detection_fps
 
 
 # media players
 media_player: !include media_player.yaml
+
+image_processing: !include image_processing.yaml
 
 # include sensors
 sensor: !include_dir_merge_list sensors/

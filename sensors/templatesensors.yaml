@@ -57,7 +57,7 @@
       unit_of_measurement: "%"
       friendly_name: "Annie battery level"
       device_class: battery
-      value_template: "{{ state_attr('device_tracker.automower_g_170912997_170502790', 'battery') }}"
+      value_template: "{{ state_attr('device_tracker.automower_none_170912997_170502790', 'battery') }}"
 
     outdoor_temperatures:
       device_class: temperature

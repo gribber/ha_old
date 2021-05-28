@@ -1,0 +1,14 @@
+- alias: "Run deepstack when person detected"
+  id: 18212334-104b-4f58-a923-f43a48410eb6
+  description: ''
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.frontporch_person_motion
+      from: 'off'
+      to: 'on'
+  condition: []
+  action:
+    - service: image_processing.scan
+      target:
+        entity_id: image_processing.frontporch_face

@@ -1,0 +1,23 @@
+- alias: "Camera: turn off cat tracking when home"
+  id: cea2a6cd-ddcf-447c-b765-9ee2fd7151eb
+  trigger:
+    - platform: state
+      entity_id:
+        - group.vi
+      to: home
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - switch.inside_detect
+
+- alias: "Camera: turn on cat tracking when leaving home"
+  id: af49115b-de49-4cb6-af63-295775cdf463
+  trigger:
+    - platform: state
+      entity_id:
+        - group.vi
+      to: not_home
+  action:
+    service: homeassistant.turn_on
+    entity_id:
+      - switch.inside_detect
