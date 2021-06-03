@@ -15,6 +15,7 @@
       value_template: "{{ state_attr('sensor.sp120_coffee_power', 'current')|int / 1000 }}"
 
     flap_livingroom_upstairs_nimh_battery_level:
+      unique_id: 401689b2-0707-4961-a4c8-9fd9be7b4251
       unit_of_measurement: "%"
       device_class: battery
       friendly_name: "Petdoor"
@@ -24,11 +25,12 @@
         {% set maxcharge = 5.37 %}
         {% set mincharge = 4.6 %}
         {% set diffcharge = (maxcharge - mincharge) / 100 %}
-        {% set charge = (100 - ((maxcharge - state_attr('sensor.pet_flap_pet_door_battery_level', 'voltage') | float) / diffcharge)) | round(1) %}
+        {% set charge = (100 - ((maxcharge - state_attr('sensor.pet_flap_pet_door_battery_level_2', 'voltage') | float) / diffcharge)) | round(1) %}
         {% if charge < 0 %} {% set charge = 0 %} {% endif %}
         {{ charge }}
 
     flap_catflapdual_nimh_battery_level:
+      unique_id: 9a0dcd7c-d43f-4431-9b8f-50c605829d2c
       unit_of_measurement: "%"
       device_class: battery
       friendly_name: "Catflap"
@@ -43,12 +45,14 @@
         {{ charge }}
 
     flap_livingroom_upstairs_nimh_battery_voltage:
+      unique_id: e28c2cdf-cfa5-49d9-b30d-8a2a306792d2
       friendly_name: "Petdoor battery voltage"
       unit_of_measurement: "V"
-      value_template: "{{ state_attr('sensor.pet_flap_pet_door_battery_level', 'voltage') }}"
+      value_template: "{{ state_attr('sensor.pet_flap_pet_door_battery_level_2', 'voltage') }}"
 #      value_template: "{{ state_attr('binary_sensor.flap_livingroom_upstairs', 'battery_voltage') * 4 }}"
 
     flap_catflapdual_nimh_battery_voltage:
+      unique_id: a5e102be-aee5-474d-a105-27c17328f0bd
       friendly_name: "Catflap battery voltage"
       unit_of_measurement: "V"
       value_template: "{{ state_attr('sensor.pet_flap_catflapdual_battery_level', 'voltage') }}"
