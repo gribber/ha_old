@@ -124,15 +124,15 @@ updater:
 
 mobile_app:
 
-speedtestdotnet:
-  server_id: 6061
-#  scan_interval:
-#    minutes: 180
-  manual: true
-  monitored_conditions:
-    - ping
-    - download
-    - upload
+# speedtestdotnet:
+#   server_id: 6061
+# #  scan_interval:
+# #    minutes: 180
+#   manual: true
+#   monitored_conditions:
+#     - ping
+#     - download
+#     - upload
 
 #googlehome:
 #  devices:
@@ -212,8 +212,8 @@ tts:
 #   locks: true
 
 
-tibber:
-  access_token: !secret tibber_token
+# tibber:
+#   access_token: !secret tibber_token
 
 # spotify
 spotify:
@@ -224,11 +224,11 @@ spotify:
 cloud:
 
 # vacuum cleaners
-vacuum:
-  - platform: xiaomi_miio
-    name: 'Vac-It Ralph'
-    host: !secret roborock_s5max_host
-    token: !secret roborock_s5max_token
+# vacuum:
+#   - platform: xiaomi_miio
+#     name: 'Vac-It Ralph'
+#     host: !secret roborock_s5max_host
+#     token: !secret roborock_s5max_token
 
 # HACS
 hacs:
@@ -247,18 +247,19 @@ automower:
   password: !secret am_pass
 
 # sure catflap
-surepetcare:
-  username: !secret sure_petflap_username
-  password: !secret sure_petflap_password
-  #household_id: !secret sure_petflap_household_id
-  # flaps: !secret sure_petflap_flaps
-  # pets: !secret sure_petflap_pets
+#surepetcare:
+#  username: !secret sure_petflap_username
+#  password: !secret sure_petflap_password
 
-# midea cloud
-climate:
-  - platform: midea_ac
-    host: !secret midea_host
-    id: !secret midea_id
+# surepetcarebeta:
+#   username: !secret sure_petflap_username
+#   password: !secret sure_petflap_password
+
+  # midea cloud
+# climate:
+#   - platform: midea_ac
+#     host: !secret midea_host
+#     id: !secret midea_id
 
 
 telegram_bot:
@@ -334,7 +335,7 @@ recorder:
       # - state_changed # this is history stats
       - call_service
     entities:
-      - sensor.real_time_consumption_johannedalsvagen_75_b
+      #- sensor.real_time_consumption_johannedalsvagen_75_b
       - sensor.outdoor_temperatures
       - sensor.hourly_energy
       - sensor.dayly_energy
@@ -367,6 +368,7 @@ recorder:
       # power cunsumption
       - sensor.rtc_*_1min
       - sensor.rtc_*_state
+      - sensor.*_johannedalsvagen_75_b
       # frigate
       - sensor.*_process_fps
       - sensor.*_camera_fps

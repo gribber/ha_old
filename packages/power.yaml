@@ -42,23 +42,25 @@ sensor:
           {{ v }}
 
       # current reading for each phase
-      rtc_current_phase1_state:
-        unit_of_measurement: A
-        value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL1") }}'    
-      rtc_current_phase2_state:
-        unit_of_measurement: A
-        value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL2") }}'
-      rtc_current_phase3_state:
-        unit_of_measurement: A
-        value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL3") }}'
+      # rtc_current_phase1_state:
+      #   unit_of_measurement: A
+      #   value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL1") }}'    
+      # rtc_current_phase2_state:
+      #   unit_of_measurement: A
+      #   value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL2") }}'
+      # rtc_current_phase3_state:
+      #   unit_of_measurement: A
+      #   value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "currentL3") }}'
 
       # power reading 
       rtc_avgpower_state:
         unit_of_measurement: W
-        value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "averagePower") }}'
+        value_template: '{{ states("sensor.average_power_johannedalsvagen_75_b") }}'
+        #value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "averagePower") }}'
       rtc_accumulated_consumption_state:
         unit_of_measurement: kWh
-        value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "accumulatedConsumption") }}'
+        value_template: '{{ states("sensor.accumulated_consumption_johannedalsvagen_75_b") }}'
+        #value_template: '{{ state_attr("sensor.real_time_consumption_johannedalsvagen_75_b", "accumulatedConsumption") }}'
 
       # calculated power reading
       rtc_power_phase1:
@@ -78,34 +80,36 @@ sensor:
           {{ w | round(2) }}
 
   - platform: integration
-    source: sensor.real_time_consumption_johannedalsvagen_75_b
+    source: sensor.power_johannedalsvagen_75_b
+    #source: sensor.real_time_consumption_johannedalsvagen_75_b
     name: energy_spent
     unit_prefix: k
     round: 2
 
   - platform: statistics
-    entity_id: sensor.real_time_consumption_johannedalsvagen_75_b
+    entity_id: sensor.power_johannedalsvagen_75_b
+    #entity_id: sensor.real_time_consumption_johannedalsvagen_75_b
     name: rtc_power_1min
     sampling_size: 40
     max_age:
       seconds: 30
 
   - platform: statistics
-    entity_id: sensor.rtc_current_phase1_state
+    entity_id: sensor.current_l1_johannedalsvagen_75_b
     name: rtc_current_phase1_1min
     sampling_size: 40
     max_age:
       seconds: 30
   
   - platform: statistics
-    entity_id: sensor.rtc_current_phase2_state
+    entity_id: sensor.current_l2_johannedalsvagen_75_b
     name: rtc_current_phase2_1min
     sampling_size: 40
     max_age:
       seconds: 30
   
   - platform: statistics
-    entity_id: sensor.rtc_current_phase3_state
+    entity_id: sensor.current_l3_johannedalsvagen_75_b
     name: rtc_current_phase3_1min
     sampling_size: 40
     max_age:
