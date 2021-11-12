@@ -1,0 +1,105 @@
+surepetcare:
+  username: !secret sure_petflap_username
+  password: !secret sure_petflap_password
+  household_id: !secret sure_petflap_household_id
+  flaps: !secret sure_petflap_flaps
+  pets: !secret sure_petflap_pets
+
+sensor:
+#  - platform: sure_petflap
+#    username: xxx@xxx.com
+#    password: xxxxx
+    
+  - platform: template
+    sensors:
+      jenna_status:
+        friendly_name: "Jenna Status"
+        value_template: "{{ state_attr('sensor.surepet_connect', 'Jenna') }}"
+      flap_battery_status:
+        friendly_name: "Sure Flap Battery"
+        value_template: "{{ state_attr('sensor.surepet_connect', 'battery') }}"
+        unit_of_measurement: '%'
+      flap_batterystatus:
+        friendly_name: Sure Flap Battery
+        value_template: >
+          {% if is_state('sensor.surepet_connect', 'unknown') %}
+            110
+          {% else %}
+            {{ states.sensor.surepet_connect.attributes["battery"] | float}}
+          {% endif %}
+        icon_template: > 
+          {% set battery_level_xod1 = states.sensor.surepet_connect.attributes.battery|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('sensor.surepet_connect', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+
+  - platform: history_stats
+    name: Jenna outside time (today)
+    entity_id: sensor.Jenna_status
+    state: 'Outside'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Jenna trips outside (today)
+    entity_id: sensor.Jenna_status
+    state: 'Outside'
+    type: count
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: Jenna outside (yesterday)
+    entity_id: sensor.Jenna_status
+    state: 'Outside'
+    type: time
+    end : '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: Jenna trips outside (yesterday)
+    entity_id: sensor.Jenna_status
+    state: 'Outside'
+    type: count
+    end : '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+      hours: 24
+
+binary_sensor:
+  - platform: template
+    sensors:
+      lock_status:
+        friendly_name: "Sure Flap"
+        device_class: lock
+        value_template: "{{ not states.sensor.surepet_connect.attributes.locked}}"
+        icon_template : >
+          {% if states.sensor.surepet_connect.attributes.locked %}
+            mdi:lock
+          {% else %}
+            mdi:lock-open
+          {% endif %}
+      flap_status:
+        friendly_name: "Flap online Status"
+        device_class: connectivity
+        value_template: "{{ states.sensor.surepet_connect.attributes.flap_online }}"
+        icon_template : >
+          {% if states.sensor.surepet_connect.attributes.flap_online %}
+            mdi:wifi
+          {% else %}
+            mdi:wifi-off
+          {% endif %}
+      hub_status:
+        friendly_name: "Hub online Status"
+        device_class: connectivity
+        value_template: "{{ states.sensor.surepet_connect.attributes.hub_online }}"
+        icon_template : >
+          {% if states.sensor.surepet_connect.attributes.hub_online %}
+            mdi:wifi
+          {% else %}
+            mdi:wifi-off
+          {% endif %}

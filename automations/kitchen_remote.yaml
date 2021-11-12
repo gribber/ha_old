@@ -38,3 +38,29 @@
     - service: media_player.turn_off
       entity_id: media_player.nesthub_kitchen
       
+
+- alias: Kitchen remote bindings 1
+  id: 724367bf-c504-4f5b-99c2-f2ec18ddd3b2
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_onoff_test
+      event: 1001
+  action:
+    service: light.toggle
+    entity_id:
+      - light.kitchen_sink
+
+- alias: Kitchen remote bindings 0
+  id: 8944bd2e-fe5c-4cb0-9e71-6a79d43ff42e
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: switch_onoff_test
+      event: 2001
+  action:
+    service: light.toggle
+    entity_id:
+      - light.kitchen_sink

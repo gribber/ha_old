@@ -1,0 +1,18 @@
+- alias: "Engine heater - precheck measure"
+  trigger: 
+    platform: state
+    entity_id: switch.sp120_1
+    to: 'on'
+    for:
+      seconds: 5
+  condition:
+    - condition: template
+      value_template: '{{ states.sensor.power_37.state|int < 5 }}'
+  action:
+    # - service: notify.google
+    #   data_template:
+    #     message: "You forgot to connect the engine heater cable"
+    - service: notify.pushbullet
+      data:
+        title: "Engine heater"
+        message: "You forgot to connect the cable"

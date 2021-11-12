@@ -3,6 +3,7 @@
   trigger:
     - platform: state
       entity_id: person.linus
+      from: 'home'
       to: 'not_home'
   condition:
     condition: state
@@ -19,6 +20,7 @@
   trigger:
     - platform: state
       entity_id: person.linus
+      from: 'home'
       to: 'not_home'
   condition:
     condition: or

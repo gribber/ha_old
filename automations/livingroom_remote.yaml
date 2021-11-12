@@ -24,55 +24,55 @@
     entity_id:
       - light.living_room_couch_lamp
 
-- alias: TEST - Livingroom short up
-  id: 774b01a3-de49-4dcf-b470-60b4ba34d844
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: switch_onoff_test
-      event: 1002
-  action:
-    - service: light.toggle
-      entity_id:
-        - light.liv_front_4
-    - delay: 0.1
-    - service: light.toggle
-      entity_id:
-        - light.liv_front_3
-    - delay: 0.1
-    - service: light.toggle
-      entity_id:
-        - light.liv_front_2
-    - delay: 0.1
-    - service: light.toggle
-      entity_id:
-        - light.liv_front_1
-    - delay: 0.1
+# - alias: TEST - Livingroom short up
+#   id: 774b01a3-de49-4dcf-b470-60b4ba34d844
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: switch_onoff_test
+#       event: 1002
+#   action:
+#     - service: light.toggle
+#       entity_id:
+#         - light.liv_front_4
+#     - delay: 0.1
+#     - service: light.toggle
+#       entity_id:
+#         - light.liv_front_3
+#     - delay: 0.1
+#     - service: light.toggle
+#       entity_id:
+#         - light.liv_front_2
+#     - delay: 0.1
+#     - service: light.toggle
+#       entity_id:
+#         - light.liv_front_1
+#     - delay: 0.1
 
-- alias: TEST - Livingroom short down
-  id: 84683437-bca4-458d-a934-4e36b94dbfaa
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: switch_onoff_test
-      event: 2002
-  action:
-    - service: light.toggle
-      entity_id:
-        - light.liv_back_4
-    - delay: 0.1
-    - service: light.toggle
-      entity_id:
-        - light.liv_back_3
-    - delay: 0.1
-    - service: light.toggle
-      entity_id:
-        - light.liv_back_2
-    - delay: 0.1
-    - service: light.toggle
-      entity_id:
-        - light.liv_back_1
-    - delay: 0.1
+# - alias: TEST - Livingroom short down
+#   id: 84683437-bca4-458d-a934-4e36b94dbfaa
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: switch_onoff_test
+#       event: 2002
+#   action:
+#     - service: light.toggle
+#       entity_id:
+#         - light.liv_back_4
+#     - delay: 0.1
+#     - service: light.toggle
+#       entity_id:
+#         - light.liv_back_3
+#     - delay: 0.1
+#     - service: light.toggle
+#       entity_id:
+#         - light.liv_back_2
+#     - delay: 0.1
+#     - service: light.toggle
+#       entity_id:
+#         - light.liv_back_1
+#     - delay: 0.1
   

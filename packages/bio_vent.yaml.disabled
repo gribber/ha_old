@@ -1,0 +1,6 @@
+climate:
+  - platform: generic_thermostat
+    name: Ventilation downstairs
+    heater: switch.switch_tiny_3
+    target_sensor:
+    ac_mode: true

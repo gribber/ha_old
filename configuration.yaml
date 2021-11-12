@@ -24,6 +24,8 @@ config:
 
 system_health:
 
+energy:
+
 influxdb:
   host: a0d7b954-influxdb
   port: 8086
@@ -38,6 +40,7 @@ influxdb:
       - vacuum
   exclude:
     entities:
+      - sensor.power_johannedalsvagen_75_b
       - sensor.real_time_consumption_johannedalsvagen_75_b
       - sensor.hourly_energy
       - sensor.dayly_energy
@@ -66,6 +69,8 @@ influxdb:
       - sensor.rtc_current_phase1_state
       - sensor.rtc_current_phase2_state
       - sensor.rtc_current_phase3_state
+    entity_globs:
+      - sensor.*_johannedalsvagen_75_b
   tags_attributes:
     - grafana_name
     - friendly_name
